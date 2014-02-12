@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class opPluginInstallTask extends sfPluginInstallTask
+class saPluginInstallTask extends sfPluginInstallTask
 {
   protected $pluginManager = null;
 
@@ -28,14 +28,14 @@ class opPluginInstallTask extends sfPluginInstallTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'prod'),
     ));
 
-    $this->namespace        = 'opPlugin';
+    $this->namespace        = 'saPlugin';
     $this->name             = 'install';
     $this->briefDescription = 'Installs the SfAdvanced plugin';
     $this->detailedDescription = <<<EOF
 The [plugin:install|INFO] task installs the SfAdvanced plugin:
 Call it with:
 
-  [./symfony opPlugin:install opSamplePlugin|INFO]
+  [./symfony saPlugin:install saSamplePlugin|INFO]
 EOF;
   }
 
@@ -79,7 +79,7 @@ EOF;
 
     if (empty($options['channel']))
     {
-      $options['channel'] = opPluginManager::getDefaultPluginChannelServerName();
+      $options['channel'] = saPluginManager::getDefaultPluginChannelServerName();
     }
     $manager = $this->getPluginManager($options['channel']);
 
@@ -116,7 +116,7 @@ EOF;
       $this->logBlock($e->getMessage(), 'ERROR');
 
       $registry = $this->getPluginManager()->getEnvironment()->getRegistry();
-      $dependency = opPluginDownloader::getCachedDependency($options['channel'], $arguments['name']);
+      $dependency = saPluginDownloader::getCachedDependency($options['channel'], $arguments['name']);
       if ($dependency && $dependency->hasFailedDependency())
       {
         $message = array(
@@ -171,7 +171,7 @@ EOF;
   {
     if (is_null($this->pluginManager))
     {
-      $this->pluginManager = new opPluginManager($this->dispatcher, null, $channel);
+      $this->pluginManager = new saPluginManager($this->dispatcher, null, $channel);
     }
 
     return $this->pluginManager;
@@ -186,7 +186,7 @@ EOF;
 
     if (is_null($channel))
     {
-      $channel = opPluginManager::getDefaultPluginChannelServerName();
+      $channel = saPluginManager::getDefaultPluginChannelServerName();
     }
 
     $registry = $this->getPluginManager()->getEnvironment()->getRegistry();

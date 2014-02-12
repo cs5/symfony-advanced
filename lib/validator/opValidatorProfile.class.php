@@ -9,13 +9,13 @@
  */
 
 /**
- * opValidatorProfile
+ * saValidatorProfile
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-class opValidatorProfile extends sfValidatorBase
+class saValidatorProfile extends sfValidatorBase
 {
   /**
    * Configures the current validator.

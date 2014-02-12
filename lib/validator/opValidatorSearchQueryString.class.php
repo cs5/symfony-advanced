@@ -9,13 +9,13 @@
  */
 
 /**
- * opValidatorSearchQueryString
+ * saValidatorSearchQueryString
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-class opValidatorSearchQueryString extends sfValidatorString
+class saValidatorSearchQueryString extends sfValidatorString
 {
  /**
   * Configures the current validator.

@@ -11,7 +11,7 @@ require_once sfConfig::get('sf_symfony_lib_dir').'/helper/AssetHelper.php';
  */
 
 /**
- * opAssetHelper provides helper function for Assets like css or javascript
+ * saAssetHelper provides helper function for Assets like css or javascript
  * this helpler refered to symfony's AssetHelper
  *
  * @package    SfAdvanced
@@ -96,7 +96,7 @@ function sa_smt_include_stylesheets()
 /**
  * Adds a stylesheet for smartphone pages to the response object.
  *
- * @see opWebResponse->addSmtStylesheet()
+ * @see saWebResponse->addSmtStylesheet()
  */
 function sa_smt_use_stylesheet($css, $position = '', $options = array())
 {
@@ -106,7 +106,7 @@ function sa_smt_use_stylesheet($css, $position = '', $options = array())
 /**
  * Adds a javascript for smartphone pages to the response object.
  *
- * @see opWebResponse->addSmtJavascript()
+ * @see saWebResponse->addSmtJavascript()
  */
 function sa_smt_use_javascript($js, $position = '', $options = array())
 {

@@ -9,13 +9,13 @@
  */
 
 /**
- * opFileLogger
+ * saFileLogger
  *
  * @package    SfAdvanced
  * @subpackage log
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opFileLogger extends sfFileLogger
+class saFileLogger extends sfFileLogger
 {
   protected $file;
 

@@ -1,6 +1,6 @@
 <?php
 
-class opLanguageSelecterForm extends BaseForm
+class saLanguageSelecterForm extends BaseForm
 {
   protected 
     $user = null;
@@ -14,7 +14,7 @@ class opLanguageSelecterForm extends BaseForm
 
     $languages = array_unique(array_merge($languages, $opt_languages));
 
-    $choices = opToolkit::getCultureChoices($languages);
+    $choices = saToolkit::getCultureChoices($languages);
     
     $this->setDefaults(array(
       'culture' => $this->user->getCulture()
@@ -22,11 +22,11 @@ class opLanguageSelecterForm extends BaseForm
 
     $this->setWidgets(array(
       'culture' => new sfWidgetFormChoice(array('choices' => $choices)),
-      'next_uri' => new opWidgetFormInputHiddenNextUri(),
+      'next_uri' => new saWidgetFormInputHiddenNextUri(),
     ));   
     $this->setValidators(array(
       'culture' => new sfValidatorChoice(array('choices' => array_keys($choices))),
-      'next_uri' => new opValidatorNextUri(),
+      'next_uri' => new saValidatorNextUri(),
     ));
 
     $this->widgetSchema->setLabels(array(

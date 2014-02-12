@@ -9,13 +9,13 @@
  */
 
 /**
- * opMailRoute
+ * saMailRoute
  *
  * @package    SfAdvanced
  * @subpackage routing
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opMailRoute extends sfRoute
+class saMailRoute extends sfRoute
 {
   protected
     $member = null,

@@ -79,11 +79,11 @@ class MemberConfigForm extends BaseForm
         {
           if ($childValidator instanceof sfValidatorEmail)
           {
-            opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
+            saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
           }
           elseif ($childValidator instanceof sfValidatorNumber)
           {
-            opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'numeric');
+            saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'numeric');
           }
         }
       }
@@ -109,13 +109,13 @@ class MemberConfigForm extends BaseForm
   public function setMemberConfigWidget($name)
   {
     $config = $this->memberConfigSettings[$name];
-    $this->setWidget($name, opFormItemGenerator::generateWidget($config));
+    $this->setWidget($name, saFormItemGenerator::generateWidget($config));
     $this->widgetSchema->setLabel($name, $config['Caption']);
     $memberConfig = Doctrine::getTable('MemberConfig')->retrieveByNameAndMemberId($name, $this->member->getId());
     if ($memberConfig) {
       $this->setDefault($name, $memberConfig->getValue());
     }
-    $this->validatorSchema[$name] = opFormItemGenerator::generateValidator($config);
+    $this->validatorSchema[$name] = saFormItemGenerator::generateValidator($config);
 
     if (!empty($config['IsUnique']))
     {
@@ -239,7 +239,7 @@ class MemberConfigForm extends BaseForm
       return parent::isValid();
     }
 
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
 
     foreach ($this->getValues() as $key => $value)
     {
@@ -257,7 +257,7 @@ class MemberConfigForm extends BaseForm
       }
     }
 
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
     return parent::isValid();
   }
 

@@ -15,9 +15,9 @@
  * @subpackage member
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-class memberActions extends opMemberAction
+class memberActions extends saMemberAction
 {
-  public function executeHome(opWebRequest $request)
+  public function executeHome(saWebRequest $request)
   {
     $this->gadgetConfig = sfConfig::get('sa_mobile_gadget_list');
 
@@ -33,11 +33,11 @@ class memberActions extends opMemberAction
     return parent::executeHome($request);
   }
 
-  public function executeLogin(opWebRequest $request)
+  public function executeLogin(saWebRequest $request)
   {
-    if (opConfig::get('external_mobile_login_url') && $request->isMethod(sfWebRequest::GET))
+    if (saConfig::get('external_mobile_login_url') && $request->isMethod(sfWebRequest::GET))
     {
-      $this->redirect(opConfig::get('external_mobile_login_url'));
+      $this->redirect(saConfig::get('external_mobile_login_url'));
     }
 
     $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName('mobileLogin');
@@ -46,14 +46,14 @@ class memberActions extends opMemberAction
     return parent::executeLogin($request);
   }
 
-  public function executeSearch(opWebRequest $request)
+  public function executeSearch(saWebRequest $request)
   {
     $this->size = 10;
 
     return parent::executeSearch($request);
   }
 
-  public function executeProfile(opWebRequest $request)
+  public function executeProfile(saWebRequest $request)
   {
     $this->friendsSize = 5;
     $this->communitiesSize = 5;
@@ -66,13 +66,13 @@ class memberActions extends opMemberAction
     return parent::executeProfile($request);
   }
 
-  public function executeConfigUID(opWebRequest $request)
+  public function executeConfigUID(saWebRequest $request)
   {
     $option = array('member' => $this->getUser()->getMember());
-    $this->passwordForm = new opPasswordForm(array(), $option);
+    $this->passwordForm = new saPasswordForm(array(), $option);
     $mobileUid = Doctrine::getTable('MemberConfig')->retrieveByNameAndMemberId('mobile_uid', $this->getUser()->getMemberId());
     $this->isSetMobileUid = $mobileUid && $mobileUid->getValue();
-    $this->isDeletableUid = ((int)opConfig::get('retrieve_uid') < 2) && $this->isSetMobileUid;
+    $this->isDeletableUid = ((int)saConfig::get('retrieve_uid') < 2) && $this->isSetMobileUid;
 
     if ($request->isMethod('post'))
     {
@@ -112,7 +112,7 @@ class memberActions extends opMemberAction
     return sfView::SUCCESS;
   }
 
-  public function executeRegisterMobileToRegisterEnd(opWebRequest $request)
+  public function executeRegisterMobileToRegisterEnd(saWebRequest $request)
   {
 
     $id = $request->getParameter('id');
@@ -122,9 +122,9 @@ class memberActions extends opMemberAction
 
     $this->forward404Unless($memberConfig && $token === $memberConfig->getValue());
 
-    opActivateBehavior::disable();
-    $this->form = new opPasswordForm(null, array('member' => $memberConfig->getMember()));
-    opActivateBehavior::enable();
+    saActivateBehavior::disable();
+    $this->form = new saPasswordForm(null, array('member' => $memberConfig->getMember()));
+    saActivateBehavior::enable();
 
     if ($request->isMethod(sfWebRequest::POST))
     {
@@ -149,7 +149,7 @@ class memberActions extends opMemberAction
     return sfView::SUCCESS;
   }
 
-  public function executeDeleteImage(opWebRequest $request)
+  public function executeDeleteImage(saWebRequest $request)
   {
     $this->image = Doctrine::getTable('MemberImage')->find($request->getParameter('member_image_id'));
     $this->forward404Unless($this->image);
@@ -165,14 +165,14 @@ class memberActions extends opMemberAction
     }
   }
 
-  public function executeShowActivity(opWebRequest $request)
+  public function executeShowActivity(saWebRequest $request)
   {
     $this->size = 10;
 
     parent::executeShowActivity($request);
   }
 
-  public function executeSetSid(opWebRequest $request)
+  public function executeSetSid(saWebRequest $request)
   {
     $this->forward404Unless(isset($request['sid']));
     $this->forward404Unless(isset($request['ts']) && abs(time() - $request['ts']) <= strtotime('30 minutes'));
@@ -180,7 +180,7 @@ class memberActions extends opMemberAction
     $sid = $this->getUser()->decryptSid($request['sid'], $request['ts']);
 
     $uri = isset($request['next_uri']) ? $request['next_uri'] : '';
-    $validator = new opValidatorNextUri();
+    $validator = new saValidatorNextUri();
 
     try
     {
@@ -199,9 +199,9 @@ class memberActions extends opMemberAction
  /**
   * Execute show all member activities action
   *
-  * @param opWebRequest $request a request object
+  * @param saWebRequest $request a request object
   */
-  public function executeShowAllMemberActivity(opWebRequest $request)
+  public function executeShowAllMemberActivity(saWebRequest $request)
   {
     $this->size = 10;
 

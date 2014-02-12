@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class opPluginReleaseTask extends sfBaseTask
+class saPluginReleaseTask extends sfBaseTask
 {
   protected function configure()
   {
@@ -23,14 +23,14 @@ class opPluginReleaseTask extends sfBaseTask
       new sfCommandOption('channel', 'c', sfCommandOption::PARAMETER_REQUIRED, 'The PEAR channel name', null),
     ));
 
-    $this->namespace        = 'opPlugin';
+    $this->namespace        = 'saPlugin';
     $this->name             = 'release';
     $this->briefDescription = 'Creates the plugin definition file and archive the SfAdvanced plugin.';
     $this->detailedDescription = <<<EOF
-The [opPlugin:release|INFO] task creates the plugin definition file, and archive the SfAdvanced plugin.
+The [saPlugin:release|INFO] task creates the plugin definition file, and archive the SfAdvanced plugin.
 Call it with:
 
-  [./symfony opPlugin:release opSamplePlugin|INFO]
+  [./symfony saPlugin:release saSamplePlugin|INFO]
 EOF;
   }
 
@@ -41,7 +41,7 @@ EOF;
 
     if (empty($options['channel']))
     {
-      $options['channel'] = opPluginManager::getDefaultPluginChannelServerName();
+      $options['channel'] = saPluginManager::getDefaultPluginChannelServerName();
     }
 
     while (
@@ -79,9 +79,9 @@ EOF;
 
   protected function doRelease($name, $version, $stability, $note, $dir, $channel)
   {
-    $defineTask = new opPluginDefineTask($this->dispatcher, $this->formatter);
+    $defineTask = new saPluginDefineTask($this->dispatcher, $this->formatter);
     $defineTask->run(array('name' => $name, 'version' => $version, 'stability' => $stability, 'note' => '"'.$note.'"'), array('channel' => $channel));
-    $archiveTask = new opPluginArchiveTask($this->dispatcher, $this->formatter);
+    $archiveTask = new saPluginArchiveTask($this->dispatcher, $this->formatter);
     $archiveTask->run(array('name' => $name, 'dir' => $dir));
   }
 

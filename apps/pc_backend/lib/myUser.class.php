@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class myUser extends opBaseSecurityUser
+class myUser extends saBaseSecurityUser
 {
   public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
   {

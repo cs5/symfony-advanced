@@ -112,7 +112,7 @@ class Profile extends BaseProfile
   */
   public function getPresetConfig()
   {
-    $list = opToolkit::getPresetProfileList();
+    $list = saToolkit::getPresetProfileList();
     if (!empty($list[$this->getRawPresetName()]))
     {
       return $list[$this->getRawPresetName()];

@@ -88,14 +88,14 @@ class CommunityConfigForm extends BaseForm
   public function setConfigWidget($name)
   {
     $config = $this->configSettings[$name];
-    $this->widgetSchema[$name] = opFormItemGenerator::generateWidget($config);
+    $this->widgetSchema[$name] = saFormItemGenerator::generateWidget($config);
     $this->widgetSchema->setLabel($name, $config['Caption']);
     $communityConfig = Doctrine::getTable('CommunityConfig')->retrieveByNameAndCommunityId($name, $this->community->getId());
     if ($communityConfig)
     {
       $this->setDefault($name, $communityConfig->getValue());
     }
-    $this->validatorSchema[$name] = opFormItemGenerator::generateValidator($config);
+    $this->validatorSchema[$name] = saFormItemGenerator::generateValidator($config);
   }
 
   public function setConfigSettings($category = '')

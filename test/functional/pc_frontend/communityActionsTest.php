@@ -1,7 +1,7 @@
 <?php 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$user = new opTestFunctional(new opBrowser(), new lime_test(null));
+$user = new saTestFunctional(new saBrowser(), new lime_test(null));
 $user
 ->info('1. Testing alien')
 ->info('public_flag: public')
@@ -24,10 +24,10 @@ $user
   ->with('response')->isStatusCode(200)
 ;
 
-opCommunityAclBuilder::clearCache();
-if (class_exists('opCommunityTopicAclBuilder'))
+saCommunityAclBuilder::clearCache();
+if (class_exists('saCommunityTopicAclBuilder'))
 {
-  opCommunityTopicAclBuilder::clearCache();
+  saCommunityTopicAclBuilder::clearCache();
 }
 $user->login('sns4@example.com', 'password');
 $user
@@ -50,10 +50,10 @@ $user
   ->with('response')->isStatusCode(200)
 ;
 
-opCommunityAclBuilder::clearCache();
-if (class_exists('opCommunityTopicAclBuilder'))
+saCommunityAclBuilder::clearCache();
+if (class_exists('saCommunityTopicAclBuilder'))
 {
-  opCommunityTopicAclBuilder::clearCache();
+  saCommunityTopicAclBuilder::clearCache();
 }
 $user->login('sns5@example.com', 'password');
 $user

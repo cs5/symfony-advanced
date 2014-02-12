@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class changeProfileValueMinMaxColumnType extends opMigration
+class changeProfileValueMinMaxColumnType extends saMigration
 {
   public function up()
   {

@@ -25,12 +25,12 @@ function get_notifications(Member $member)
 }
 
 //==============================================================================
-$t->diag('opNotificationCenter::notify()');
+$t->diag('saNotificationCenter::notify()');
 
 $t->info('member1 => member2 (other)');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'hogehoge');
+saNotificationCenter::notify($member1, $member2, 'hogehoge');
 $notifications = get_notifications($member2);
 $t->ok(is_array($notifications));
 $t->is(count($notifications), 1);
@@ -47,7 +47,7 @@ $conn->rollback();
 $t->info('member1 => member2 (link, with options)');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'hogehoge', array(
+saNotificationCenter::notify($member1, $member2, 'hogehoge', array(
   'category' => 'link',
   'url' => 'http://example.com/member/1',
   'icon_url' => 'http://example.com/images/hoge.png',
@@ -67,9 +67,9 @@ $conn->rollback();
 $t->info('order check (descending)');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'notify1');
-opNotificationCenter::notify($member1, $member2, 'notify2');
-opNotificationCenter::notify($member1, $member2, 'notify3');
+saNotificationCenter::notify($member1, $member2, 'notify1');
+saNotificationCenter::notify($member1, $member2, 'notify2');
+saNotificationCenter::notify($member1, $member2, 'notify3');
 $notifications = get_notifications($member2);
 $t->is(count($notifications), 3);
 $t->is($notifications[0]['body'], 'notify3');
@@ -83,7 +83,7 @@ $conn->beginTransaction();
 
 foreach (range(1, 30) as $num)
 {
-  opNotificationCenter::notify($member1, $member2, 'notify'.$num);
+  saNotificationCenter::notify($member1, $member2, 'notify'.$num);
 }
 $notifications = get_notifications($member2);
 $t->is(count($notifications), 20);
@@ -103,7 +103,7 @@ sfConfig::set('sa_notification_limit', 5);
 
 foreach (range(1, 10) as $num)
 {
-  opNotificationCenter::notify($member1, $member2, 'notify'.$num);
+  saNotificationCenter::notify($member1, $member2, 'notify'.$num);
 }
 $notifications = get_notifications($member2);
 $t->is(count($notifications), 5);
@@ -116,16 +116,16 @@ $t->is($notifications[4]['body'], 'notify6');
 $conn->rollback();
 
 //==============================================================================
-$t->diag('opNotificationCenter::setRead()');
+$t->diag('saNotificationCenter::setRead()');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'hogehoge1');
-opNotificationCenter::notify($member1, $member2, 'hogehoge2');
+saNotificationCenter::notify($member1, $member2, 'hogehoge1');
+saNotificationCenter::notify($member1, $member2, 'hogehoge2');
 $notifications = get_notifications($member2);
 $t->is($notifications[0]['unread'], true);
 $t->is($notifications[1]['unread'], true);
 
-opNotificationCenter::setRead($member2, $notifications[0]['id']);
+saNotificationCenter::setRead($member2, $notifications[0]['id']);
 $notifications = get_notifications($member2);
 $t->is($notifications[0]['unread'], false);
 $t->is($notifications[1]['unread'], true);
@@ -133,12 +133,12 @@ $t->is($notifications[1]['unread'], true);
 $conn->rollback();
 
 //==============================================================================
-$t->diag('opNotificationCenter::getNotifications()');
+$t->diag('saNotificationCenter::getNotifications()');
 
 $t->info('empty value');
 $conn->beginTransaction();
 
-$notifications = opNotificationCenter::getNotifications($member2);
+$notifications = saNotificationCenter::getNotifications($member2);
 $t->ok(is_array($notifications));
 $t->is(count($notifications), 0);
 
@@ -147,8 +147,8 @@ $conn->rollback();
 $t->info('check format');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'hogehoge');
-$notifications = opNotificationCenter::getNotifications($member2);
+saNotificationCenter::notify($member1, $member2, 'hogehoge');
+$notifications = saNotificationCenter::getNotifications($member2);
 $t->ok(is_array($notifications));
 $t->is(count($notifications), 1);
 $t->ok(is_string($notifications[0]['id']));
@@ -164,9 +164,9 @@ $conn->rollback();
 $t->info('2 notifications');
 $conn->beginTransaction();
 
-opNotificationCenter::notify($member1, $member2, 'notify1');
-opNotificationCenter::notify($member1, $member2, 'notify2');
-$notifications = opNotificationCenter::getNotifications($member2);
+saNotificationCenter::notify($member1, $member2, 'notify1');
+saNotificationCenter::notify($member1, $member2, 'notify2');
+$notifications = saNotificationCenter::getNotifications($member2);
 $t->is(count($notifications), 2);
 $t->is($notifications[0]['body'], 'notify2');
 $t->is($notifications[1]['body'], 'notify1');

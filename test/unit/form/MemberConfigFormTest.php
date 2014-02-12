@@ -11,8 +11,8 @@ class dummyActions extends sfActions
 {
 }
 
-opMailSend::initialize();
-Zend_Mail::setDefaultTransport(new opZendMailTransportMock());
+saMailSend::initialize();
+Zend_Mail::setDefaultTransport(new saZendMailTransportMock());
 
 $configuration = ProjectConfiguration::getApplicationConfiguration('pc_frontend', 'test', true);
 sfContext::createInstance($configuration);

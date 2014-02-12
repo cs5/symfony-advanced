@@ -9,13 +9,13 @@
  */
 
 /**
- * opMailSend
+ * saMailSend
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-class opMailSend
+class saMailSend
 {
   public $subject = '';
   public $body = '';
@@ -25,7 +25,7 @@ class opMailSend
   {
     if (!self::$initialized)
     {
-      opApplicationConfiguration::registerZend();
+      saApplicationConfiguration::registerZend();
 
       if ($host = sfConfig::get('sa_mail_smtp_host'))
       {
@@ -38,7 +38,7 @@ class opMailSend
         Zend_Mail::setDefaultTransport($tr);
       }
 
-      opApplicationConfiguration::unregisterZend();
+      saApplicationConfiguration::unregisterZend();
 
       self::$initialized = true;
     }
@@ -58,7 +58,7 @@ class opMailSend
   public function setGlobalTemplate($template, $params = array())
   {
     $template = '_'.$template;
-    $view = new opGlobalPartialView(sfContext::getInstance(), 'superGlobal', $template, '');
+    $view = new saGlobalPartialView(sfContext::getInstance(), 'superGlobal', $template, '');
     $view->getAttributeHolder()->setEscaping(false);
     $view->setPartialVars($params);
     $body = $view->render();
@@ -84,11 +84,11 @@ class opMailSend
 
     $view->getAttributeHolder()->setEscaping(false);
     $view->setPartialVars($params);
-    $view->setAttribute('renderer_config', array('twig' => 'opTemplateRendererTwig'));
+    $view->setAttribute('renderer_config', array('twig' => 'saTemplateRendererTwig'));
     $view->setAttribute('rule_config', array('notify_mail' => array(
       array('loader' => 'sfTemplateSwitchableLoaderDoctrine', 'renderer' => 'twig', 'model' => 'NotificationMail'),
-      array('loader' => 'opNotificationMailTemplateLoaderConfigSample', 'renderer' => 'twig'),
-      array('loader' => 'opNotificationMailTemplateLoaderFilesystem', 'renderer' => 'php'),
+      array('loader' => 'saNotificationMailTemplateLoaderConfigSample', 'renderer' => 'twig'),
+      array('loader' => 'saNotificationMailTemplateLoaderFilesystem', 'renderer' => 'php'),
     )));
     $view->execute();
 
@@ -116,7 +116,7 @@ class opMailSend
 
     if (empty($params['target']))
     {
-      $target = opToolkit::isMobileEmailAddress($to) ? 'mobile' : 'pc';
+      $target = saToolkit::isMobileEmailAddress($to) ? 'mobile' : 'pc';
     }
     else
     {
@@ -146,7 +146,7 @@ class opMailSend
     {
       $subject = $notificationMail->getTitle();
       $templateStorage = new sfTemplateStorageString($subject);
-      $renderer = new opTemplateRendererTwig();
+      $renderer = new saTemplateRendererTwig();
       $params['sf_type'] = null;
       $parameterHolder = new sfViewParameterHolder($context->getEventDispatcher(), $params);
       $subject = $renderer->evaluate($templateStorage, $parameterHolder->toArray());
@@ -161,7 +161,7 @@ class opMailSend
     $mailConfigs = Doctrine::getTable('NotificationMail')->getConfigs();
 
     $options = array_merge(array(
-      'from'           => opConfig::get('admin_mail_address'),
+      'from'           => saConfig::get('admin_mail_address'),
       'is_send_pc'     => true,
       'is_send_mobile' => true,
       'pc_params'      => array(),
@@ -177,7 +177,7 @@ class opMailSend
       )
     )
     {
-      opMailSend::sendTemplateMail($template, $address, $options['from'],
+      saMailSend::sendTemplateMail($template, $address, $options['from'],
         array_merge($params, $options['pc_params']), $context);
     }
 
@@ -190,7 +190,7 @@ class opMailSend
       )
     )
     {
-      opMailSend::sendTemplateMail($template, $address, $options['from'],
+      saMailSend::sendTemplateMail($template, $address, $options['from'],
         array_merge($params, $options['mobile_params']), $context);
     }
   }
@@ -204,7 +204,7 @@ class opMailSend
 
     self::initialize();
 
-    opApplicationConfiguration::registerZend();
+    saApplicationConfiguration::registerZend();
 
     $subject = mb_convert_kana($subject, 'KV');
 
@@ -222,7 +222,7 @@ class opMailSend
 
     $result = $mailer->send();
 
-    opApplicationConfiguration::unregisterZend();
+    saApplicationConfiguration::unregisterZend();
 
     return $result;
   }

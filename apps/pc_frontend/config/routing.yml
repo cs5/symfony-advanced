@@ -5,7 +5,7 @@ homepage:
 
 obj_member_profile:
   url:     /member/:id
-  class:   opDynamicAclRoute
+  class:   saDynamicAclRoute
   options: { model: Member, type: object, privilege: view }
   param:   { module: member, action: profile }
   requirements:
@@ -162,7 +162,7 @@ oauth_access_token:
 
 # connection rules
 connection:
-  class: opStandardRouteCollection
+  class: saStandardRouteCollection
   options: { model: OAuthConsumerInformation, actions: [show, new, create, edit, update, deleteConfirm, delete], is_acl: true }
 
 connection_list:
@@ -171,14 +171,14 @@ connection_list:
 
 connection_revoke_token_confirm:
   url:     /connection/revoke/:id
-  class:   opDynamicAclRoute
+  class:   saDynamicAclRoute
   options: { model: OAuthConsumerInformation, type: object, privilege: use }
   param:   { module: connection, action: revokeTokenConfirm }
   requirements: { id: \d+, sf_method: get }
 
 connection_revoke_token:
   url:     /connection/revoke/:id
-  class:   opDynamicAclRoute
+  class:   saDynamicAclRoute
   options: { model: OAuthConsumerInformation, type: object, privilege: use }
   param:   { module: connection, action: revokeToken }
   requirements: { id: \d+, sf_method: post }
@@ -202,7 +202,7 @@ customizing_css:
 # for BC
 member_profile:
   url:   /member/:id
-  class:   opDynamicAclRoute
+  class:   saDynamicAclRoute
   options: { model: Member, type: object, privilege: view }
   param:   { module: member, action: profile }
   requirements:
@@ -211,7 +211,7 @@ member_profile:
 
 member_profile_raw:
   url:     /member/profile/id/:id/*
-  class:   opDynamicAclRoute
+  class:   saDynamicAclRoute
   options: { model: Member, type: object, privilege: view }
   param:   { module: member, action: profile }
   requirements:

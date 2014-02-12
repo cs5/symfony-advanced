@@ -9,7 +9,7 @@
  */
 
 /**
- * opUtilHelper provides basic utility helper functions.
+ * saUtilHelper provides basic utility helper functions.
  *
  * @package    SfAdvanced
  * @subpackage helper
@@ -92,7 +92,7 @@ function sa_include_pager_navigation($pager, $internal_uri, $options = array())
   $params = array(
     'pager' => $pager,
     'internalUri' => $internal_uri,
-    'options' => new opPartsOptionHolder($options)
+    'options' => new saPartsOptionHolder($options)
   );
   $pager = sfOutputEscaper::unescape($pager);
   if ($pager instanceof sfReversibleDoctrinePager)
@@ -132,7 +132,7 @@ function pager_navigation($pager, $link_to, $is_total = true, $query_string = ''
   $params = array(
     'pager' => $pager,
     'link_to' => $link_to,
-    'options' => new opPartsOptionHolder(array(
+    'options' => new saPartsOptionHolder(array(
       'is_total' => $is_total,
       'query_string' => $query_string
     )
@@ -731,7 +731,7 @@ function sa_mail_to($route, $params = array(), $name = '', $options = array(), $
     $params['hash'] = $user->getMember()->getMailAddressHash();
   }
 
-  $routing = new opMailRouting(new sfEventDispatcher());
+  $routing = new saMailRouting(new sfEventDispatcher());
   $config = new sfRoutingConfigHandler();
   $routes = $config->evaluate($files);
 
@@ -793,7 +793,7 @@ function sa_have_privilege_by_uri($uri, $params = array(), $member_id = null)
   }
 
   $route = clone $routes[$uri];
-  if ($route instanceof opDynamicAclRoute)
+  if ($route instanceof saDynamicAclRoute)
   {
     $route->bind(sfContext::getInstance(), $params);
     try
@@ -822,7 +822,7 @@ function sa_decoration($string, $is_strip = false, $is_use_stylesheet = null, $i
     }
   }
 
-  return opWidgetFormRichTextareaSfAdvanced::toHtml($string, $is_strip, $is_use_stylesheet, $is_html_tag_followup);
+  return saWidgetFormRichTextareaSfAdvanced::toHtml($string, $is_strip, $is_use_stylesheet, $is_html_tag_followup);
 }
 
 function sa_is_accessible_url($uri)
@@ -1050,7 +1050,7 @@ function sa_link_to_member($value, $options = array(), $routeName = '@obj_member
 
   return sfOutputEscaper::escape(
     sfConfig::get('sf_escaping_method'),
-    opConfig::get('nickname_of_member_who_does_not_have_credentials', '-')
+    saConfig::get('nickname_of_member_who_does_not_have_credentials', '-')
   );
 }
 
@@ -1144,7 +1144,7 @@ function sa_image_path($source, $absolute = false)
       $plugins = sfContext::getInstance()->getConfiguration()->getPlugins();
       foreach ($plugins as $plugin)
       {
-        if (0 === strpos($plugin, 'opSkin'))
+        if (0 === strpos($plugin, 'saSkin'))
         {
           $skinPlugin = $plugin;
           break;

@@ -119,7 +119,7 @@ class ProfileForm extends BaseProfileForm
         break;
       case 'date':
         $options['date_format_range_error'] = 'Y-m-d';
-        $validator = new opValidatorDate($options);
+        $validator = new saValidatorDate($options);
         break;
       default:
         break; // Do nothing.
@@ -131,7 +131,7 @@ class ProfileForm extends BaseProfileForm
       {
         $cleanValue = $validator->clean($values[$valueKey]);
 
-        if (!($validator instanceof opValidatorDate))
+        if (!($validator instanceof saValidatorDate))
         {
           $values[$valueKey] = $cleanValue;
         }

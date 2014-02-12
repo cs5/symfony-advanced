@@ -9,13 +9,13 @@
  */
 
 /**
- * opValidatorImageSize validates a image size
+ * saValidatorImageSize validates a image size
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Masato Nagasawa <nagasawa@tejimaya.com>
  */
-class opValidatorImageSize extends opValidatorString
+class saValidatorImageSize extends saValidatorString
 {
   protected function configure($options = array(), $messages = array())
   {

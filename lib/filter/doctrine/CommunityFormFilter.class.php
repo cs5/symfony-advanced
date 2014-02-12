@@ -41,7 +41,7 @@ class CommunityFormFilter extends BaseCommunityFormFilter
     );
 
     $validators = array(
-      'name'                  => new opValidatorSearchQueryString(array('required' => false)),
+      'name'                  => new saValidatorSearchQueryString(array('required' => false)),
       'community_category_id' => new sfValidatorPass(),
     );
 

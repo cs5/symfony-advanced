@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class opPluginUninstallTask extends sfPluginUninstallTask
+class saPluginUninstallTask extends sfPluginUninstallTask
 {
   protected function configure()
   {
@@ -23,14 +23,14 @@ class opPluginUninstallTask extends sfPluginUninstallTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'prod'),
     ));
 
-    $this->namespace        = 'opPlugin';
+    $this->namespace        = 'saPlugin';
     $this->name             = 'uninstall';
     $this->briefDescription = 'Uninstalls the SfAdvanced plugin';
     $this->detailedDescription = <<<EOF
-The [opPlugin:uninstall|INFO] task uninstalls the SfAdvanced plugin.
+The [saPlugin:uninstall|INFO] task uninstalls the SfAdvanced plugin.
 Call it with:
 
-  [./symfony opPlugin:uninstall opSamplePlugin|INFO]
+  [./symfony saPlugin:uninstall saSamplePlugin|INFO]
 EOF;
   }
 
@@ -40,7 +40,7 @@ EOF;
     error_reporting(error_reporting() & ~(E_STRICT | E_DEPRECATED));
 
     $oldPluginManager = parent::getPluginManager();
-    $pluginManager = new opPluginManager($this->dispatcher, $oldPluginManager->getEnvironment());
+    $pluginManager = new saPluginManager($this->dispatcher, $oldPluginManager->getEnvironment());
 
     return $pluginManager;
   }
@@ -49,7 +49,7 @@ EOF;
   {
     if (empty($options['channel']))
     {
-      $options['channel'] = opPluginManager::getDefaultPluginChannelServerName();
+      $options['channel'] = saPluginManager::getDefaultPluginChannelServerName();
     }
 
     return parent::execute($arguments, $options);

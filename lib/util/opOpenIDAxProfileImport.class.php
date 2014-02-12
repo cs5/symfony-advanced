@@ -9,13 +9,13 @@
  */
 
 /**
- * opOpenIDAxProfileImport
+ * saOpenIDAxProfileImport
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opOpenIDAxProfileImport extends opProfileImport
+class saOpenIDAxProfileImport extends saProfileImport
 {
   public $tableToSfAdvanced = array(
     'http://schema.openid.net/namePerson/friendly'     => 'name',
@@ -160,7 +160,7 @@ class opOpenIDAxProfileImport extends opProfileImport
           'type'     => $type,
         );
 
-        $validator = new opValidatorImageFile();
+        $validator = new saValidatorImageFile();
         $validFile = $validator->clean($image);
 
         $file = new File();

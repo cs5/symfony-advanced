@@ -8,9 +8,9 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class communityComponents extends opCommunityComponents
+class communityComponents extends saCommunityComponents
 {
-  public function executeJoinListBox(opWebRequest $request)
+  public function executeJoinListBox(saWebRequest $request)
   {
     $memberId = $this->getUser()->getMemberId();
     if ($request->hasParameter('id'))

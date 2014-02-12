@@ -8,9 +8,9 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class memberComponents extends opMemberComponents
+class memberComponents extends saMemberComponents
 {
-  public function executeProfileListBox(opWebRequest $request)
+  public function executeProfileListBox(saWebRequest $request)
   {
     if ($request->hasParameter('id'))
     {
@@ -22,7 +22,7 @@ class memberComponents extends opMemberComponents
     }
   }
 
-  public function executeSmtProfileListBox(opWebRequest $request)
+  public function executeSmtProfileListBox(saWebRequest $request)
   {
     if ($request->hasParameter('id'))
     {
@@ -34,7 +34,7 @@ class memberComponents extends opMemberComponents
     }
   }
 
-  public function executeSmtMemberFriendListBox(opWebRequest $request)
+  public function executeSmtMemberFriendListBox(saWebRequest $request)
   {
     if ($request->hasParameter('id') && 'profile' !== sfContext::getInstance()->getActionName())
     {
@@ -46,7 +46,7 @@ class memberComponents extends opMemberComponents
     }
   }
 
-  public function executeSmtMemberJoinCommunityListBox(opWebRequest $request)
+  public function executeSmtMemberJoinCommunityListBox(saWebRequest $request)
   {
     if ($request->hasParameter('id') && 'profile' !== sfContext::getInstance()->getActionName())
     {

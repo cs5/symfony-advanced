@@ -9,13 +9,13 @@
  */
 
 /**
- * opConfirmationAction
+ * saConfirmationAction
  *
  * @package    SfAdvanced
  * @subpackage confirmation
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opConfirmationAction extends sfActions
+class saConfirmationAction extends sfActions
 {
   public function preExecute()
   {
@@ -23,7 +23,7 @@ class opConfirmationAction extends sfActions
     $this->config = include(sfContext::getInstance()->getConfigCache()->checkConfig('config/confirmation.yml'));
   }
 
-  public function executeList(opWebRequest $request)
+  public function executeList(saWebRequest $request)
   {
     $this->checkCategory();
 
@@ -46,7 +46,7 @@ class opConfirmationAction extends sfActions
     $this->form = new sfForm();
   }
 
-  public function executeDecision(opWebRequest $request)
+  public function executeDecision(saWebRequest $request)
   {
     $request->checkCSRFProtection();
     $this->checkCategory();

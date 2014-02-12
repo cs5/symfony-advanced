@@ -9,13 +9,13 @@
  */
 
 /**
- * opPassword form.
+ * saPassword form.
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-class opPasswordForm extends BaseForm
+class saPasswordForm extends BaseForm
 {
   public function configure()
   {

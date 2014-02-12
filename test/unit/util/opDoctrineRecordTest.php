@@ -14,7 +14,7 @@ $t = new lime_test(null, new lime_output_color());
 
 $zlibEnabled = extension_loaded('zlib');
 
-class MyRecord extends opDoctrineRecord
+class MyRecord extends saDoctrineRecord
 {
   public function __construct()
   {

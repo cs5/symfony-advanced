@@ -9,13 +9,13 @@
  */
 
 /**
- * opToolkit provides basic utility methods for SfAdvanced.
+ * saToolkit provides basic utility methods for SfAdvanced.
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opToolkit
+class saToolkit
 {
  /**
   * Returns the list of mobile e-mail address domains.
@@ -88,7 +88,7 @@ class opToolkit
 
   public static function isEnabledRegistration($mode = '')
   {
-    $registration = opConfig::get('enable_registration');
+    $registration = saConfig::get('enable_registration');
     if ($registration == 3)
     {
       return true;
@@ -189,7 +189,7 @@ class opToolkit
   public static function stripNullByteDeep($value)
   {
     return is_array($value) ?
-      array_map(array('opToolkit', 'stripNullByteDeep'), $value) :
+      array_map(array('saToolkit', 'stripNullByteDeep'), $value) :
       (is_string($value) ? preg_replace("/[\x{0}-\x{08}\x{0b}-\x{1f}\x{7f}-\x{9f}\x{ad}]/u", '', $value) : $value);
   }
 
@@ -268,7 +268,7 @@ class opToolkit
 
     foreach ($routes as $route)
     {
-      if ($route instanceof opAPIRouteInterface)
+      if ($route instanceof saAPIRouteInterface)
       {
         $caption = $route->getAPICaption();
 
@@ -323,7 +323,7 @@ class opToolkit
 
     foreach ($array as $key => $value)
     {
-      $result[$key] = is_array($value) ? call_user_func(array('opToolkit', 'arrayMapRecursive'), $callback, $value) : call_user_func($callback, $value);
+      $result[$key] = is_array($value) ? call_user_func(array('saToolkit', 'arrayMapRecursive'), $callback, $value) : call_user_func($callback, $value);
     }
 
     return $result;

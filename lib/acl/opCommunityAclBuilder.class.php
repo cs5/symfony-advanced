@@ -9,13 +9,13 @@
  */
 
 /**
- * opCommunityTopicAclBuilder
+ * saCommunityTopicAclBuilder
  *
  * @package    SfAdvanced
  * @subpackage acl
  * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
-class opCommunityAclBuilder extends opAclBuilder
+class saCommunityAclBuilder extends saAclBuilder
 {
   static protected
     $resource = array();

@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class Community extends BaseCommunity implements opAccessControlRecordInterface
+class Community extends BaseCommunity implements saAccessControlRecordInterface
 {
   public function getImageFileName()
   {
@@ -132,7 +132,7 @@ class Community extends BaseCommunity implements opAccessControlRecordInterface
   {
     if (!$this->isPrivilegeBelong($memberId))
     {
-      throw new opPrivilegeException('fail');
+      throw new saPrivilegeException('fail');
     }
   }
 

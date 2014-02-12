@@ -9,14 +9,14 @@
  */
 
 /**
- * opFriendAction
+ * saFriendAction
  *
  * @package    SfAdvanced
  * @subpackage action
  * @author     Kousuke Ebihara <ebihara@php.net>
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-abstract class opFriendAction extends sfActions
+abstract class saFriendAction extends sfActions
 {
   public function preExecute()
   {
@@ -35,7 +35,7 @@ abstract class opFriendAction extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeList(opWebRequest $request)
+  public function executeList(saWebRequest $request)
   {
     $this->redirectIf($this->relation->isAccessBlocked(), '@error');
 
@@ -58,9 +58,9 @@ abstract class opFriendAction extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeLink(opWebRequest $request)
+  public function executeLink(saWebRequest $request)
   {
-    $this->redirectUnless(opConfig::get('enable_friend_link'), '@error');
+    $this->redirectUnless(saConfig::get('enable_friend_link'), '@error');
     $this->redirectIf($this->relation->isAccessBlocked(), '@error');
     $this->forward404If($this->relation->getMemberIdFrom() == $this->relation->getMemberIdTo());
 
@@ -101,7 +101,7 @@ abstract class opFriendAction extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeUnlink(opWebRequest $request)
+  public function executeUnlink(saWebRequest $request)
   {
     $this->redirectToHomeIfIdIsNotValid();
     if (!$this->relation->isFriend())
@@ -134,7 +134,7 @@ abstract class opFriendAction extends sfActions
  /**
   * Executes manage action
   */
-  public function executeManage(opWebRequest $request)
+  public function executeManage(saWebRequest $request)
   {
     $this->pager = Doctrine::getTable('MemberRelationship')->getFriendListPager($this->getUser()->getMemberId(), $request->getParameter('page', 1));
 
@@ -150,7 +150,7 @@ abstract class opFriendAction extends sfActions
    * 
    * @param sfRequest $request A request object
    */
-  public function executeShowImage(opWebRequest $request)
+  public function executeShowImage(saWebRequest $request)
   {
     $this->forward404Unless($this->id);
 
@@ -163,9 +163,9 @@ abstract class opFriendAction extends sfActions
  /**
   * Executes show friend activities action
   * 
-  * @param opWebRequest $request A request object
+  * @param saWebRequest $request A request object
   */
-  public function executeShowActivity(opWebRequest $request)
+  public function executeShowActivity(saWebRequest $request)
   {
     if (!isset($this->size))
     {
@@ -173,7 +173,7 @@ abstract class opFriendAction extends sfActions
     }
 
     $page = $request->getParameter('page', 1);
-    if ($page == 1 && opConfig::get('is_allow_post_activity'))
+    if ($page == 1 && saConfig::get('is_allow_post_activity'))
     {
       $activityData = new ActivityData();
       $activityData->setBody($request->getParameter('body'));

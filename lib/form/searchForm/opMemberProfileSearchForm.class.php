@@ -9,13 +9,13 @@
  */
 
 /**
- * opMemberProfileSearchForm
+ * saMemberProfileSearchForm
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opMemberProfileSearchForm extends BaseForm
+class saMemberProfileSearchForm extends BaseForm
 {
   protected static $profileFieldPrefix = 'profile_';
 
@@ -41,7 +41,7 @@ class opMemberProfileSearchForm extends BaseForm
     }
 
     $widgets += array('name' => new sfWidgetFormInputText());
-    $validators += array('name' => new opValidatorSearchQueryString(array('required' => false)));
+    $validators += array('name' => new saValidatorSearchQueryString(array('required' => false)));
 
     $culture = sfContext::getInstance()->getUser()->getCulture();
 
@@ -62,7 +62,7 @@ class opMemberProfileSearchForm extends BaseForm
 
       $profileWithI18n = $profile->toArray() + $profileI18n;
 
-      $widget = opFormItemGenerator::generateSearchWidget($profileWithI18n, array('' => '') + $profile->getOptionsArray());
+      $widget = saFormItemGenerator::generateSearchWidget($profileWithI18n, array('' => '') + $profile->getOptionsArray());
       if ($widget)
       {
         $widgets[self::$profileFieldPrefix.$profile->getName()] = $widget;

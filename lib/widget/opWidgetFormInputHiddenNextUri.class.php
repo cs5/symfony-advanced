@@ -9,13 +9,13 @@
  */
 
 /**
- * opWidgetFormInputHiddenNextUri represents a hidden HTML input tag for next_uri
+ * saWidgetFormInputHiddenNextUri represents a hidden HTML input tag for next_uri
  *
  * @package    SfAdvanced
  * @subpackage widget
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opWidgetFormInputHiddenNextUri extends sfWidgetFormInputHidden
+class saWidgetFormInputHiddenNextUri extends sfWidgetFormInputHidden
 {
   protected function configure($options = array(), $attributes = array())
   {

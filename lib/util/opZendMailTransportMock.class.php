@@ -9,13 +9,13 @@
  */
 
 /**
- * opZendMailTransportMock
+ * saZendMailTransportMock
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kimura Youichi <kim.upsilon@bucyou.net>
  */
-class opZendMailTransportMock extends Zend_Mail_Transport_Abstract
+class saZendMailTransportMock extends Zend_Mail_Transport_Abstract
 {
   public $EOL = "\n";
 

@@ -15,9 +15,9 @@
  * @subpackage user
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-abstract class opBaseSecurityUser extends sfBasicSecurityUser
+abstract class saBaseSecurityUser extends sfBasicSecurityUser
 {
-  const SITE_IDENTIFIER_NAMESPACE = 'SfAdvanced/user/opSecurityUser/site_identifier';
+  const SITE_IDENTIFIER_NAMESPACE = 'SfAdvanced/user/saSecurityUser/site_identifier';
 
   public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
   {

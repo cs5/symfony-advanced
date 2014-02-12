@@ -31,7 +31,7 @@
 <?php endif; ?>
 <?php else: ?>
 <h3><?php
-$presetList = opToolkit::getPresetProfileList();
+$presetList = saToolkit::getPresetProfileList();
 foreach ($presetList as $k => $v)
 {
   if ('sa_preset_'.$v['Name'] === $profile['name'])

@@ -896,11 +896,11 @@ NotificationMail:
 
 SkinConfig:
   skin_config1:
-    plugin: "opSkinDummyPlugin"
+    plugin: "saSkinDummyPlugin"
     name: "color_1"
     value: "#ffffff"
   skin_config2:
-    plugin: "opSkinDummyPlugin"
+    plugin: "saSkinDummyPlugin"
     name: "color_2"
     value: ""
 

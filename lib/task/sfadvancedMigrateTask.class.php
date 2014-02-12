@@ -33,7 +33,7 @@ The [sfadvanced:migrate|INFO] task lets SfAdvanced migrate and/or the plugins ne
 
 Call it with:
   1.  [./symfony sfadvanced:migrate|INFO]
-  2.  [./symfony sfadvanced:migrate --target=opSamplePlugin|INFO]
+  2.  [./symfony sfadvanced:migrate --target=saSamplePlugin|INFO]
   3.  [./symfony sfadvanced:migrate --target=SfAdvanced|INFO]
 
     1. In the first form, any targets aren't specified.
@@ -144,7 +144,7 @@ EOF;
   {
     try
     {
-      $migration = new opMigration($this->dispatcher, $databaseManager, $target, null);
+      $migration = new saMigration($this->dispatcher, $databaseManager, $target, null);
       if (!$migration->hasMigrationScriptDirectory())
       {
         $this->logSection('migrate', sprintf('%s is not supporting migration.', $target));
@@ -233,7 +233,7 @@ EOF;
       $options[] = '--target='.$target;
     }
 
-    $task = new opPluginSyncTask($this->dispatcher, $this->formatter);
+    $task = new saPluginSyncTask($this->dispatcher, $this->formatter);
     $task->run(array(), $options);
   }
 

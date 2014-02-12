@@ -46,7 +46,7 @@ EOF;
 
     foreach ($this->configuration->getAllSfAdvancedPlugins() as $name)
     {
-      $version = opPlugin::getInstance($name, $this->dispatcher)->getVersion();
+      $version = saPlugin::getInstance($name, $this->dispatcher)->getVersion();
       if (!$version)
       {
         $version = 'unknown';

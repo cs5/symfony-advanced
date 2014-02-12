@@ -9,13 +9,13 @@
  */
 
 /**
- * opWidgetFormRichTextarea 
+ * saWidgetFormRichTextarea 
  *
  * @package    SfAdvanced
  * @subpackage widget
  * @author     Shogo Kawahara <kawahara@ejimaya.net>
  */
-class opWidgetFormRichTextarea extends sfWidgetFormTextarea
+class saWidgetFormRichTextarea extends sfWidgetFormTextarea
 {
   static protected $isFirstRender = true;
 

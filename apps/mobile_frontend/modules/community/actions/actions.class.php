@@ -16,14 +16,14 @@
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
-class communityActions extends opCommunityAction
+class communityActions extends saCommunityAction
 {
   /**
    * Executes home action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeHome(opWebRequest $request)
+  public function executeHome(saWebRequest $request)
   {
     $this->membersSize = 5;
 
@@ -33,9 +33,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes joinlist action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeJoinlist(opWebRequest $request)
+  public function executeJoinlist(saWebRequest $request)
   {
     $this->size = 10;
 
@@ -45,9 +45,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes memberList action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeMemberList(opWebRequest $request)
+  public function executeMemberList(saWebRequest $request)
   {
     $this->size = 10;
 
@@ -57,9 +57,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes search action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeSearch(opWebRequest $request)
+  public function executeSearch(saWebRequest $request)
   {
     sfConfig::set('sf_nav_type', 'default');
 
@@ -95,9 +95,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes detail action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeDetail(opWebRequest $request)
+  public function executeDetail(saWebRequest $request)
   {
     $this->community = Doctrine::getTable('Community')->find($this->id);
     $this->forward404Unless($this->community, 'Undefined community.');
@@ -111,9 +111,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes configImage action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeConfigImage(opWebRequest $request)
+  public function executeConfigImage(saWebRequest $request)
   {
     $this->forward404Unless($this->id && $this->isEditCommunity);
     $this->community = Doctrine::getTable('Community')->find($this->id);
@@ -122,9 +122,9 @@ class communityActions extends opCommunityAction
   /**
    * Executes deleteImage action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeDeleteImage(opWebRequest $request)
+  public function executeDeleteImage(saWebRequest $request)
   {
     $this->forward404Unless($this->id && $this->isEditCommunity);
 

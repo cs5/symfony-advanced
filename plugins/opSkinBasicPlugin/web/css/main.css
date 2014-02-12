@@ -1685,7 +1685,7 @@ div.apiKey {
 }
 
 /*==============================================================================
- * toolbar of opWidgetFormRichTextareaSfAdvanced
+ * toolbar of saWidgetFormRichTextareaSfAdvanced
  *----------------------------------------------------------------------------*/
 div.parts table.mceToolbar {
   table-layout: auto;
@@ -1693,7 +1693,7 @@ div.parts table.mceToolbar {
 }
 
 /*==============================================================================
- * Decoration by opWidgetFormRichTextareaSfAdvanced
+ * Decoration by saWidgetFormRichTextareaSfAdvanced
  *----------------------------------------------------------------------------*/
 span.sa_b {
         text-decoration: inherit;

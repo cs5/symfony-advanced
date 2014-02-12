@@ -33,7 +33,7 @@ oauth_access_token:
 
 # connection rules
 connection:
-  class: opStandardRouteCollection
+  class: saStandardRouteCollection
   options: { model: OAuthConsumerInformation, actions: [show, new, create, edit, update, deleteConfirm, delete] }
 
 connection_list:

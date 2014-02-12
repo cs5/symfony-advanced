@@ -9,19 +9,19 @@
  */
 
 /**
- * opStandardRouteCollection
+ * saStandardRouteCollection
  *
  * @package    SfAdvanced
  * @subpackage routing
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opStandardRouteCollection extends sfDoctrineRouteCollection
+class saStandardRouteCollection extends sfDoctrineRouteCollection
 {
   public function __construct(array $options)
   {
     if (!empty($options['is_acl']))
     {
-      $options['route_class'] = 'opDynamicAclRoute';
+      $options['route_class'] = 'saDynamicAclRoute';
     }
 
     parent::__construct($options);

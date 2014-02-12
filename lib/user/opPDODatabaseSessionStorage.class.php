@@ -9,13 +9,13 @@
  */
 
 /**
- * opPDODatabaseSessionStorage
+ * saPDODatabaseSessionStorage
  *
  * @package    SfAdvanced
  * @subpackage user
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opPDODatabaseSessionStorage extends sfPDOSessionStorage
+class saPDODatabaseSessionStorage extends sfPDOSessionStorage
 {
   public function sessionOpen($path = null, $name = null)
   {

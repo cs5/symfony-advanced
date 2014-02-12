@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class opPluginDefineTask extends sfBaseTask
+class saPluginDefineTask extends sfBaseTask
 {
   protected $pluginManager = null;
 
@@ -27,14 +27,14 @@ class opPluginDefineTask extends sfBaseTask
       new sfCommandOption('channel', 'c', sfCommandOption::PARAMETER_REQUIRED, 'The PEAR channel name', null),
     ));
 
-    $this->namespace        = 'opPlugin';
+    $this->namespace        = 'saPlugin';
     $this->name             = 'define';
     $this->briefDescription = 'Creates the plugin definition file "package.xml"';
     $this->detailedDescription = <<<EOF
-The [opPlugin:define|INFO] task creates the plugin definition file "package.xml".
+The [saPlugin:define|INFO] task creates the plugin definition file "package.xml".
 Call it with:
 
-  [./symfony opPlugin:define opSamplePlugin|INFO]
+  [./symfony saPlugin:define saSamplePlugin|INFO]
 EOF;
   }
 
@@ -45,7 +45,7 @@ EOF;
 
     if (empty($options['channel']))
     {
-      $options['channel'] = opPluginManager::getDefaultPluginChannelServerName();
+      $options['channel'] = saPluginManager::getDefaultPluginChannelServerName();
     }
 
     require_once 'PEAR/PackageFileManager2.php';
@@ -177,7 +177,7 @@ EOF;
   {
     if (is_null($this->pluginManager))
     {
-      $this->pluginManager = new opPluginManager($this->dispatcher, null, $channel);
+      $this->pluginManager = new saPluginManager($this->dispatcher, null, $channel);
     }
 
     return $this->pluginManager;

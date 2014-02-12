@@ -9,14 +9,14 @@
  */
 
 /**
- * opNotificationCenter
+ * saNotificationCenter
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kimura Youichi <kim.upsilon@gmail.com>
  * @author     Shouta Kashiwagi <kashiwagi@tejimaya.com>
  */
-class opNotificationCenter
+class saNotificationCenter
 {
   static public function notify(Member $from, Member $to, $body, array $options = null)
   {

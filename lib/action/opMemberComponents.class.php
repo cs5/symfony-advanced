@@ -9,15 +9,15 @@
  */
 
 /**
- * opMemberComponents
+ * saMemberComponents
  *
  * @package    SfAdvanced
  * @subpackage action
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-abstract class opMemberComponents extends sfComponents
+abstract class saMemberComponents extends sfComponents
 {
-  public function executeActivityBox(opWebRequest $request)
+  public function executeActivityBox(saWebRequest $request)
   {
     $id = $request->getParameter('id', $this->getUser()->getMemberId());
     $this->activities = Doctrine::getTable('ActivityData')->getActivityList($id, null, $this->gadget->getConfig('row'));
@@ -25,19 +25,19 @@ abstract class opMemberComponents extends sfComponents
     $this->isMine = ($id == $this->getUser()->getMemberId());
   }
 
-  public function executeAllMemberActivityBox(opWebRequest $request)
+  public function executeAllMemberActivityBox(saWebRequest $request)
   {
     $this->activities = Doctrine::getTable('ActivityData')->getAllMemberActivityList($this->gadget->getConfig('row'));
-    if ($this->gadget->getConfig('is_viewable_activity_form') && opConfig::get('is_allow_post_activity'))
+    if ($this->gadget->getConfig('is_viewable_activity_form') && saConfig::get('is_allow_post_activity'))
     {
       $this->form = new ActivityDataForm();
     }
   }
 
-  public function executeBirthdayBox(opWebRequest $request)
+  public function executeBirthdayBox(saWebRequest $request)
   {
     $id = $request->getParameter('id', $this->getUser()->getMemberId());
     $birthday = Doctrine::getTable('MemberProfile')->getViewableProfileByMemberIdAndProfileName($id, 'sa_preset_birthday');
-    $this->targetDay = $birthday ? opToolkit::extractTargetDay((string)$birthday) : false;
+    $this->targetDay = $birthday ? saToolkit::extractTargetDay((string)$birthday) : false;
   }
 }

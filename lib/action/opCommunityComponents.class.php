@@ -9,28 +9,28 @@
  */
 
 /**
- * opCommunityComponents
+ * saCommunityComponents
  *
  * @package    SfAdvanced
  * @subpackage action
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-abstract class opCommunityComponents extends sfComponents
+abstract class saCommunityComponents extends sfComponents
 {
-  public function executeCautionAboutCommunityMemberPre(opWebRequest $request)
+  public function executeCautionAboutCommunityMemberPre(saWebRequest $request)
   {
     $memberId = sfContext::getInstance()->getUser()->getMemberId();
 
     $this->communityMembersCount = Doctrine::getTable('CommunityMember')->countCommunityMembersPre($memberId);
   }
 
-  public function executeCautionAboutChangeAdminRequest(opWebRequest $request)
+  public function executeCautionAboutChangeAdminRequest(saWebRequest $request)
   {
     $this->communityCount = Doctrine::getTable('Community')->countPositionRequestCommunities('admin');
   }
 
-  public function executeCautionAboutSubAdminRequest(opWebRequest $request)
+  public function executeCautionAboutSubAdminRequest(saWebRequest $request)
   {
     $this->communityCount = Doctrine::getTable('Community')->countPositionRequestCommunities('sub_admin');
   }

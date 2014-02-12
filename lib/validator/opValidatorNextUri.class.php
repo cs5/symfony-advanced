@@ -9,13 +9,13 @@
  */
 
 /**
- * opValidatorNextUri validates a next_uri.
+ * saValidatorNextUri validates a next_uri.
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opValidatorNextUri extends sfValidatorString
+class saValidatorNextUri extends sfValidatorString
 {
   protected function configure($options = array(), $messages = array())
   {

@@ -9,19 +9,19 @@
  */
 
 /**
- * opAppendXRDSHeaderFilter
+ * saAppendXRDSHeaderFilter
  *
  * @package    SfAdvanced
  * @subpackage filter
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opAppendXRDSHeaderFilter extends sfFilter
+class saAppendXRDSHeaderFilter extends sfFilter
 {
   public function execute($filterChain)
   {
     $route = $this->context->getRouting()->getCurrentRouteName();
 
-    if (!opConfig::get('enable_openid'))
+    if (!saConfig::get('enable_openid'))
     {
       $filterChain->execute();
     }

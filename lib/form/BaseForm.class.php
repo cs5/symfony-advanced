@@ -34,15 +34,15 @@ class BaseForm extends sfFormSymfony
 
       if ($widget instanceof sfWidgetFormInputPassword)
       {
-        opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
+        saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
       }
       elseif ($validator instanceof sfValidatorEmail)
       {
-        opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
+        saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
       }
       elseif ($validator instanceof sfValidatorNumber)
       {
-        opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'numeric');
+        saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'numeric');
       }
     }
   }

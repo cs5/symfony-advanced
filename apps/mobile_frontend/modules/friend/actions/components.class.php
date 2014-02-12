@@ -8,9 +8,9 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class friendComponents extends opFriendComponents
+class friendComponents extends saFriendComponents
 {
-  public function executeFriendListBox(opWebRequest $request)
+  public function executeFriendListBox(saWebRequest $request)
   {
     $memberId = $this->getUser()->getMemberId();
     if ($request->hasParameter('id'))

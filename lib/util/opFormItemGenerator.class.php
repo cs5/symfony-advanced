@@ -9,13 +9,13 @@
  */
 
 /**
- * opFormItemGenerator generates form items (widgets and validators)
+ * saFormItemGenerator generates form items (widgets and validators)
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opFormItemGenerator
+class saFormItemGenerator
 {
   protected static $choicesType = array('checkbox', 'select', 'radio');
 
@@ -101,7 +101,7 @@ class opFormItemGenerator
         $obj = new sfWidgetFormTextarea($params);
         break;
       case 'rich_textarea':
-        $obj = new opWidgetFormRichTextarea($params);
+        $obj = new saWidgetFormRichTextarea($params);
         break;
       case 'password':
         $obj = new sfWidgetFormInputPassword($params);
@@ -114,14 +114,14 @@ class opFormItemGenerator
         {
           $params['can_be_empty'] = true;
         }
-        $obj = new opWidgetFormDate($params);
+        $obj = new saWidgetFormDate($params);
         break;
       case 'increased_input':
-        $obj = new opWidgetFormInputIncreased($params);
+        $obj = new saWidgetFormInputIncreased($params);
         break;
       case 'language_select':
         $languages = sfConfig::get('sa_supported_languages');
-        $choices = opToolkit::getCultureChoices($languages);
+        $choices = saToolkit::getCultureChoices($languages);
         $obj = new sfWidgetFormChoice(array('choices' => $choices));
         break;
       case 'country_select':
@@ -146,7 +146,7 @@ class opFormItemGenerator
             }
           }
         }
-        $list = opToolkit::arrayMapRecursive(array(sfContext::getInstance()->getI18N(), '__'), $list);
+        $list = saToolkit::arrayMapRecursive(array(sfContext::getInstance()->getI18N(), '__'), $list);
         $obj = new sfWidgetFormChoice(array('choices' => $list));
         break;
       case 'image_size':
@@ -248,7 +248,7 @@ class opFormItemGenerator
     if ('date' === $field['FormType'])
     {
       $option['date_format_range_error'] = 'Y-m-d';
-      $obj = new opValidatorDate($option);
+      $obj = new saValidatorDate($option);
 
       return $obj;
     }
@@ -259,7 +259,7 @@ class opFormItemGenerator
         $obj = new sfValidatorEmail($option);
         break;
       case 'pc_email':
-        $obj = new opValidatorPCEmail($option);
+        $obj = new saValidatorPCEmail($option);
         break;
       case 'mobile_email':
         $obj = new sfValidatorMobileEmail($option);
@@ -278,13 +278,13 @@ class opFormItemGenerator
         $obj = new sfValidatorPassword($option);
         break;
       case 'image_size':
-        $obj = new opValidatorImageSize($option);
+        $obj = new saValidatorImageSize($option);
         break;
       case 'pass':
         $obj = new sfValidatorPass($option);
         break;
       default:
-        $obj = new opValidatorString($option);
+        $obj = new saValidatorString($option);
         break;
     }
 
@@ -335,7 +335,7 @@ class opFormItemGenerator
             }
           }
         }
-        $list = opToolkit::arrayMapRecursive(array(sfContext::getInstance()->getI18N(), '__'), $list);
+        $list = saToolkit::arrayMapRecursive(array(sfContext::getInstance()->getI18N(), '__'), $list);
         $params['choices'] = array('' => '')+ $list;
         $obj = new sfWidgetFormChoice($params);
         break;
@@ -345,7 +345,7 @@ class opFormItemGenerator
         $params['culture'] = sfContext::getInstance()->getUser()->getCulture();
         $params['month_format'] = 'number';
         $params['can_be_empty'] = true;
-        $obj = new opWidgetFormDate($params);
+        $obj = new saWidgetFormDate($params);
         break;
       // text and something else
       default:

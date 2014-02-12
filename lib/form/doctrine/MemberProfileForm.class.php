@@ -137,7 +137,7 @@ class MemberProfileForm extends BaseForm
 
   protected function setProfileWidgets($profiles)
   {
-    $presetList = opToolkit::getPresetProfileList();
+    $presetList = saToolkit::getPresetProfileList();
 
     foreach ($profiles as $profile)
     {
@@ -153,10 +153,10 @@ class MemberProfileForm extends BaseForm
       $profileWithI18n = $profile->toArray() + $profileI18n;
 
       $widgetOptions = array(
-        'widget' => opFormItemGenerator::generateWidget($profileWithI18n, $this->getFormOptionsValue($profile->getId())),
+        'widget' => saFormItemGenerator::generateWidget($profileWithI18n, $this->getFormOptionsValue($profile->getId())),
       );
       $validatorOptions = array(
-        'validator' => opFormItemGenerator::generateValidator($profileWithI18n, $this->getFormOptions($profile->getId())),
+        'validator' => saFormItemGenerator::generateValidator($profileWithI18n, $this->getFormOptions($profile->getId())),
       );
 
       if ($profile->getIsEditPublicFlag())
@@ -168,8 +168,8 @@ class MemberProfileForm extends BaseForm
         }
       }
 
-      $this->widgetSchema[$profile->getName()] = new opWidgetFormProfile($widgetOptions);
-      $this->validatorSchema[$profile->getName()] = new opValidatorProfile($validatorOptions);
+      $this->widgetSchema[$profile->getName()] = new saWidgetFormProfile($widgetOptions);
+      $this->validatorSchema[$profile->getName()] = new saValidatorProfile($validatorOptions);
 
       $this->widgetSchema[$profile->getName()]->profile = $profile;
       $this->validatorSchema[$profile->getName()]->profile = $profile;

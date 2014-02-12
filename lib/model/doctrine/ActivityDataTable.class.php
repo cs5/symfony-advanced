@@ -431,6 +431,6 @@ class ActivityDataTable extends Doctrine_Table
       }
     }
 
-    return opConfig::get('nickname_of_member_who_does_not_have_credentials');
+    return saConfig::get('nickname_of_member_who_does_not_have_credentials');
   }
 }

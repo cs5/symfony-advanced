@@ -14,7 +14,7 @@
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  * @author     Kimura Youichi <kim.upsilon@bucyou.net>
  */
-class opBrowser extends sfBrowser
+class saBrowser extends sfBrowser
 {
   /**
    * @see sfBrowserBase::doClick()

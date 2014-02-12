@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class MemberProfile extends BaseMemberProfile implements opAccessControlRecordInterface
+class MemberProfile extends BaseMemberProfile implements saAccessControlRecordInterface
 {
   public function __toString()
   {

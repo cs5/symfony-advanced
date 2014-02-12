@@ -111,7 +111,7 @@ EOF;
     }
     else
     {
-      new opPluginManager($this->dispatcher, null, null);
+      new saPluginManager($this->dispatcher, null, null);
     }
     @$this->fixPerms();
     @$this->clearCache();
@@ -250,7 +250,7 @@ EOF;
 
   protected function installPlugins()
   {
-    $task = new opPluginSyncTask($this->dispatcher, $this->formatter);
+    $task = new saPluginSyncTask($this->dispatcher, $this->formatter);
     $task->run();
   }
 

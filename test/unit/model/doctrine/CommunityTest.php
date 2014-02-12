@@ -61,15 +61,15 @@ function checkPrivilegeBelong($object, $memberId)
     $object->checkPrivilegeBelong($memberId);
     return true;
   }
-  catch (opPrivilegeException $e)
+  catch (saPrivilegeException $e)
   {
     return false;
   }
 }
 $t->ok(checkPrivilegeBelong($community1, 1), 'checkPrivilegeBelong() is pass');
 $t->ok(checkPrivilegeBelong($community2, 2), 'checkPrivilegeBelong() is pass');
-$t->ok(!checkPrivilegeBelong($community1, 3), 'checkPrivilegeBelong() throw the opPrivilegeException');
-$t->ok(!checkPrivilegeBelong($community2, 1), 'checkPrivilegeBelong() throw the opPrivilegeException');
+$t->ok(!checkPrivilegeBelong($community1, 3), 'checkPrivilegeBelong() throw the saPrivilegeException');
+$t->ok(!checkPrivilegeBelong($community2, 1), 'checkPrivilegeBelong() throw the saPrivilegeException');
 
 //------------------------------------------------------------
 $t->diag('Community::isPrivilegeBelong()');

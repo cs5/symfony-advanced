@@ -17,7 +17,7 @@ if (!isset($fixture))
 
 new sfDatabaseManager($configuration);
 
-$conn = opDoctrineQuery::getMasterConnectionDirect();
+$conn = saDoctrineQuery::getMasterConnectionDirect();
 if ($conn instanceof Doctrine_Connection_Mysql)
 {
   $conn->exec('SET FOREIGN_KEY_CHECKS = 0');

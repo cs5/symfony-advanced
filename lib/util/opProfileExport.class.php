@@ -9,13 +9,13 @@
  */
 
 /**
- * opProfileExport
+ * saProfileExport
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opProfileExport
+class saProfileExport
 {
   public
     $member = null,
@@ -51,7 +51,7 @@ class opProfileExport
 
   protected function getMemberImageURI($options = array())
   {
-    sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url', 'opUtil', 'sfImage', 'Asset', 'Tag'));
+    sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url', 'saUtil', 'sfImage', 'Asset', 'Tag'));
 
     return sf_image_path($this->member->getImageFileName(), $options, true);
   }

@@ -1,5 +1,5 @@
 register_sns:
   url: get
-  class: opMailRoute
+  class: saMailRoute
   options: { non_auth: true } 
-  param:   { module: opAuthMailAddress, action: register }
+  param:   { module: saAuthMailAddress, action: register }

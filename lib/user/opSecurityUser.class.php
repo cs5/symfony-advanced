@@ -9,14 +9,14 @@
  */
 
 /**
- * opSecurityUser will handle credential for SfAdvanced.
+ * saSecurityUser will handle credential for SfAdvanced.
  *
  * @package    SfAdvanced
  * @subpackage user
  * @author     Kousuke Ebihara <ebihara@php.net>
  * @author     Shogo Kawahara <kawahara@tejimaya.com>
  */
-class opSecurityUser extends opAdaptableUser
+class saSecurityUser extends saAdaptableUser
 {
   protected
     $authAdapters = array(),
@@ -51,23 +51,23 @@ class opSecurityUser extends opAdaptableUser
   {
     $this->serializedMember = '';
 
-    return $this->setAttribute('member_id', $memberId, 'opSecurityUser');
+    return $this->setAttribute('member_id', $memberId, 'saSecurityUser');
   }
 
   /**
    * Get Member object. This method always return object.
    *
    * @param  bool $inactive If true then use Member::findInactive(), otherwise use Member::find().
-   * @return Member or opAnonymousMember
+   * @return Member or saAnonymousMember
    */
   public function getMember($inactive = false)
   {
     // get memberId from session storage
-    $memberId = $this->getAttribute('member_id', null, 'opSecurityUser');
+    $memberId = $this->getAttribute('member_id', null, 'saSecurityUser');
 
     if (!$memberId)
     {
-      return new opAnonymousMember();
+      return new saAnonymousMember();
     }
 
     if ($inactive)
@@ -75,7 +75,7 @@ class opSecurityUser extends opAdaptableUser
       $member = Doctrine::getTable('Member')->findInactive($memberId);
       if (!$member)
       {
-        return new opAnonymousMember();
+        return new saAnonymousMember();
       }
 
       return $member;
@@ -91,7 +91,7 @@ class opSecurityUser extends opAdaptableUser
       $member = Doctrine::getTable('Member')->find($memberId);
       if (!$member)
       {
-        return new opAnonymousMember();
+        return new saAnonymousMember();
       }
 
       if ($member->getIsActive())
@@ -105,9 +105,9 @@ class opSecurityUser extends opAdaptableUser
 
   public function getCurrentMemberRegisterToken()
   {
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
     $config = Doctrine::getTable('MemberConfig')->retrieveByNameAndMemberId('register_token', $this->getMemberId(), true);
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
 
     if ($config)
     {
@@ -182,7 +182,7 @@ class opSecurityUser extends opAdaptableUser
     }
     else
     {
-      $rememberKey = opToolkit::getRandom();
+      $rememberKey = saToolkit::getRandom();
       if (!$this->getMemberId())
       {
         throw new LogicException('No login');
@@ -237,15 +237,15 @@ class opSecurityUser extends opAdaptableUser
     {
       $this->setMemberId($memberId);
 
-      opActivateBehavior::disable();
+      saActivateBehavior::disable();
       if ($this->getMember()->isOnBlacklist())
       {
-        opActivateBehavior::enable();
+        saActivateBehavior::enable();
         $this->logout();
 
         return false;
       }
-      opActivateBehavior::enable();
+      saActivateBehavior::enable();
     }
 
     $this->initializeUserStatus();
@@ -301,7 +301,7 @@ class opSecurityUser extends opAdaptableUser
     $this->setRememberLoginCookie(true);
 
     $this->setAuthenticated(false);
-    $this->getAttributeHolder()->removeNamespace('opSecurityUser');
+    $this->getAttributeHolder()->removeNamespace('saSecurityUser');
     $this->clearCredentials();
 
     $this->setCurrentAuthMode($authMode);
@@ -319,7 +319,7 @@ class opSecurityUser extends opAdaptableUser
     if ($result)
     {
       $this->setAuthenticated(true);
-      $this->setAttribute('member_id', $result, 'opSecurityUser');
+      $this->setAttribute('member_id', $result, 'saSecurityUser');
 
       return true;
     }
@@ -342,13 +342,13 @@ class opSecurityUser extends opAdaptableUser
       $this->setMemberId($memberId);
     }
 
-    // get a instance of Member or opAnonymousMember as the user
-    opActivateBehavior::disable();
+    // get a instance of Member or saAnonymousMember as the user
+    saActivateBehavior::disable();
     $member = $this->getMember();
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
 
     // if user is (U3), or (U1) but rejected login
-    if ($member instanceof opAnonymousMember || $member->getIsLoginRejected())
+    if ($member instanceof saAnonymousMember || $member->getIsLoginRejected())
     {
       $this->logout();
       $isSNSMember = false;
@@ -386,18 +386,18 @@ class opSecurityUser extends opAdaptableUser
 
   public function isRegisterBegin()
   {
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
     $memberId = $this->getMemberId();
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
 
     return $this->getAuthAdapter()->isRegisterBegin($memberId);
   }
 
   public function isRegisterFinish()
   {
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
     $memberId = $this->getMemberId();
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
 
     return $this->getAuthAdapter()->isRegisterFinish($memberId);
   }
@@ -495,7 +495,7 @@ class opSecurityUser extends opAdaptableUser
   {
     $member = $this->getMember();
 
-    if ($member instanceof opAnonymousMember)
+    if ($member instanceof saAnonymousMember)
     {
       return '';
     }

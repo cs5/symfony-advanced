@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class opI18N extends sfI18N
+class saI18N extends sfI18N
 {
   protected
     $terms = null,
@@ -62,7 +62,7 @@ class opI18N extends sfI18N
     foreach ($catalogues as $filename => $catalogue)
     {
       $path = $cacheDir.DIRECTORY_SEPARATOR.$filename.'.php';
-      opToolkit::writeCacheFile($path, '<?php return '.var_export($catalogue, true).';');
+      saToolkit::writeCacheFile($path, '<?php return '.var_export($catalogue, true).';');
     }
   }
 

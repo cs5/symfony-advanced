@@ -1,4 +1,4 @@
-<?php use_helper('opActivity') ?>
+<?php use_helper('saActivity') ?>
 
 <li class="activity">
 <div class="box_memberImage">

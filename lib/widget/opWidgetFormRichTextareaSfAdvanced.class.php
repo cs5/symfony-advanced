@@ -9,13 +9,13 @@
  */
 
 /**
- * opWidgetFormRichTextareaSfAdvanced
+ * saWidgetFormRichTextareaSfAdvanced
  *
  * @package    SfAdvanced
  * @subpackage widget
  * @author     Shogo Kawahara <kawahara@ejimaya.net>
  */
-class opWidgetFormRichTextareaSfAdvanced extends opWidgetFormRichTextarea
+class saWidgetFormRichTextareaSfAdvanced extends saWidgetFormRichTextarea
 {
   static protected $isFirstRenderSfAdvanced  = true;
   static protected $isConfiguredTinyMCE   = false;
@@ -36,15 +36,15 @@ class opWidgetFormRichTextareaSfAdvanced extends opWidgetFormRichTextarea
   static protected $useButtons = null;
 
   static protected $buttonOnclickActions = array(
-    'sa_emoji_docomo' => '$("#%id%").opEmoji("togglePallet", "epDocomo");',
+    'sa_emoji_docomo' => '$("#%id%").saEmoji("togglePallet", "epDocomo");',
     'sa_large' => 'sa_mce_insert_tagname("%id%", "op:font", \' size="5"\');',
     'sa_small' => 'sa_mce_insert_tagname("%id%", "op:font", \' size="1"\');',
     'sa_color' => 'sa_mce_show_color_table("%id%", "op:font");'
   );
 
   static protected $convertCallbackList = array(
-    'op:color' => array(__CLASS__, 'opColorToHtml'),
-    'op:font'  => array(__CLASS__, 'opFontToHtml')
+    'op:color' => array(__CLASS__, 'saColorToHtml'),
+    'op:font'  => array(__CLASS__, 'saFontToHtml')
   );
 
   static protected $htmlConvertList = array(
@@ -404,7 +404,7 @@ class opWidgetFormRichTextareaSfAdvanced extends opWidgetFormRichTextarea
     return tag($htmlTagName, $options, true);
   }
 
-  static public function opColorToHtml($isEndtag, $tagname, $attributes, $isUseStylesheet)
+  static public function saColorToHtml($isEndtag, $tagname, $attributes, $isUseStylesheet)
   {
     $options = array();
     $code = isset($attributes['code']) ? $attributes['code'] : '';
@@ -439,7 +439,7 @@ class opWidgetFormRichTextareaSfAdvanced extends opWidgetFormRichTextarea
     }
   }
 
-  static public function opFontToHtml($isEndtag, $tagname, $attributes, $isUseStylesheet)
+  static public function saFontToHtml($isEndtag, $tagname, $attributes, $isUseStylesheet)
   {
     $options = array();
 

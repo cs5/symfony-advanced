@@ -14,14 +14,14 @@
  * @subpackage response
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-class opWebResponse extends sfWebResponse
+class saWebResponse extends sfWebResponse
 {
   protected
     $smtStylesheets = array(),
     $smtJavascripts = array();
 
   /**
-   * Initializes this opWebResponse.
+   * Initializes this saWebResponse.
    *
    *  * charset:           The charset to use (utf-8 by default)
    *  * content_type:      The content type (text/html by default)
@@ -46,7 +46,7 @@ class opWebResponse extends sfWebResponse
   }
 
   /**
-   * Copies all properties from a given opWebResponse object to the current one.
+   * Copies all properties from a given saWebResponse object to the current one.
    *
    * @param sfWebResponse $response  An sfWebResponse instance
    *
@@ -56,7 +56,7 @@ class opWebResponse extends sfWebResponse
   {
     parent::copyProperties($response);
 
-    if ($response instanceof opWebResponse)
+    if ($response instanceof saWebResponse)
     {
       $this->smtStylesheets = $response->getSmtStylesheets(self::RAW);
       $this->smtJavascripts = $response->getSmtJavascripts(self::RAW);
@@ -64,7 +64,7 @@ class opWebResponse extends sfWebResponse
   }
 
   /**
-   * Merges all properties from a given opWebResponse object to the current one.
+   * Merges all properties from a given saWebResponse object to the current one.
    *
    * @param sfWebResponse $response  An sfWebResponse instance
    *
@@ -74,7 +74,7 @@ class opWebResponse extends sfWebResponse
   {
     parent::merge($response);
 
-    if ($response instanceof opWebResponse)
+    if ($response instanceof saWebResponse)
     {
       foreach ($this->getPositions() as $position)
       {
@@ -105,7 +105,7 @@ class opWebResponse extends sfWebResponse
     $result = parent::getTitle();
     if (!$result)
     {
-      $result = opConfig::get('sns_title') ? opConfig::get('sns_title') : opConfig::get('sns_name');
+      $result = saConfig::get('sns_title') ? saConfig::get('sns_title') : saConfig::get('sns_name');
     }
 
     return $result;
@@ -119,8 +119,8 @@ class opWebResponse extends sfWebResponse
       return false;
     }
 
-    $value = opToolkit::getRandom();
-    $this->setCookie(opWebRequest::MOBILE_UID_COOKIE_NAME, $value, strtotime('+20years'));
+    $value = saToolkit::getRandom();
+    $this->setCookie(saWebRequest::MOBILE_UID_COOKIE_NAME, $value, strtotime('+20years'));
 
     return $value;
   }
@@ -133,7 +133,7 @@ class opWebResponse extends sfWebResponse
       return false;
     }
 
-    $this->setCookie(opWebRequest::MOBILE_UID_COOKIE_NAME, '', time() - 3600);
+    $this->setCookie(saWebRequest::MOBILE_UID_COOKIE_NAME, '', time() - 3600);
   }
 
   /**

@@ -9,13 +9,13 @@
  */
 
 /**
- * opMemberAction
+ * saMemberAction
  *
  * @package    SfAdvanced
  * @subpackage action
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
-abstract class opMemberAction extends sfActions
+abstract class saMemberAction extends sfActions
 {
   public function preExecute()
   {
@@ -40,7 +40,7 @@ abstract class opMemberAction extends sfActions
 
   protected function handleSfAdvancedFormatUrl()
   {
-    $path = sfConfig::get('sf_app_config_dir').'/op2urls.php';
+    $path = sfConfig::get('sf_app_config_dir').'/sa2urls.php';
     if (!is_file($path))
     {
       return null;
@@ -74,7 +74,7 @@ abstract class opMemberAction extends sfActions
     }
   }
 
-  public function executeLogin(opWebRequest $request)
+  public function executeLogin(saWebRequest $request)
   {
     $this->getUser()->logout();
 
@@ -108,7 +108,7 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  private function redirectToLoginIfSslRequired(opWebRequest $request)
+  private function redirectToLoginIfSslRequired(saWebRequest $request)
   {
     $routing = sfContext::getInstance()->getRouting();
     if (sfConfig::get('sa_use_ssl', false) && !$request->isSecure())
@@ -153,31 +153,31 @@ abstract class opMemberAction extends sfActions
     }
   }
 
-  public function executeLogout(opWebRequest $request)
+  public function executeLogout(saWebRequest $request)
   {
     $this->getUser()->logout();
     $this->redirect('member/login');
   }
 
-  public function executeRegister(opWebRequest $request)
+  public function executeRegister(saWebRequest $request)
   {
     $member = $this->getUser()->setRegisterToken($request['token']);
 
     $this->forward404Unless($member && !$this->getUser()->isSNSMember() && $this->getUser()->isInvited());
   }
 
-  public function executeRegisterInput(opWebRequest $request)
+  public function executeRegisterInput(saWebRequest $request)
   {
-    $this->forward404Unless(opToolkit::isEnabledRegistration((sfConfig::get('app_is_mobile') ? 'mobile' : 'pc')));
+    $this->forward404Unless(saToolkit::isEnabledRegistration((sfConfig::get('app_is_mobile') ? 'mobile' : 'pc')));
 
     $this->token = $request['token'];
     $member = $this->getUser()->setRegisterToken($this->token);
 
     $this->forward404Unless($member && $this->getUser()->isRegisterBegin());
 
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
     $this->form = $this->getUser()->getAuthAdapter()->getAuthRegisterForm();
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
 
     if ($request->isMethod('post'))
     {
@@ -193,12 +193,12 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeHome(opWebRequest $request)
+  public function executeHome(saWebRequest $request)
   {
     return sfView::SUCCESS;
   }
 
-  public function executeSearch(opWebRequest $request)
+  public function executeSearch(saWebRequest $request)
   {
     $params = $request->getParameter('member', array());
     if ($request->hasParameter('search_query'))
@@ -206,7 +206,7 @@ abstract class opMemberAction extends sfActions
       $params = array_merge($params, array('name' => $request->getParameter('search_query', '')));
     }
 
-    $this->filters = new opMemberProfileSearchForm();
+    $this->filters = new saMemberProfileSearchForm();
     $this->filters->bind($params);
 
     if (!isset($this->size))
@@ -214,7 +214,7 @@ abstract class opMemberAction extends sfActions
       $this->size = 20;
     }
 
-    $this->pager = new opNonCountQueryPager('Member', $this->size);
+    $this->pager = new saNonCountQueryPager('Member', $this->size);
     $q = $this->filters->getQuery()->orderBy('id desc');
     $this->pager->setQuery($q);
     $this->pager->setPage($request->getParameter('page', 1));
@@ -223,7 +223,7 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeProfile(opWebRequest $request)
+  public function executeProfile(saWebRequest $request)
   {
     $id = $this->getRequestParameter('id', $this->getUser()->getMemberId());
     if ('member_profile_mine' === sfContext::getInstance()->getRouting()->getCurrentRouteName())
@@ -252,7 +252,7 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeEditProfile(opWebRequest $request)
+  public function executeEditProfile(saWebRequest $request)
   {
     $this->memberForm = new MemberForm($this->getUser()->getMember());
 
@@ -275,7 +275,7 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeConfigComplete(opWebRequest $request)
+  public function executeConfigComplete(saWebRequest $request)
   {
     $type = $request->getParameter('type');
     $this->forward404Unless($type);
@@ -287,7 +287,7 @@ abstract class opMemberAction extends sfActions
     $this->forward404Unless($request->getParameter('token') === $memberConfig->getValue());
 
     $option = array('member' => $memberConfig->getMember());
-    $this->form = new opPasswordForm(array(), $option);
+    $this->form = new saPasswordForm(array(), $option);
 
     if ($request->isMethod('post'))
     {
@@ -319,7 +319,7 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeConfig(opWebRequest $request)
+  public function executeConfig(saWebRequest $request)
   {
     $filteredCategory = $this->filterConfigCategory();
     $this->categories = $filteredCategory['category'];
@@ -347,11 +347,11 @@ abstract class opMemberAction extends sfActions
     return sfView::SUCCESS;
   }
 
-  public function executeInvite(opWebRequest $request)
+  public function executeInvite(saWebRequest $request)
   {
     if (
       !$this->getUser()->getAuthAdapter()->getAuthConfig('invite_mode')
-      || !opToolkit::isEnabledRegistration()
+      || !saToolkit::isEnabledRegistration()
     )
     {
       return sfView::ERROR;
@@ -390,14 +390,14 @@ abstract class opMemberAction extends sfActions
     return sfView::INPUT;
   }
 
-  public function executeDelete(opWebRequest $request)
+  public function executeDelete(saWebRequest $request)
   {
     if (1 == $this->getUser()->getMemberId())
     {
       return sfView::ERROR;
     }
 
-    $this->form = new opPasswordForm(array(), array('member' => $this->getUser()->getMember()));
+    $this->form = new saPasswordForm(array(), array('member' => $this->getUser()->getMember()));
     if ($request->isMethod('post'))
     {
       $this->form->bind($request->getParameter('password'));
@@ -415,12 +415,12 @@ abstract class opMemberAction extends sfActions
     return sfView::INPUT;
   }
 
-  public function executeConfigImage(opWebRequest $request)
+  public function executeConfigImage(saWebRequest $request)
   {
     return sfView::SUCCESS;
   }
 
-  public function executeDeleteImage(opWebRequest $request)
+  public function executeDeleteImage(saWebRequest $request)
   {
     $request->checkCSRFProtection();
     $image = Doctrine::getTable('MemberImage')->find($request->getParameter('member_image_id'));
@@ -432,7 +432,7 @@ abstract class opMemberAction extends sfActions
     $this->redirect('member/configImage');
   }
 
-  public function executeChangeMainImage(opWebRequest $request)
+  public function executeChangeMainImage(saWebRequest $request)
   {
     $request->checkCSRFProtection();
     $image = Doctrine::getTable('MemberImage')->find($request->getParameter('member_image_id'));
@@ -455,14 +455,14 @@ abstract class opMemberAction extends sfActions
     );
 
     // to admin
-    $mail = new opMailSend();
-    $mail->setSubject(opConfig::get('sns_name') . '退会者情報');
+    $mail = new saMailSend();
+    $mail->setSubject(saConfig::get('sns_name') . '退会者情報');
     $mail->setGlobalTemplate('deleteAccountMail', $param);
-    $mail->send(opConfig::get('admin_mail_address'), opConfig::get('admin_mail_address'));
+    $mail->send(saConfig::get('admin_mail_address'), saConfig::get('admin_mail_address'));
 
     // to member
     $param['subject'] = sfContext::getInstance()->getI18N()->__('Leaving from this site is finished');
-    opMailSend::sendTemplateMailToMember('leave', $member, $param);
+    saMailSend::sendTemplateMailToMember('leave', $member, $param);
   }
 
   protected function filterConfigCategory()
@@ -479,7 +479,7 @@ abstract class opMemberAction extends sfActions
 
     if (isset($categories['language']))
     {
-      if (!opConfig::get('enable_language'))
+      if (!saConfig::get('enable_language'))
       {
         unset($categories['language']);
       }
@@ -492,7 +492,7 @@ abstract class opMemberAction extends sfActions
       if (isset($categoryAttributes[$key]['depending_sns_config']))
       {
         $snsConfig = $categoryAttributes[$key]['depending_sns_config'];
-        if (!opConfig::get($snsConfig))
+        if (!saConfig::get($snsConfig))
         {
           unset($categories[$key]);
           continue;
@@ -531,7 +531,7 @@ abstract class opMemberAction extends sfActions
     return array('category' => $categories, 'captions' => $categoryCaptions);
   }
 
-  public function executeShowActivity(opWebRequest $request)
+  public function executeShowActivity(saWebRequest $request)
   {
     $this->forward404Unless($this->id);
     $this->forward404If($this->relation->isAccessBlocked());
@@ -545,7 +545,7 @@ abstract class opMemberAction extends sfActions
     $this->pager = Doctrine::getTable('ActivityData')->getActivityListPager($this->id, null, $request->getParameter('page', 1), $this->size);
   }
 
-  public function executeDeleteActivity(opWebRequest $request)
+  public function executeDeleteActivity(saWebRequest $request)
   {
     $this->forward404Unless($request->hasParameter('id'));
 
@@ -564,11 +564,11 @@ abstract class opMemberAction extends sfActions
     return sfView::INPUT;
   }
 
-  public function executeUpdateActivity(opWebRequest $request)
+  public function executeUpdateActivity(saWebRequest $request)
   {
     if ($request->isMethod(sfWebRequest::POST))
     {
-      $this->forward404Unless(opConfig::get('is_allow_post_activity'));
+      $this->forward404Unless(saConfig::get('is_allow_post_activity'));
       $newObject = new ActivityData();
       $newObject->setMemberId($this->getUser()->getMemberId());
       $this->form = new ActivityDataForm($newObject);
@@ -608,7 +608,7 @@ abstract class opMemberAction extends sfActions
     return sfView::NONE;
   }
 
-  public function executeShowAllMemberActivity(opWebRequest $request)
+  public function executeShowAllMemberActivity(saWebRequest $request)
   {
     if (!isset($this->size))
     {
@@ -616,7 +616,7 @@ abstract class opMemberAction extends sfActions
     }
 
     $page = $request->getParameter('page', 1);
-    if ($page == 1 && opConfig::get('is_allow_post_activity'))
+    if ($page == 1 && saConfig::get('is_allow_post_activity'))
     {
       $activityData = new ActivityData();
       $activityData->setBody($request->getParameter('body'));

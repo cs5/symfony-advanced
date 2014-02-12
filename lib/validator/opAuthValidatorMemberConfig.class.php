@@ -9,13 +9,13 @@
  */
 
 /**
- * opAuthValidatorMemberConfig
+ * saAuthValidatorMemberConfig
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opAuthValidatorMemberConfig extends sfValidatorSchema
+class saAuthValidatorMemberConfig extends sfValidatorSchema
 {
   /**
    * Constructor.
@@ -52,7 +52,7 @@ class opAuthValidatorMemberConfig extends sfValidatorSchema
    */
   protected function doClean($values)
   {
-    opActivateBehavior::disable();
+    saActivateBehavior::disable();
     $configName = $this->getOption('config_name');
     $fieldName = $this->getOption('field_name');
     if (!$fieldName)
@@ -62,7 +62,7 @@ class opAuthValidatorMemberConfig extends sfValidatorSchema
 
     if (!$this->getOption('allow_empty_value') && empty($values[$fieldName]))
     {
-      opActivateBehavior::enable();
+      saActivateBehavior::enable();
 
       return $values;
     }
@@ -73,7 +73,7 @@ class opAuthValidatorMemberConfig extends sfValidatorSchema
       $values['member'] = $memberConfig->getMember();
     }
 
-    opActivateBehavior::enable();
+    saActivateBehavior::enable();
     return $values;
   }
 }

@@ -9,14 +9,14 @@
  */
 
 /**
- * opValidatorString validates a string.
+ * saValidatorString validates a string.
  * It support to trim double byte spaces.
  * 
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-class opValidatorString extends sfValidatorString
+class saValidatorString extends sfValidatorString
 {
   protected function configure($options = array(), $messages = array())
   {

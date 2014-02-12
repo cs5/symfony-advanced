@@ -8,9 +8,9 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class communityComponents extends opCommunityComponents
+class communityComponents extends saCommunityComponents
 {
-  public function executeJoinListBox(opWebRequest $request)
+  public function executeJoinListBox(saWebRequest $request)
   {
     if ($request->hasParameter('id') && $request->getParameter('module') == 'member' && $request->getParameter('action') == 'profile')
     {
@@ -26,7 +26,7 @@ class communityComponents extends opCommunityComponents
     $this->communities = Doctrine::getTable('Community')->retrievesByMemberId($this->member->getId(), $this->row * $this->col, true);
   }
 
-  public function executeSmtCommunityListBox(opWebRequest $request)
+  public function executeSmtCommunityListBox(saWebRequest $request)
   {
     $this->id = $request->getParameter('id');
 
@@ -57,7 +57,7 @@ class communityComponents extends opCommunityComponents
     $this->communitySubAdmins = $this->community->getSubAdminMembers();
   }
 
-  public function executeSmtCommunityMemberJoinListBox(opWebRequest $request)
+  public function executeSmtCommunityMemberJoinListBox(saWebRequest $request)
   {
     $this->id = $request->getParameter('id');
     $this->community = Doctrine::getTable('Community')->find($this->id);

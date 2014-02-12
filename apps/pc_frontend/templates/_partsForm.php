@@ -6,7 +6,7 @@ $options->setDefault('lastRow', '');
 $options->setDefault('mark_required_field', true);
 $options->setDefault('url', $sf_request->getCurrentUri());
 ?>
-<?php if ($options['form'] instanceof opAuthRegisterForm): ?>
+<?php if ($options['form'] instanceof saAuthRegisterForm): ?>
 <?php echo $options['form']->renderFormTag($options['url'], array('method' => $options['method'])) ?>
 <?php $forms = $options['form']->getAllForms() ?>
 <?php else: ?>
@@ -49,7 +49,7 @@ $widget     = $field->getWidget();
 $validator  = $form->getValidator($name);
 $labelSuffix = '';
 
-if ($widget instanceof opWidgetFormProfile)
+if ($widget instanceof saWidgetFormProfile)
 {
   $widget->setOption('template', '<div class="input">%input%</div>'."\n".'<div class="publicFlag">%public_flag%</div>');
   $widget = $widget->getOption('widget');

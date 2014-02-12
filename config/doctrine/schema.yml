@@ -3,7 +3,7 @@ options:
 actAs: [Timestampable]
 
 Member:
-  actAs: [Timestampable, opActivateBehavior]
+  actAs: [Timestampable, saActivateBehavior]
   columns:
     id: { type: integer(4), primary: true, autoincrement: true, comment: "Serial number" }
     name: { type: string(64), default: "", notnull: true, comment: "Nickname" }
@@ -18,7 +18,7 @@ Member:
     comment: "Saves informations of members"
 
 MemberRelationship:
-  actAs: [Timestampable, opActivityCascadingBehavior]
+  actAs: [Timestampable, saActivityCascadingBehavior]
   columns:
     id: { type: integer(4), primary: true, autoincrement: true, comment: "Serial number" }
     member_id_to: { type: integer(4), notnull: true, comment: "Target member id" }

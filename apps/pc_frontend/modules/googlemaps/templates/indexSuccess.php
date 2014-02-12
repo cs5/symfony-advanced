@@ -76,7 +76,7 @@ google.maps.event.addDomListener(window, 'load', function() {
 //]]>
 </script>
 </head>
-<body id="page_googlemaps_index" class="<?php echo opToolkit::isSecurePage() ? 'secure_page' : 'insecure_page' ?>">
+<body id="page_googlemaps_index" class="<?php echo saToolkit::isSecurePage() ? 'secure_page' : 'insecure_page' ?>">
 <div id="map" style="width: 300px; height: 320px"></div>
 </body>
 </html>

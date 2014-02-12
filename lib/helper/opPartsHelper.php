@@ -30,7 +30,7 @@ function sa_include_parts($name, $id, $options = array())
   $params = array(
     'id'      => $id,
     'name'    => $name,
-    'options' => new opPartsOptionHolder($options),
+    'options' => new saPartsOptionHolder($options),
   );
 
   $params['sa_content'] = get_partial('global/parts'.ucfirst($name), $params);
@@ -209,7 +209,7 @@ function include_login_parts($id, $form, $link_to)
   $params = array(
     'id' => $form->getAuthMode().$id,
     'form' => $form,
-    'link_to' => url_for(sprintf($link_to.'?%s=%s', opAuthForm::AUTH_MODE_FIELD_NAME, $form->getAuthMode())),
+    'link_to' => url_for(sprintf($link_to.'?%s=%s', saAuthForm::AUTH_MODE_FIELD_NAME, $form->getAuthMode())),
   );
   include_partial('global/partsLogin', $params);
 }

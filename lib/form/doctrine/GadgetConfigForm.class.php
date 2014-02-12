@@ -34,8 +34,8 @@ class GadgetConfigForm extends BaseForm
     $gadgetConfig = $config[$gadget->getName()]['config'];
     foreach ($gadgetConfig as $key => $value)
     {
-      $this->setWidget($key, opFormItemGenerator::generateWidget($value));
-      $this->setValidator($key, opFormItemGenerator::generateValidator($value));
+      $this->setWidget($key, saFormItemGenerator::generateWidget($value));
+      $this->setValidator($key, saFormItemGenerator::generateValidator($value));
 
       $config = Doctrine::getTable('GadgetConfig')->retrieveByGadgetIdAndName($gadget->getId(), $key);
       if ($config)

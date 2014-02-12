@@ -3,7 +3,7 @@
 include_once dirname(__FILE__) . '/../../../bootstrap/unit.php';
 include_once dirname(__FILE__) . '/../../../bootstrap/database.php';
 sfContext::createInstance($configuration);
-opToolkit::clearCache();
+saToolkit::clearCache();
 include_once dirname(__FILE__) . '/fixtures/TestActivityTemplateConfigHandler.php';
 $user = sfContext::getInstance()->getUser();
 $user->setAuthenticated(true);

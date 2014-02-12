@@ -9,13 +9,13 @@
  */
 
 /**
- * opOpenIDAxProfileExport
+ * saOpenIDAxProfileExport
  *
  * @package    SfAdvanced
  * @subpackage util
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opOpenIDAxProfileExport extends opProfileExport
+class saOpenIDAxProfileExport extends saProfileExport
 {
   public $tableToSfAdvanced = array(
     'http://schema.openid.net/namePerson/friendly'     => 'name',

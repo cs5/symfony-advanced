@@ -19,7 +19,7 @@ class OpenIDActions extends sfActions
 {
   public function preExecute()
   {
-    $this->forward404Unless(opConfig::get('enable_openid'));
+    $this->forward404Unless(saConfig::get('enable_openid'));
   }
 
  /**
@@ -29,7 +29,7 @@ class OpenIDActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    opApplicationConfiguration::registerJanRainOpenID();
+    saApplicationConfiguration::registerJanRainOpenID();
     require_once 'Auth/OpenID/Server.php';
     require_once 'Auth/OpenID/FileStore.php';
 
@@ -110,7 +110,7 @@ class OpenIDActions extends sfActions
 
   public function executeTrust(sfWebRequest $request)
   {
-    opApplicationConfiguration::registerJanRainOpenID();
+    saApplicationConfiguration::registerJanRainOpenID();
     require_once 'Auth/OpenID/Server.php';
     require_once 'Auth/OpenID/FileStore.php';
     require_once 'Auth/OpenID/SReg.php';
@@ -151,7 +151,7 @@ class OpenIDActions extends sfActions
 
     if ($sregRequest)
     {
-      $sregExchange = new opOpenIDProfileExchange('sreg', $this->getUser()->getMember());
+      $sregExchange = new saOpenIDProfileExchange('sreg', $this->getUser()->getMember());
       $sregResp = Auth_OpenID_SRegResponse::extractResponse($sregRequest, $sregExchange->getData($allowedProfiles));
       $response->addExtension($sregResp);
     }
@@ -159,7 +159,7 @@ class OpenIDActions extends sfActions
     if ($axRequest && !($axRequest instanceof Auth_OpenID_AX_Error))
     {
       $axResp = new Auth_OpenID_AX_FetchResponse();
-      $axExchange = new opOpenIDProfileExchange('ax', $this->getUser()->getMember());
+      $axExchange = new saOpenIDProfileExchange('ax', $this->getUser()->getMember());
       $userData = $axExchange->getData($allowedProfiles);
 
       foreach ($axRequest->requested_attributes as $k => $v)
@@ -294,8 +294,8 @@ EOF;
 
     $result = array();
 
-    $sregExport = new opOpenIDSregProfileExport();
-    $axExport = new opOpenIDAxProfileExport();
+    $sregExport = new saOpenIDSregProfileExport();
+    $axExport = new saOpenIDAxProfileExport();
 
     if ($sreg)
     {

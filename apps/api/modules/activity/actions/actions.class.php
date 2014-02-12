@@ -15,11 +15,11 @@
  * @subpackage action
  * @author     Kimura Youichi <kim.upsilon@gmail.com>
  */
-class activityActions extends opJsonApiActions
+class activityActions extends saJsonApiActions
 {
   public function executeSearch(sfWebRequest $request)
   {
-    $builder = opActivityQueryBuilder::create()
+    $builder = saActivityQueryBuilder::create()
       ->setViewerId($this->getUser()->getMemberId());
 
     if (isset($request['target']))
@@ -197,7 +197,7 @@ class activityActions extends opJsonApiActions
     {
       foreach ((array)$imageFiles as $imageFile)
       {
-        $validator = new opValidatorImageFile(array('required' => false));
+        $validator = new saValidatorImageFile(array('required' => false));
         try
         {
           $obj = $validator->clean($imageFile);
@@ -258,7 +258,7 @@ class activityActions extends opJsonApiActions
 
   public function executeMentions(sfWebRequest $request)
   {
-    $builder = opActivityQueryBuilder::create()
+    $builder = saActivityQueryBuilder::create()
       ->setViewerId($this->getUser()->getMemberId())
       ->includeMentions();
 

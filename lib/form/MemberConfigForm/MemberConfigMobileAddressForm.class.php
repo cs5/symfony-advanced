@@ -25,7 +25,7 @@ class MemberConfigMobileAddressForm extends MemberConfigForm
 
     if (sfConfig::get('sa_is_use_captcha', false))
     {
-      $this->embedForm('captcha', new opCaptchaForm());
+      $this->embedForm('captcha', new saCaptchaForm());
     }
   }
 
@@ -55,7 +55,7 @@ class MemberConfigMobileAddressForm extends MemberConfigForm
       'subject' => 'メールアドレス変更ページのお知らせ',
     ), $params);
 
-    opMailSend::sendTemplateMail('changeMailAddress', $to, opConfig::get('admin_mail_address'), $params);
+    saMailSend::sendTemplateMail('changeMailAddress', $to, saConfig::get('admin_mail_address'), $params);
   }
 
   public function getCompleteMessage()

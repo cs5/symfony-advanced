@@ -4,9 +4,9 @@ include_once dirname(__FILE__) . '/../../bootstrap/unit.php';
 
 $t = new lime_test(84, new lime_output_color());
 
-$v = new opValidatorDate();
+$v = new saValidatorDate();
 
-$t->diag('opValidatorDate');
+$t->diag('saValidatorDate');
 
 // clean
 $t->diag('->clean()');
@@ -166,7 +166,7 @@ $v->setOption('datetime_output', 'U');
 $v->setOption('with_time', true);
 $t->is($v->clean('1989-01-08 00:00:00'), strtotime('1989-01-08 00:00:00'), '->clean() output format can be change with the date_output option');
 
-$v = new opValidatorDate();
+$v = new saValidatorDate();
 
 // max and min options
 $t->diag('max and min options');
@@ -214,7 +214,7 @@ catch (sfValidatorError $e)
 
 // required = true, isEmpty() = true
 $t->diag('required = true, isEmpty() = true');
-$v = new opValidatorDate();
+$v = new saValidatorDate();
 
 foreach (array(
   array('year' => '', 'month' => '', 'day' => ''),
@@ -259,7 +259,7 @@ foreach (array(
 
 // required = false, isEmpty() = true
 $t->diag('required = false, isEmpty() = true');
-$v = new opValidatorDate();
+$v = new saValidatorDate();
 $v->setOption('required', false);
 
 foreach (array(
@@ -304,7 +304,7 @@ foreach (array(
 
 // required = true, isEmpty() = false
 $t->diag('required = true, isEmpty() = false');
-$v = new opValidatorDate();
+$v = new saValidatorDate();
 $v->setOption('empty_value', new DateTime('1989-01-08'));
 
 foreach (array(

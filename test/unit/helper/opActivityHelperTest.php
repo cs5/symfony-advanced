@@ -8,10 +8,10 @@ $_SERVER['SCRIPT_NAME']  = '/index.php';
 $_SERVER['HTTP_REFERER'] = 'http://sns.example.com/';
 
 sfContext::createInstance($configuration);
-opToolkit::clearCache();
+saToolkit::clearCache();
 include_once dirname(__FILE__) . '/../model/doctrine/fixtures/TestActivityTemplateConfigHandler.php';
 include_once sfConfig::get('sf_lib_dir').'/vendor/symfony/lib/helper/HelperHelper.php';
-use_helper('I18N', 'Tag', 'Url', 'opUtil', 'opActivity');
+use_helper('I18N', 'Tag', 'Url', 'saUtil', 'saActivity');
 
 $t = new lime_test(18, new lime_output_color());
 

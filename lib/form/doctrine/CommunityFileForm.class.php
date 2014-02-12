@@ -50,7 +50,7 @@ class CommunityFileForm extends BaseForm
     }
 
     $this->setWidget('file', new sfWidgetFormInputFileEditable($options, array('size' => 40)));
-    $this->setValidator('file', new opValidatorImageFile(array('required' => false)));
+    $this->setValidator('file', new saValidatorImageFile(array('required' => false)));
 
     $this->widgetSchema->setLabel('file', 'Photo');
 

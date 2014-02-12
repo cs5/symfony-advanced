@@ -70,13 +70,13 @@ EOF;
 
       if ($dbms !== 'sqlite')
       {
-        $username = $this->askAndValidate(array('Type database username'), new opValidatorString(), array('style' => 'QUESTION_LARGE'));
-        $password = $this->askAndValidate(array('Type database password (optional)'), new opValidatorString(array('required' => false)), array('style' => 'QUESTION_LARGE'));
-        $hostname = $this->askAndValidate(array('Type database hostname'), new opValidatorString(), array('style' => 'QUESTION_LARGE'));
+        $username = $this->askAndValidate(array('Type database username'), new saValidatorString(), array('style' => 'QUESTION_LARGE'));
+        $password = $this->askAndValidate(array('Type database password (optional)'), new saValidatorString(array('required' => false)), array('style' => 'QUESTION_LARGE'));
+        $hostname = $this->askAndValidate(array('Type database hostname'), new saValidatorString(), array('style' => 'QUESTION_LARGE'));
         $port = $this->askAndValidate(array('Type database port number (optional)'), new sfValidatorInteger(array('required' => false)), array('style' => 'QUESTION_LARGE'));
       }
 
-      $dbname = $this->askAndValidate(array('Type database name'), new opValidatorString(), array('style' => 'QUESTION_LARGE'));
+      $dbname = $this->askAndValidate(array('Type database name'), new saValidatorString(), array('style' => 'QUESTION_LARGE'));
       if ($dbms == 'sqlite')
       {
         $dbname = realpath(dirname($dbname)).DIRECTORY_SEPARATOR.basename($dbname);
@@ -84,7 +84,7 @@ EOF;
 
       if ($dbms == 'mysql' && ($hostname == 'localhost' || $hostname == '127.0.0.1'))
       {
-        $sock = $this->askAndValidate(array('Type database socket path (optional)'), new opValidatorString(array('required' => false)), array('style' => 'QUESTION_LARGE'));
+        $sock = $this->askAndValidate(array('Type database socket path (optional)'), new saValidatorString(array('required' => false)), array('style' => 'QUESTION_LARGE'));
       }
 
       if (!$password)
@@ -143,7 +143,7 @@ EOF;
     }
     else
     {
-      new opPluginManager($this->dispatcher, null, null);
+      new saPluginManager($this->dispatcher, null, null);
     }
     @$this->fixPerms();
     @$this->clearCache();
@@ -381,7 +381,7 @@ EOF;
 
   protected function installPlugins()
   {
-    $task = new opPluginSyncTask($this->dispatcher, $this->formatter);
+    $task = new saPluginSyncTask($this->dispatcher, $this->formatter);
     $task->run();
   }
 

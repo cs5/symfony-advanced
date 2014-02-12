@@ -5,7 +5,7 @@ $options->setDefault('method','post');
 $options->setDefault('mark_required_field', true);
 ?>
 
-<?php if ($options['form'] instanceof opAuthRegisterForm): ?>
+<?php if ($options['form'] instanceof saAuthRegisterForm): ?>
 <?php echo $options['form']->renderFormTag($options['url'], array('method' => $options['method'])) ?>
 <?php $forms = $options['form']->getAllForms() ?>
 <?php else: ?>
@@ -30,10 +30,10 @@ foreach ($form as $name => $field)
 
   if ($widget instanceof sfWidgetFormInputPassword)
   {
-    $widget = opToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
+    $widget = saToolkit::appendMobileInputModeAttributesForFormWidget($widget, 'alphabet');
   }
 
-  if ($widget instanceof opWidgetFormProfile)
+  if ($widget instanceof saWidgetFormProfile)
   {
     $widget = $widget->getOption('widget');
     $validator = $validator->getOption('validator');
@@ -45,7 +45,7 @@ foreach ($form as $name => $field)
     {
       $widget->setOption('renderer_options', 
         array_merge(array(
-          'formatter' => array('opWidgetFormSelectFormatterMobile', 'formatter'),
+          'formatter' => array('saWidgetFormSelectFormatterMobile', 'formatter'),
           'separator' => "<br>\n"
         ), $widget->getOption('renderer_options'))
       );
@@ -53,7 +53,7 @@ foreach ($form as $name => $field)
   }
   elseif ($widget instanceof sfWidgetFormSelectRadio || $widget instanceof sfWidgetFormSelectCheckbox)
   {
-    $widget->setOption('formatter', array('opWidgetFormSelectFormatterMobile', 'formatter'));
+    $widget->setOption('formatter', array('saWidgetFormSelectFormatterMobile', 'formatter'));
     $widget->setOption('separator', "<br>\n");
   }
 
@@ -62,7 +62,7 @@ foreach ($form as $name => $field)
     && !($validator instanceof sfValidatorSchema)
     && $validator->getOption('required'))
   {
-    echo sprintf('<font color="%s">*</font>', opColorConfig::get('core_color_22'));
+    echo sprintf('<font color="%s">*</font>', saColorConfig::get('core_color_22'));
     $hasRequiredField = true;
   }
 
@@ -73,8 +73,8 @@ foreach ($form as $name => $field)
 <?php end_slot(); ?>
 
 <?php if ($hasRequiredField): ?>
-<?php echo __('%0% is required field.', array('%0%' => sprintf('<font color="%s">*</font>', opColorConfig::get('core_color_22')))) ?>
-<hr color="<?php echo opColorConfig::get('core_color_11') ?>">
+<?php echo __('%0% is required field.', array('%0%' => sprintf('<font color="%s">*</font>', saColorConfig::get('core_color_22')))) ?>
+<hr color="<?php echo saColorConfig::get('core_color_11') ?>">
 <?php endif; ?>
 
 <?php slot('form_global_error') ?>

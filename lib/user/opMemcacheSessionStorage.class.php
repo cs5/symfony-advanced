@@ -9,13 +9,13 @@
  */
 
 /**
- * opMemcacheSessionStorage
+ * saMemcacheSessionStorage
  *
  * @package    SfAdvanced
  * @subpackage user
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opMemcacheSessionStorage extends sfSessionStorage
+class saMemcacheSessionStorage extends sfSessionStorage
 {
   protected $memcache = null;
 

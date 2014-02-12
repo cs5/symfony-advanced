@@ -9,7 +9,7 @@
  */
 
 /**
- * opJsonApiHelper
+ * saJsonApiHelper
  *
  * @package    SfAdvanced
  * @subpackage helper
@@ -58,7 +58,7 @@ function sa_api_member_profile_url($memberId)
 
 function sa_api_activity($activity)
 {
-  use_helper('opActivity');
+  use_helper('saActivity');
 
   $viewMemberId = sfContext::getInstance()->getUser()->getMemberId();
   $member = $activity->getMember();

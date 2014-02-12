@@ -9,13 +9,13 @@
  */
 
 /**
- * opValidatorPCEmail validates PC emails.
+ * saValidatorPCEmail validates PC emails.
  *
  * @package    SfAdvanced
  * @subpackage validator
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opValidatorPCEmail extends sfValidatorEmail
+class saValidatorPCEmail extends sfValidatorEmail
 {
   protected function configure($options = array(), $messages = array())
   {
@@ -30,7 +30,7 @@ class opValidatorPCEmail extends sfValidatorEmail
   {
     $clean = parent::doClean($value);
 
-    if (opToolkit::isMobileEmailAddress($clean))
+    if (saToolkit::isMobileEmailAddress($clean))
     {
       throw new sfValidatorError($this, 'invalid', array('value' => $value));
     }

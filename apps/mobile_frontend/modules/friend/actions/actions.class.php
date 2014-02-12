@@ -15,14 +15,14 @@
  * @subpackage friend
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class friendActions extends opFriendAction
+class friendActions extends saFriendAction
 {
   /**
    * Executes list action
    *
-   * @param opWebRequest $request a request object
+   * @param saWebRequest $request a request object
    */
-  public function executeList(opWebRequest $request)
+  public function executeList(saWebRequest $request)
   {
     $this->size = 10;
 
@@ -32,9 +32,9 @@ class friendActions extends opFriendAction
  /**
   * Execute show activities action
   *
-  * @param opWebRequest $request a request object
+  * @param saWebRequest $request a request object
   */
-  public function executeShowActivity(opWebRequest $request)
+  public function executeShowActivity(saWebRequest $request)
   {
     $this->size = 10;
 

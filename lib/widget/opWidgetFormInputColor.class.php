@@ -9,13 +9,13 @@
  */
 
 /**
- * opWidgetFormInputColor represents a color widget.
+ * saWidgetFormInputColor represents a color widget.
  *
  * @package    SfAdvanced
  * @subpackage widget
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class opWidgetFormInputColor extends sfWidgetFormInputText
+class saWidgetFormInputColor extends sfWidgetFormInputText
 {
   protected function configure($options = array(), $attributes = array())
   {

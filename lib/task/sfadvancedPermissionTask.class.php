@@ -11,7 +11,7 @@
 class sfadvancedPermissionTask extends sfProjectPermissionsTask
 {
   protected
-    $opFailed  = array();
+    $saFailed  = array();
 
   protected function configure()
   {
@@ -44,7 +44,7 @@ EOF;
     $this->chmod($webCacheDir, 0777);
 
     // note those files that failed
-    if (count($this->opFailed))
+    if (count($this->saFailed))
     {
       if ('prod' === $options['env'])
       {
@@ -59,7 +59,7 @@ EOF;
       {
         $this->logBlock(array_merge(
           array('Permissions on the following file(s) could not be fixed:', ''),
-          array_map(create_function('$f', 'return \' - \'.sfDebug::shortenFilePath($f);'), $this->opFailed)
+          array_map(create_function('$f', 'return \' - \'.sfDebug::shortenFilePath($f);'), $this->saFailed)
         ), 'ERROR_LARGE');
       }
     }
@@ -67,6 +67,6 @@ EOF;
 
   public function handleError($no, $string, $file, $line, $context)
   {
-    $this->opFailed[] = $this->current;
+    $this->saFailed[] = $this->current;
   }
 }

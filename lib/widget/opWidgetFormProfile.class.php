@@ -9,13 +9,13 @@
  */
 
 /**
- * opWidgetFormProfile is widget to edit member's profiles.
+ * saWidgetFormProfile is widget to edit member's profiles.
  *
  * @package    SfAdvanced
  * @subpackage widget
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
-class opWidgetFormProfile extends sfWidgetForm
+class saWidgetFormProfile extends sfWidgetForm
 {
   /**
    * Constructor.

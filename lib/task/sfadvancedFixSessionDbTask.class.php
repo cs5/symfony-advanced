@@ -43,7 +43,7 @@ EOF;
 
     $this->logSection('fix-session-db', 'Now changing definition of your session table structure');
 
-    $conn = opDoctrineQuery::getMasterConnectionDirect();
+    $conn = saDoctrineQuery::getMasterConnectionDirect();
     $conn->export->alterTable('session', array(
       'change' => array(
         'id' => array(
