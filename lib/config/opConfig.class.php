@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -11,7 +11,7 @@
 /**
  * opConfig is a wrapper class to handle SnsConfig
  *
- * @package    OpenPNE
+ * @package    SfAdvanced
  * @subpackage config
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
@@ -19,7 +19,7 @@ class opConfig extends sfConfig implements ArrayAccess
 {
   protected static function getConfigurationSetting()
   {
-    return parent::$config['openpne_sns_config'];
+    return parent::$config['sfadvanced_sns_config'];
   }
 
   protected static function getDefaultValue($name)

@@ -8,7 +8,7 @@ $t = new lime_test(6);
 $t->diag('opConfig::get()');
 
 // 'Default' is not defined
-sfConfig::set('openpne_sns_config', array(
+sfConfig::set('sfadvanced_sns_config', array(
   'foo' => array(),
 ));
 
@@ -19,7 +19,7 @@ Doctrine_Core::getTable('SnsConfig')->set('foo', 'tetete');
 $t->is(opConfig::get('foo', null), 'tetete');
 
 // 'Default' is defined
-sfConfig::set('openpne_sns_config', array(
+sfConfig::set('sfadvanced_sns_config', array(
   'bar' => array('Default' => 'hogehoge'),
 ));
 

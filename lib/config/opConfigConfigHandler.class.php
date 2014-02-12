@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -11,7 +11,7 @@
 /**
  * opConfigConfigHandler
  *
- * @package    OpenPNE
+ * @package    SfAdvanced
  * @subpackage config
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
@@ -20,7 +20,7 @@ class opConfigConfigHandler extends sfYamlConfigHandler
   public function execute($configFiles)
   {
     // get our prefix
-    $prefix = strtolower($this->getParameterHolder()->get('prefix', 'openpne_'));
+    $prefix = strtolower($this->getParameterHolder()->get('prefix', 'sfadvanced_'));
 
     $config = $this->parseYamls($configFiles);
 

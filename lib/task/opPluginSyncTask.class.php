@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -109,7 +109,7 @@ EOF;
 
     try
     {
-      $client = new Zend_Http_Client(opPluginManager::getPluginListBaseUrl().OPENPNE_VERSION.'.yml', $config);
+      $client = new Zend_Http_Client(opPluginManager::getPluginListBaseUrl().SFADVANCED_VERSION.'.yml', $config);
       $response = $client->request();
 
       if ($response->isSuccessful())

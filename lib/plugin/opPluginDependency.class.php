@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -11,7 +11,7 @@
 /**
  * The opPluginDependency class
  *
- * @package    OpenPNE
+ * @package    SfAdvanced
  * @subpackage plugin
  * @author     Kousuke Ebihara <ebihara@php.net>
  */
@@ -31,27 +31,27 @@ class opPluginDependency extends PEAR_Dependency2
       return true;
     }
 
-    if ('openpne' === strtolower($dep['name']))
+    if ('sfadvanced' === strtolower($dep['name']))
     {
       $extra = $this->_getExtraString($dep);
 
-      if (isset($dep['min']) && !version_compare(OPENPNE_VERSION, $dep['min'], '>='))
+      if (isset($dep['min']) && !version_compare(SFADVANCED_VERSION, $dep['min'], '>='))
       {
-        return $this->handleOpenPNEDependencyError('%s requires OpenPNE'.$extra.', installed version is '.OPENPNE_VERSION);
+        return $this->handleSfAdvancedDependencyError('%s requires SfAdvanced'.$extra.', installed version is '.SFADVANCED_VERSION);
       }
 
-      if (isset($dep['max']) && !version_compare(OPENPNE_VERSION, $dep['max'], '<='))
+      if (isset($dep['max']) && !version_compare(SFADVANCED_VERSION, $dep['max'], '<='))
       {
-        return $this->handleOpenPNEDependencyError('%s requires OpenPNE'.$extra.', installed version is '.OPENPNE_VERSION);
+        return $this->handleSfAdvancedDependencyError('%s requires SfAdvanced'.$extra.', installed version is '.SFADVANCED_VERSION);
       }
 
       if (isset($dep['exclude']))
       {
         foreach ((array)$dep['exclude'] as $exclude)
         {
-          if (version_compare(OPENPNE_VERSION, $exclude, '=='))
+          if (version_compare(SFADVANCED_VERSION, $exclude, '=='))
           {
-            return $this->handleOpenPNEDependencyError('%s is not compatible with OpenPNE version '.$exclude);
+            return $this->handleSfAdvancedDependencyError('%s is not compatible with SfAdvanced version '.$exclude);
           }
         }
       }
@@ -102,7 +102,7 @@ class opPluginDependency extends PEAR_Dependency2
     return $result;
   }
 
-  protected function handleOpenPNEDependencyError($message)
+  protected function handleSfAdvancedDependencyError($message)
   {
     $_message = ' '.ucfirst(sprintf($message, 'this plugin'));
 

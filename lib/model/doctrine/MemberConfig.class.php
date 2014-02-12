@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -101,7 +101,7 @@ class MemberConfig extends BaseMemberConfig implements opAccessControlRecordInte
 
   public function getSetting()
   {
-    $config = sfConfig::get('openpne_member_config');
+    $config = sfConfig::get('sfadvanced_member_config');
 
     $name = $this->getName();
     if (!$name)

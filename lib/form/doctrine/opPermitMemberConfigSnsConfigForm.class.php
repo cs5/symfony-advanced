@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -11,7 +11,7 @@
 /**
  * opPermitMemberConfigSnsConfig form.
  *
- * @package    OpenPNE
+ * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
@@ -21,8 +21,8 @@ class opPermitMemberConfigSnsConfigForm extends BaseForm
   {
     $choices = array();
 
-    $categories = sfConfig::get('openpne_member_category');
-    $categoryAttributes = sfConfig::get('openpne_member_category_attribute');
+    $categories = sfConfig::get('sfadvanced_member_category');
+    $categoryAttributes = sfConfig::get('sfadvanced_member_category_attribute');
 
     foreach ($categories as $key => $value)
     {

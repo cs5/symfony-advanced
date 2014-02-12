@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the OpenPNE package.
- * (c) OpenPNE Project (http://www.openpne.jp/)
+ * This file is part of the SfAdvanced package.
+ * (c) SfAdvanced Project (http://www.sfadvanced.jp/)
  *
  * For the full copyright and license information, please view the LICENSE
  * file and the NOTICE file that were distributed with this source code.
@@ -11,7 +11,7 @@
 /**
  * sns actions.
  *
- * @package    OpenPNE
+ * @package    SfAdvanced
  * @subpackage sns
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
@@ -25,7 +25,7 @@ class snsActions extends sfActions
   public function executeConfig(sfWebRequest $request)
   {
     $this->category = $request->getParameter('category', 'general');
-    $this->categoryAttributes = sfConfig::get('openpne_sns_category_attribute');
+    $this->categoryAttributes = sfConfig::get('sfadvanced_sns_category_attribute');
 
     $this->forward404If(!empty($this->categoryAttributes[$this->category]['Hidden']));
 

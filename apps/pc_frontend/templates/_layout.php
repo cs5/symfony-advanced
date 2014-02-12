@@ -23,7 +23,7 @@ $jsonData = array(
 );
 
 echo javascript_tag('
-var openpne = '.json_encode($jsonData).';
+var sfadvanced = '.json_encode($jsonData).';
 ');
 ?>
 <?php endif ?>
@@ -107,7 +107,7 @@ include_component('default', 'localNav', $localNavOptions);
 <a href="javascript:void(0)" id="SmtSwitchLink"><?php echo __('View this page on smartphone style') ?></a>
 <?php echo javascript_tag('
 document.getElementById("SmtSwitchLink").addEventListener("click", function() {
-  opCookie.set("disable_smt", "0", undefined, openpne.baseUrl);
+  opCookie.set("disable_smt", "0", undefined, sfadvanced.baseUrl);
   location.reload();
 }, false);
 ') ?>
