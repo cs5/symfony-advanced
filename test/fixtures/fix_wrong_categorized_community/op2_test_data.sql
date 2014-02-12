@@ -40,7 +40,7 @@ CREATE TABLE `c_commu` (
   `is_topic` enum('member','admin_only','public') NOT NULL DEFAULT 'member',
   `is_comment` enum('member','public') NOT NULL DEFAULT 'member',
   `topic_authority` enum('public','admin_only') NOT NULL DEFAULT 'public',
-  `public_flag` enum('public','auth_public','auth_sns','auth_commu_member') NOT NULL DEFAULT 'public',
+  `public_flag` enum('public','auth_public','auth_site','auth_commu_member') NOT NULL DEFAULT 'public',
   PRIMARY KEY (`c_commu_id`),
   KEY `c_commu_category_id` (`c_commu_category_id`),
   KEY `c_member_id_admin` (`c_member_id_admin`),

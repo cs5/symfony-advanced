@@ -19,7 +19,7 @@ class saConfig extends sfConfig implements ArrayAccess
 {
   protected static function getConfigurationSetting()
   {
-    return parent::$config['sfadvanced_sns_config'];
+    return parent::$config['sfadvanced_site_config'];
   }
 
   protected static function getDefaultValue($name)

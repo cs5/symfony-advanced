@@ -312,8 +312,8 @@ class designActions extends sfActions
       'mobile_footer'    => 'HTML Insertion Area (in page footer)',
     );
 
-    $snsConfigSettings = sfConfig::get('sfadvanced_sns_config');
-    $default = isset($snsConfigSettings[$this->type]['Default']) ? $snsConfigSettings[$this->type]['Default'] : null;
+    $siteConfigSettings = sfConfig::get('sfadvanced_site_config');
+    $default = isset($siteConfigSettings[$this->type]['Default']) ? $siteConfigSettings[$this->type]['Default'] : null;
 
     $this->form = new saDesignHtmlForm(array('html' => Doctrine::getTable('SnsConfig')->get($this->type, $default)), array('type' => $this->type));
     if ($request->isMethod(sfRequest::POST))

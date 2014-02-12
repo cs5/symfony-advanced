@@ -136,7 +136,7 @@ class saRequestRegisterURLForm extends BaseForm
     $params = array(
       'token'    => $token,
       'authMode' => 'MailAddress',
-      'subject' => saConfig::get('sns_name').'招待状',
+      'subject' => saConfig::get('site_name').'招待状',
     );
     saMailSend::sendTemplateMail('notifyRegisterURL', $address, saConfig::get('admin_mail_address'), $params);
   }

@@ -86,7 +86,7 @@ class MemberConfigMailForm extends MemberConfigForm
     $dayNames[] = $sun;
 
     $day = saConfig::get('daily_news_day');
-    $config = sfConfig::get('sfadvanced_sns_config');
+    $config = sfConfig::get('sfadvanced_site_config');
     $i18n = sfContext::getInstance()->getI18N();
 
     foreach ($day as $v)

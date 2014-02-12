@@ -19,8 +19,8 @@ class SnsConfigForm extends BaseForm
 {
   public function configure()
   {
-    $snsConfig = sfConfig::get('sfadvanced_sns_config');
-    $category = sfConfig::get('sfadvanced_sns_category');
+    $siteConfig = sfConfig::get('sfadvanced_site_config');
+    $category = sfConfig::get('sfadvanced_site_category');
     if (empty($category[$this->getOption('category')]))
     {
       return false;
@@ -28,17 +28,17 @@ class SnsConfigForm extends BaseForm
 
     foreach ($category[$this->getOption('category')] as $configName)
     {
-      if (empty($snsConfig[$configName]))
+      if (empty($siteConfig[$configName]))
       {
         continue;
       }
 
-      $this->setWidget($configName, saFormItemGenerator::generateWidget($snsConfig[$configName]));
-      $this->setValidator($configName, saFormItemGenerator::generateValidator($snsConfig[$configName]));
-      $this->widgetSchema->setLabel($configName, $snsConfig[$configName]['Caption']);
-      if (isset($snsConfig[$configName]['Help']))
+      $this->setWidget($configName, saFormItemGenerator::generateWidget($siteConfig[$configName]));
+      $this->setValidator($configName, saFormItemGenerator::generateValidator($siteConfig[$configName]));
+      $this->widgetSchema->setLabel($configName, $siteConfig[$configName]['Caption']);
+      if (isset($siteConfig[$configName]['Help']))
       {
-        $this->widgetSchema->setHelp($configName, $snsConfig[$configName]['Help']);
+        $this->widgetSchema->setHelp($configName, $siteConfig[$configName]['Help']);
       }
 
       $value = saConfig::get($configName);
@@ -50,22 +50,22 @@ class SnsConfigForm extends BaseForm
       $this->setDefault($configName, $value);
     }
 
-    $this->widgetSchema->setNameFormat('sns_config[%s]');
+    $this->widgetSchema->setNameFormat('site_config[%s]');
   }
 
   public function save()
   {
-    $config = sfConfig::get('sfadvanced_sns_config');
+    $config = sfConfig::get('sfadvanced_site_config');
     foreach ($this->getValues() as $key => $value)
     {
-      $snsConfig = Doctrine::getTable('SnsConfig')->retrieveByName($key);
-      if (!$snsConfig)
+      $siteConfig = Doctrine::getTable('SnsConfig')->retrieveByName($key);
+      if (!$siteConfig)
       {
-        $snsConfig = new SnsConfig();
-        $snsConfig->setName($key);
+        $siteConfig = new SnsConfig();
+        $siteConfig->setName($key);
       }
-      $snsConfig->setValue($value);
-      $snsConfig->save();
+      $siteConfig->setValue($value);
+      $siteConfig->save();
     }
   }
 }

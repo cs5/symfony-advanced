@@ -23,7 +23,7 @@
  from <?php echo link_to_if($activity->getSourceUri(), $activity->getSource(), $activity->getSourceUri()) ?>
 <?php endif; ?>
 </span>
-<?php if ($activity->getPublicFlag() != ActivityDataTable::PUBLIC_FLAG_SNS): ?>
+<?php if ($activity->getPublicFlag() != ActivityDataTable::PUBLIC_FLAG_SITE): ?>
 <span class="public_flag"><?php echo __('Public flag') ?> : <?php echo $activity->getPublicFlagCaption() ?></span>
 <?php endif; ?>
 </span>

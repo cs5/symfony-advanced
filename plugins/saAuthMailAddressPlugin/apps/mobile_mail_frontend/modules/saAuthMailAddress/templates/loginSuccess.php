@@ -1,4 +1,4 @@
-<?php $sf_context->getResponse()->setTitle(__('[%1%]Information of login page', array('%1%' => $sa_config['sns_name']))); ?>
+<?php $sf_context->getResponse()->setTitle(__('[%1%]Information of login page', array('%1%' => $sa_config['site_name']))); ?>
 <?php echo __('Please access the following URL to login.') ?>
 
 <?php $_SERVER['SCRIPT_NAME'] = '/index.php' ?>

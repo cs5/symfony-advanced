@@ -50,7 +50,7 @@ EOF;
       {
         $this->logBlock(array(
           'Permissions on some files could not be fixed.',
-          'You may fix this problem for accessing "/pc_backend.php/sns/cache" via your web browser.',
+          'You may fix this problem for accessing "/pc_backend.php/site/cache" via your web browser.',
           '',
           'If you want to get more information, please execute "./symfony sfadvanced:permission --env=dev".'
         ), 'INFO_LARGE');

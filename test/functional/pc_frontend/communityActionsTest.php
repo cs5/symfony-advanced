@@ -29,7 +29,7 @@ if (class_exists('saCommunityTopicAclBuilder'))
 {
   saCommunityTopicAclBuilder::clearCache();
 }
-$user->login('sns4@example.com', 'password');
+$user->login('site4@example.com', 'password');
 $user
 ->info('2. Testing Community Member')
 ->info('public_flag: public')
@@ -55,12 +55,12 @@ if (class_exists('saCommunityTopicAclBuilder'))
 {
   saCommunityTopicAclBuilder::clearCache();
 }
-$user->login('sns5@example.com', 'password');
+$user->login('site5@example.com', 'password');
 $user
-->info('3. Testing SNS Member')
+->info('3. Testing Site Member')
 ->info('public_flag: public')
 ->get('/community/2')
-  ->info('3-1. SNS Member can access the community home')
+  ->info('3-1. Site Member can access the community home')
   ->with('request')->begin()
     ->isParameter('module', 'community')
     ->isParameter('action', 'home')
@@ -68,7 +68,7 @@ $user
   ->with('response')->isStatusCode(200)
 ->info('public_flag: open')
 ->get('/community/3')
-  ->info('3-2. SNS Member can access the community home')
+  ->info('3-2. Site Member can access the community home')
   ->with('request')->begin()
     ->isParameter('module', 'community')
     ->isParameter('action', 'home')
@@ -76,7 +76,7 @@ $user
   ->with('response')->isStatusCode(200)
 ;
 
-$user->login('sns@example.com', 'password');
+$user->login('site@example.com', 'password');
 $user
   ->info('community/search')
   ->get('/community/search')
@@ -114,12 +114,12 @@ $user
   ->post('community/delete/1', array('is_delete' => 1))
   ->checkCSRF()
 
-  ->login('sns2@example.com', 'password')
+  ->login('site2@example.com', 'password')
   ->info('/community/quit?id=1 - CSRF')
   ->post('/community/quit?id=1')
   ->checkCSRF()
 
-  ->login('sns3@example.com', 'password')
+  ->login('site3@example.com', 'password')
   ->info('/community/join?id=1 - CSRF')
   ->post('/community/join?id=1', array('community_join' => array()))
   ->checkCSRF()
@@ -200,7 +200,7 @@ $user
     ->isAllEscapedData('Community', 'name')
   ->end()
 
-  ->login('sns@example.com', 'password')
+  ->login('site@example.com', 'password')
 
   ->info('/community/join?id=1055 - XSS')
   ->get('/community/join?id=1055')

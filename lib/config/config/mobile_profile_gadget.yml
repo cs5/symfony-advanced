@@ -55,7 +55,7 @@ activityBox:
   caption:
     ja_JP: "アクティビティ"
   description:
-    ja_JP: "SNS上での活動記録を表示します"
+    ja_JP: "Site上での活動記録を表示します"
   component: [member, activityBox]
   config:
     row:

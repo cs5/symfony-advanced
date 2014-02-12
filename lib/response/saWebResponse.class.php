@@ -105,7 +105,7 @@ class saWebResponse extends sfWebResponse
     $result = parent::getTitle();
     if (!$result)
     {
-      $result = saConfig::get('sns_title') ? saConfig::get('sns_title') : saConfig::get('sns_name');
+      $result = saConfig::get('site_title') ? saConfig::get('site_title') : saConfig::get('site_name');
     }
 
     return $result;

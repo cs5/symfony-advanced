@@ -7,7 +7,7 @@ $browser->setMobile();
 
 include dirname(__FILE__).'/../../bootstrap/database.php';
 
-$browser->login('sns@example.com', 'password');
+$browser->login('site@example.com', 'password');
 $browser->setCulture('en');
 
 $browser->get('/')

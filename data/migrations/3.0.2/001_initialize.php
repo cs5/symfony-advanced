@@ -37,7 +37,7 @@ class initialize extends saMigration
       $syntaxErrorCode = 42;
 
       // do nothing when the error is "already exists" because it is caused the following reasons:
-      //   * the SNS has been created or rebuilt on since 3.0.1
+      //   * the Site has been created or rebuilt on since 3.0.1
       //   * the "sfadvanced:update" task has been executed
       if ($e->getCode() != $syntaxErrorCode)
       {

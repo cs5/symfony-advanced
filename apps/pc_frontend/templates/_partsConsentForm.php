@@ -34,7 +34,7 @@ $options->setDefault('allow_image_filename', 'consent_allow1.gif');
 <?php echo $options->consent_to ?>
 </div>
 <div id="whoami">
-<p><strong><?php echo __('You are login to %1% as:', array('%1%' => $sa_config['sns_name'])) ?></strong></p>
+<p><strong><?php echo __('You are login to %1% as:', array('%1%' => $sa_config['site_name'])) ?></strong></p>
 <p class="photo">
 <?php $imgParam = array('size' => '76x76', 'alt' => $sf_user->getMember()->getName()) ?>
 <?php if ($sf_user->getMember()): ?>

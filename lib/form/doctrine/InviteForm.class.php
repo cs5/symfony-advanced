@@ -137,7 +137,7 @@ class InviteForm extends MemberConfigPcAddressForm
       'isMobile' => saToolkit::isMobileEmailAddress($to),
       'name'     => $this->getOption('invited') ? sfContext::getInstance()->getUser()->getMember()->getName() : null,
       'message'  => $this->getOption('invited') ? $this->getValue('message') : null,
-      'subject' => saConfig::get('sns_name').'招待状',
+      'subject' => saConfig::get('site_name').'招待状',
     );
     saMailSend::sendTemplateMail('requestRegisterURL', $to, saConfig::get('admin_mail_address'), $params);
   }

@@ -9,13 +9,13 @@
  */
 
 /**
- * sns actions.
+ * site actions.
  *
  * @package    SfAdvanced
- * @subpackage sns
+ * @subpackage site
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class snsActions extends sfActions
+class siteActions extends sfActions
 {
  /**
   * Executes config action
@@ -25,7 +25,7 @@ class snsActions extends sfActions
   public function executeConfig(sfWebRequest $request)
   {
     $this->category = $request->getParameter('category', 'general');
-    $this->categoryAttributes = sfConfig::get('sfadvanced_sns_category_attribute');
+    $this->categoryAttributes = sfConfig::get('sfadvanced_site_category_attribute');
 
     $this->forward404If(!empty($this->categoryAttributes[$this->category]['Hidden']));
 
@@ -41,12 +41,12 @@ class snsActions extends sfActions
 
     if ($request->isMethod('post'))
     {
-      $this->form->bind($request->getParameter('sns_config'));
+      $this->form->bind($request->getParameter('site_config'));
       if ($this->form->isValid())
       {
         $this->form->save();
         $this->getUser()->setFlash('notice', 'Saved.');
-        $this->redirect('sns/config?category='.$this->category);
+        $this->redirect('site/config?category='.$this->category);
       }
 
       $this->getUser()->setFlash('error', 'Failed to save.', false);
@@ -69,7 +69,7 @@ class snsActions extends sfActions
       {
         $this->form->save();
         $this->getUser()->setFlash('notice', 'Saved.');
-        $this->redirect('sns/term');
+        $this->redirect('site/term');
       }
     }
   }
@@ -109,7 +109,7 @@ class snsActions extends sfActions
       saToolkit::clearCache();
 
       $this->getUser()->setFlash('notice', 'Caches are now cleared.');
-      $this->redirect('sns/cache');
+      $this->redirect('site/cache');
     }
   }
 }

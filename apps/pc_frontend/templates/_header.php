@@ -1,4 +1,4 @@
-<h1><?php echo link_to($sa_config['sns_name'], '@homepage') ?></h1>
+<h1><?php echo link_to($sa_config['site_name'], '@homepage') ?></h1>
 
 <?php if(saToolkit::isSecurePage()): ?>
 <div id="notificationCenter">
@@ -66,7 +66,7 @@ include_component('default', 'globalNav', $globalNavOptions);
 </div><!-- globalNav -->
 
 <div id="topBanner">
-<?php if ($sf_user->isSNSMember()): ?>
+<?php if ($sf_user->isSiteMember()): ?>
 <?php echo sa_banner('top_after') ?>
 <?php else: ?>
 <?php echo sa_banner('top_before') ?>

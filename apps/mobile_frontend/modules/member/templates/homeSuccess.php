@@ -79,7 +79,7 @@ foreach ($categories as $key => $value)
   }
 }
 $list[] = link_to(__('Setting easy login'), 'member/configUID');
-$list[] = link_to(__('Delete your %1% account', array('%1%' => $sa_config['sns_name'])), 'member/delete');
+$list[] = link_to(__('Delete your %1% account', array('%1%' => $sa_config['site_name'])), 'member/delete');
 sa_include_list('configEdit', $list, array('title' => __('Settings')));
 ?>
 

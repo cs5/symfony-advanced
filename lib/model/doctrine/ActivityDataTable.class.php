@@ -18,13 +18,13 @@
 class ActivityDataTable extends Doctrine_Table
 {
   const PUBLIC_FLAG_OPEN    = 0;
-  const PUBLIC_FLAG_SNS     = 1;
+  const PUBLIC_FLAG_SITE     = 1;
   const PUBLIC_FLAG_FRIEND  = 2;
   const PUBLIC_FLAG_PRIVATE = 3;
 
   protected static $publicFlags = array(
     self::PUBLIC_FLAG_OPEN    => 'All Users on the Web',
-    self::PUBLIC_FLAG_SNS     => 'All Members',
+    self::PUBLIC_FLAG_SITE     => 'All Members',
     self::PUBLIC_FLAG_FRIEND  => '%my_friend%',
     self::PUBLIC_FLAG_PRIVATE => 'Private',
   );
@@ -189,8 +189,8 @@ class ActivityDataTable extends Doctrine_Table
         $flags[] = self::PUBLIC_FLAG_PRIVATE;
       case self::PUBLIC_FLAG_FRIEND:
         $flags[] = self::PUBLIC_FLAG_FRIEND;
-      case self::PUBLIC_FLAG_SNS:
-        $flags[] = self::PUBLIC_FLAG_SNS;
+      case self::PUBLIC_FLAG_SITE:
+        $flags[] = self::PUBLIC_FLAG_SITE;
       case self::PUBLIC_FLAG_OPEN:
         $flags[] = self::PUBLIC_FLAG_OPEN;
         break;
@@ -317,7 +317,7 @@ class ActivityDataTable extends Doctrine_Table
       {
         $flag = self::PUBLIC_FLAG_FRIEND;
       }
-      $flag = self::PUBLIC_FLAG_SNS;
+      $flag = self::PUBLIC_FLAG_SITE;
     }
 
     $q->andWhere('member_id = ?', $memberId);
@@ -368,7 +368,7 @@ class ActivityDataTable extends Doctrine_Table
 
   public function addAllMemberActivityQuery($q, $isCheckApp = true)
   {
-    $q->whereIn('public_flag', array(self::PUBLIC_FLAG_OPEN, self::PUBLIC_FLAG_SNS));
+    $q->whereIn('public_flag', array(self::PUBLIC_FLAG_OPEN, self::PUBLIC_FLAG_SITE));
 
     if ($isCheckApp)
     {

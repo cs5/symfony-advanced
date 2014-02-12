@@ -482,8 +482,8 @@ abstract class saApplicationConfiguration extends sfApplicationConfiguration
 
   protected function setConfigHandlers()
   {
-    $this->getConfigCache()->registerConfigHandler('config/sns_config.yml', 'saConfigConfigHandler', array('prefix' => 'sfadvanced_sns_'));
-    include($this->getConfigCache()->checkConfig('config/sns_config.yml'));
+    $this->getConfigCache()->registerConfigHandler('config/site_config.yml', 'saConfigConfigHandler', array('prefix' => 'sfadvanced_site_'));
+    include($this->getConfigCache()->checkConfig('config/site_config.yml'));
 
     $this->getConfigCache()->registerConfigHandler('config/member_config.yml', 'saConfigConfigHandler', array('prefix' => 'sfadvanced_member_'));
     include($this->getConfigCache()->checkConfig('config/member_config.yml'));

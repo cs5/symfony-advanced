@@ -22,7 +22,7 @@ class addNavigationItemForMobileHomeCenter extends Doctrine_Migration_Base
 
     // and try to fix community topic revision if the plugin is exists
     $conn = Doctrine_Manager::getInstance()->getConnectionForComponent('SnsConfig');
-    $result = $conn->fetchOne('SELECT value FROM sns_config WHERE name = ?', array('saCommunityTopicPlugin_revision'));
+    $result = $conn->fetchOne('SELECT value FROM site_config WHERE name = ?', array('saCommunityTopicPlugin_revision'));
     if (!$result)
     {
       Doctrine::getTable('SnsConfig')->set('saCommunityTopicPlugin_revision', '4');

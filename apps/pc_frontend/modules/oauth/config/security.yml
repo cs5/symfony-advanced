@@ -3,4 +3,4 @@ all:
 
 authorizeToken:
   is_secure: true
-  credentials: SNSMember
+  credentials: SiteMember

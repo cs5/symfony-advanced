@@ -21,7 +21,7 @@ $t->is($table->getPublicFlags(), $data);
 
 //------------------------------------------------------------
 $t->diag('ProfileTable::getPublicFlag()');
-$t->is($table->getPublicFlag(ProfileTable::PUBLIC_FLAG_SNS), '全員に公開');
+$t->is($table->getPublicFlag(ProfileTable::PUBLIC_FLAG_SITE), '全員に公開');
 $t->is($table->getPublicFlag(ProfileTable::PUBLIC_FLAG_FRIEND), 'マイフレンドまで公開');
 $t->is($table->getPublicFlag(ProfileTable::PUBLIC_FLAG_PRIVATE), '公開しない');
 

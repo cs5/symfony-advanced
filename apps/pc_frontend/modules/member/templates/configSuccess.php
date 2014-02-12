@@ -36,7 +36,7 @@ if ($list)
 ?>
 
 <?php
-$list = array(link_to(__('Delete your %1% account', array('%1%' => $sa_config['sns_name'])), '@member_delete'));
+$list = array(link_to(__('Delete your %1% account', array('%1%' => $sa_config['site_name'])), '@member_delete'));
 sa_include_parts('pageNav', 'navForDelete', array('list' => $list));
 ?>
 <?php end_slot(); ?>

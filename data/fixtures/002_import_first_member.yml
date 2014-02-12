@@ -31,7 +31,7 @@ MemberProfile:
 MemberConfig:
   first_member_pc_address:
     name: "pc_address"
-    value: "sns@example.com"
+    value: "site@example.com"
     Member: first_member
 
   first_member_password:

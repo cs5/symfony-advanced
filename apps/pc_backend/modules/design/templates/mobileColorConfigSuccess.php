@@ -51,7 +51,7 @@ function reflect_color(n) {
 
 <form action="<?php echo url_for('design/mobileColorConfig') ?>" method="post" name="color">
 <input type="hidden" name="m" value="({$module_name})" />
-<input type="hidden" name="a" value="do_({$hash_tbl->hash('update_c_sns_config_ktai','do')})" />
+<input type="hidden" name="a" value="do_({$hash_tbl->hash('update_c_site_config_ktai','do')})" />
 <input type="hidden" name="sessid" value="({$PHPSESSID})" />
 
 <div class="bg" style="margin: 10px;">

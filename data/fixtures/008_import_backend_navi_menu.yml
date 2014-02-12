@@ -29,15 +29,15 @@ Navigation:
       en:
         caption: "Communities"
 
-  backend_side_sns_config:
+  backend_side_site_config:
     type: "backend_side"
-    uri:  "sns/config"
+    uri:  "site/config"
     sort_order: 40
     Translation:
       ja_JP:
-        caption: "SNS設定"
+        caption: "Site設定"
       en:
-        caption: "SNS"
+        caption: "Site"
 
   backend_side_mail:
     type: "backend_side"

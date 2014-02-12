@@ -8,7 +8,7 @@ general:
     IsRequired: true
     Default: "public"
     Choices:
-      public: "Only SNS members can see"
+      public: "Only Site members can see"
       open: "Everyone can see"
   register_policy:
     Name:       "register_policy"

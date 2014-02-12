@@ -192,7 +192,7 @@ class MemberProfile extends BaseMemberProfile implements saAccessControlRecordIn
       case ProfileTable::PUBLIC_FLAG_PRIVATE:
         return false;
 
-      case ProfileTable::PUBLIC_FLAG_SNS:
+      case ProfileTable::PUBLIC_FLAG_SITE:
         return (bool)$memberId;
 
       case ProfileTable::PUBLIC_FLAG_WEB:

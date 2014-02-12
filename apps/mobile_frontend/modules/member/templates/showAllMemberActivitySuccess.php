@@ -1,4 +1,4 @@
-<?php sa_mobile_page_title(__("SNS Member's %activity%", array(
+<?php sa_mobile_page_title(__("Site Member's %activity%", array(
   '%activity%' => $sa_term['activity']->pluralize()->titleize(),
 ))) ?>
 <?php if ($pager->getNbResults() || isset($form)): ?>

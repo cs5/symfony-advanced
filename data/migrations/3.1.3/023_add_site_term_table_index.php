@@ -12,15 +12,15 @@ class Revision23_AddSnsTermTableIndex extends Doctrine_Migration_Base
 {
   public function migrate($direction)
   {
-    $this->foreignKey($direction, 'sns_term_translation', 'sns_term_translation_id_sns_term_id', array(
-      'name' => 'sns_term_translation_id_sns_term_id',
+    $this->foreignKey($direction, 'site_term_translation', 'site_term_translation_id_site_term_id', array(
+      'name' => 'site_term_translation_id_site_term_id',
       'local' => 'id',
       'foreign' => 'id',
-      'foreignTable' => 'sns_term',
+      'foreignTable' => 'site_term',
       'onUpdate' => 'CASCADE',
       'onDelete' => 'CASCADE',
     ));
-    $this->index($direction, 'sns_term_translation', 'sns_term_translation_id', array(
+    $this->index($direction, 'site_term_translation', 'site_term_translation_id', array(
       'fields' => array(0 => 'id'),
     ));
   }

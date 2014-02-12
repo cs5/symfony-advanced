@@ -63,7 +63,7 @@ class saSnsTermForm extends sfForm
 
   protected static function getAvailableTerms()
   {
-    return (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/sns_term.yml'));
+    return (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/site_term.yml'));
   }
 
   public static function validateTerms($validator, $values)

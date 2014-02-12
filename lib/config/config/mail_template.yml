@@ -27,11 +27,11 @@ pc:
     configurable: false
     sample:
       en:
-        - "{{ sa_config.sns_name }} Letter of invitation"
+        - "{{ sa_config.site_name }} Letter of invitation"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           {% if name %}
-          {{ name }} is inviting in {{ sa_config.sns_name }} you.
+          {{ name }} is inviting in {{ sa_config.site_name }} you.
           
           {% if message %}
           ---------- The message to you from < {{ name }} > ----------
@@ -41,16 +41,16 @@ pc:
           {% endif %}
           {% endif %}
           If you register(free) of member by the following URL,
-          you can participate in {{ sa_config.sns_name }}.
+          you can participate in {{ sa_config.site_name }}.
           
-          * Participate in {{ sa_config.sns_name }}
+          * Participate in {{ sa_config.site_name }}
           {% app_url_for('pc_frontend', 'member/register?token='~token, true) %}
       ja_JP:
-        - "{{ sa_config.sns_name }}招待状"
+        - "{{ sa_config.site_name }}招待状"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           {% if name %}
-          {{ name }} があなたを{{ sa_config.sns_name }} へ招待しています。
+          {{ name }} があなたを{{ sa_config.site_name }} へ招待しています。
           
           {% if message %}
           ---------- < {{ name }} > からあなたへのメッセージ ----------
@@ -60,12 +60,12 @@ pc:
           {% endif %}
           {% endif %}
           下記のURLから、会員登録(無料)をおこなうと、
-          {{ sa_config.sns_name }} に参加できます。
+          {{ sa_config.site_name }} に参加できます。
           
-          ■ {{ sa_config.sns_name }} に参加する
+          ■ {{ sa_config.site_name }} に参加する
           {% app_url_for('pc_frontend', 'member/register?token='~token, true) %}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       name: "招待者のニックネーム"
       message: "招待者が記入したメッセージ"
       token: "登録用 URL の token パラメータの値"
@@ -100,7 +100,7 @@ pc:
       en:
         - "{{ new_member.name }} registered your {{ sa_term.community }}, {{ community.name }}"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           
           {{ new_member.name }} registered your {{ sa_term.community }}, {{ community.name }}.
           
@@ -111,7 +111,7 @@ pc:
       ja_JP:
         - "{{ new_member.name }} さんがあなたの{{ sa_term.community }}に参加しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ new_member.name }} さんが {{ community.name }}{{ sa_term.community }} に参加しました。
           
@@ -120,12 +120,12 @@ pc:
           ◇{{ new_member.name }}さんのページ
           {% app_url_for('pc_frontend', '@member_profile?id='~new_member.id, true) %}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "new_member.name": "新しいメンバーのニックネーム"
       "new_member.id": "新しいメンバーの ID"
       "community.name": "コミュニティ名"
       "community.id": "コミュニティの ID"
-      "sa_term.community": "「コミュニティ」の SNS 内の名称"
+      "sa_term.community": "「コミュニティ」の Site 内の名称"
 
   friendLinkComplete:
     caption: "Notification of Completion of Friend Link"
@@ -135,19 +135,19 @@ pc:
       en:
         - "{{ member.name }} accepted your {{ sa_term.friend }} link request"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           
           {{ member.name }} accepted your {{ sa_term.friend }} link request.
       ja_JP:
         - "{{ member.name }} さんがあなたの{{ sa_term.friend }}申請を承認しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ member.name }} さんがあなたの{{ sa_term.friend }}申請を承諾しました。
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "メンバーのニックネーム"
-      "sa_term.friend" : "「フレンド」のSNS内の名称"
+      "sa_term.friend" : "「フレンド」のSite内の名称"
 
   registerEnd:
     caption: "Notification of Completion of Your Registration"
@@ -156,10 +156,10 @@ pc:
       en:
         - "Information of the completion of registration"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           We've just accepted your registration.
           
-          We hope that using {{ sa_config.sns_name }} is useful for your future.
+          We hope that using {{ sa_config.site_name }} is useful for your future.
           
           {{ url }}
           
@@ -171,10 +171,10 @@ pc:
       ja_JP:
         - "登録完了のお知らせ"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           当サイトへの登録を受け付けました。
           
-          {{ sa_config.sns_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
+          {{ sa_config.site_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
           
           {{ url }}
           
@@ -184,30 +184,30 @@ pc:
           
           {{ sa_config.admin_mail_address }}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "url": "ログインページへの URL"
       "sa_config.admin_mail_address": "管理者のメールアドレス"
 
   leave:
-    caption: "Notification of Completion of Leaving From the SNS"
+    caption: "Notification of Completion of Leaving From the Site"
     configurable: false
     sample:
       en:
         - "Your leaving process was finished"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
 
           {{ member.name }}, your leaving process was finished.
           Thank you for your using.
       ja_JP:
         - "退会手続きが完了しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ member.name }} さんの退会手続きが完了しました。
           ご利用いただきありがとうございます。
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "退会者のニックネーム"
 
   birthday:
@@ -225,7 +225,7 @@ pc:
           {{ sa_term.nickname }} : {{ birthMember.name }}
           URL : {{ sf_config.sa_base_url }}{% app_url_for("pc_frontend", "@member_profile?id="~birthMember.id) %}
           
-          We hope that using {{ sa_config.sns_name }} is useful for your future.
+          We hope that using {{ sa_config.site_name }} is useful for your future.
       ja_JP:
         - "{{ member.name }} さんの {{ sa_term.my_friend }} に誕生日の近い方がいます！"
         - |
@@ -236,11 +236,11 @@ pc:
           {{ sa_term.nickname }} : {{ birthMember.name }}
           URL : {{ sf_config.sa_base_url }}{% app_url_for("pc_frontend", "@member_profile?id="~birthMember.id) %}
           
-          {{ sa_config.sns_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
+          {{ sa_config.site_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
     variables:
       "member.name": "メンバーのニックネーム"
-      "sa_term.my_friend": "「マイフレンド」の SNS 名称"
-      "sa_term.nickname": "「ニックネーム」の SNS 名称"
+      "sa_term.my_friend": "「マイフレンド」の Site 名称"
+      "sa_term.nickname": "「ニックネーム」の Site 名称"
       "birthMember.profile.sa_preset_birthday": "誕生日を迎えたメンバーの誕生日"
       "birthMember.name": "誕生日を迎えたメンバーのニックネーム"
       "sf_config.sa_base_url": "ベースの URL"
@@ -255,7 +255,7 @@ pc:
         - |
           --- {{ sf_config.sa_base_url }} -----------------------------
           
-          {{ sa_config.sns_name }}
+          {{ sa_config.site_name }}
           
           Today News  [{{ 'now'|date('Y. m. d/D') }}]
          
@@ -263,7 +263,7 @@ pc:
           
           Hi, {{ member.name }}!
           
-          This is daily news in {{ sa_config.sns_name }}.
+          This is daily news in {{ sa_config.site_name }}.
           
           {% for item in gadgets %}
           {% include_component(item.component.module, item.component.action, ['gadget': item.gadget]) %}
@@ -274,7 +274,7 @@ pc:
         - |
           ━━ {{ sf_config.sa_base_url }} ━━━━━━━━━━━━━━━━
           
-          {{ sa_config.sns_name }}
+          {{ sa_config.site_name }}
           
           本日の最新情報  [{{ 'now'|date('Y. m. d/D') }}]
           
@@ -282,7 +282,7 @@ pc:
           
           {{ member.name }} さん
           
-          {{ sa_config.sns_name }} からの
+          {{ sa_config.site_name }} からの
           本日の最新情報のお知らせです。
           
           {% for item in gadgets %}
@@ -291,7 +291,7 @@ pc:
           {% endfor %}
     variables:
       "sf_config.sa_base_url": "ベースの URL"
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "メンバーのニックネーム"
       "gadgets": "デイリー・ニュースのガジェットの配列"
 
@@ -305,7 +305,7 @@ pc:
         
         Feedback and Suggestions Feel free to us!
         
-        {{ sa_config.sns_name }}
+        {{ sa_config.site_name }}
         URL         : {{ sf_config.sa_base_url }}
         Contact us  : {{ sa_config.admin_mail_address }}
         
@@ -317,7 +317,7 @@ pc:
         
         ご意見、ご感想などはお気軽にどうぞ！
         
-        {{ sa_config.sns_name }}
+        {{ sa_config.site_name }}
         URL　　　　　： {{ sf_config.sa_base_url }}
         お問い合わせ ： {{ sa_config.admin_mail_address }}
         
@@ -325,7 +325,7 @@ pc:
         
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━□■
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "sf_config.sa_base_url": "ベースの URL"
       "sa_config.admin_mail_address": "管理者のメールアドレス"
 
@@ -360,7 +360,7 @@ mobile:
       en:
         - "{{ new_member.name }} registered your {{ sa_term.community }}, {{ community.name }}"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           
           {{ new_member.name }} registered your {{ sa_term.community }}, {{ community.name }}.
           
@@ -371,7 +371,7 @@ mobile:
       ja_JP:
         - "{{ new_member.name }} さんがあなたの {{ sa_term.community }} に参加しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ new_member.name }} さんが {{ community.name }}{{ sa_term.community }} に参加しました。
           
@@ -380,12 +380,12 @@ mobile:
           ◇{{ new_member.name }}さんのページ
           {% app_url_for('mobile_frontend', '@member_profile?id='~new_member.id, true) %}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "new_member.name": "新しいメンバーのニックネーム"
       "new_member.id": "新しいメンバーの ID"
       "community.name": "コミュニティ名"
       "community.id": "コミュニティの ID"
-      "sa_term.community": "「コミュニティ」の SNS 内の名称"
+      "sa_term.community": "「コミュニティ」の Site 内の名称"
 
   friendLinkComplete:
     caption: "Notification of Completion of Friend Link"
@@ -395,19 +395,19 @@ mobile:
       en:
         - "{{ member.name }} accepted your {{ sa_term.friend }} link request"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           
           {{ member.name }} accepted your {{ sa_term.friend }} link request.
       ja_JP:
         - "{{ member.name }} さんがあなたの{{ sa_term.friend }}申請を承認しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ member.name }} さんがあなたの{{ sa_term.friend }}申請を承諾しました。
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "メンバーのニックネーム"
-      "sa_term.friend": "「フレンド」の SNS 名称"
+      "sa_term.friend": "「フレンド」の Site 名称"
 
   reissuedPassword:
     caption: "Notification of Confirmation of Changing Password"
@@ -436,11 +436,11 @@ mobile:
     configurable: false
     sample:
       en:
-        - "{{ sa_config.sns_name }} Letter of invitation"
+        - "{{ sa_config.site_name }} Letter of invitation"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           {% if name %}
-          {{ name }} is inviting in {{ sa_config.sns_name }} you.
+          {{ name }} is inviting in {{ sa_config.site_name }} you.
           
           {% if message %}
           ---------- The message to you from < {{ name }} > ----------
@@ -450,16 +450,16 @@ mobile:
           {% endif %}
           {% endif %}
           If you register(free) of member by the following URL,
-          you can participate in {{ sa_config.sns_name }}.
+          you can participate in {{ sa_config.site_name }}.
           
-          * Participate in {{ sa_config.sns_name }}
+          * Participate in {{ sa_config.site_name }}
           {% app_url_for('mobile_frontend', 'member/register?token='~token, true) %}
       ja_JP:
-        - "{{ sa_config.sns_name }}招待状"
+        - "{{ sa_config.site_name }}招待状"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           {% if name %}
-          {{ name }} があなたを{{ sa_config.sns_name }} へ招待しています。
+          {{ name }} があなたを{{ sa_config.site_name }} へ招待しています。
           
           {% if message %}
           ---------- < {{ name }} > からあなたへのメッセージ ----------
@@ -469,12 +469,12 @@ mobile:
           {% endif %}
           {% endif %}
           下記のURLから、会員登録(無料)をおこなうと、
-          {{ sa_config.sns_name }} に参加できます。
+          {{ sa_config.site_name }} に参加できます。
           
-          ■ {{ sa_config.sns_name }} に参加する
+          ■ {{ sa_config.site_name }} に参加する
           {% app_url_for('mobile_frontend', 'member/register?token='~token, true) %}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       name: "招待者のニックネーム"
       message: "招待者が記入したメッセージ"
       token: "登録用 URL の token パラメータの値"
@@ -487,10 +487,10 @@ mobile:
       en:
         - "Information of the completion of registration"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
           We've just accepted your registration.
           
-          We hope that using {{ sa_config.sns_name }} is useful for your future.
+          We hope that using {{ sa_config.site_name }} is useful for your future.
           
           {{ url }}
           
@@ -502,10 +502,10 @@ mobile:
       ja_JP:
         - "登録完了のお知らせ"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           当サイトへの登録を受け付けました。
           
-          {{ sa_config.sns_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
+          {{ sa_config.site_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
           
           {{ url }}
           
@@ -515,30 +515,30 @@ mobile:
           
           {{ sa_config.admin_mail_address }}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "url": "ログインページへの URL"
       "sa_config.admin_mail_address": "管理者のメールアドレス"
 
   leave:
-    caption: "Notification of Completion of Leaving From the SNS"
+    caption: "Notification of Completion of Leaving From the Site"
     configurable: false
     sample:
       en:
         - "Your leaving process was finished"
         - |
-          Hello! This is information from {{ sa_config.sns_name }}.
+          Hello! This is information from {{ sa_config.site_name }}.
 
           {{ member.name }}, your leaving process was finished.
           Thank you for your using.
       ja_JP:
         - "退会手続きが完了しました"
         - |
-          こんにちは！{{ sa_config.sns_name }} からのお知らせです。
+          こんにちは！{{ sa_config.site_name }} からのお知らせです。
           
           {{ member.name }} さんの退会手続きが完了しました。
           ご利用いただきありがとうございます。
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "退会者のニックネーム"
 
   birthday:
@@ -556,7 +556,7 @@ mobile:
           {{ sa_term.nickname }} : {{ birthMember.name }}
           URL : {{ sf_config.sa_base_url }}{% app_url_for("mobile_frontend", "@member_profile?id="~birthMember.id) %}
           
-          We hope that using {{ sa_config.sns_name }} is useful for your future.
+          We hope that using {{ sa_config.site_name }} is useful for your future.
       ja_JP:
         - "{{ member.name }} さんの {{ sa_term.my_friend }} に誕生日の近い方がいます！"
         - |
@@ -567,11 +567,11 @@ mobile:
           {{ sa_term.nickname }} : {{ birthMember.name }}
           URL : {{ sf_config.sa_base_url }}{% app_url_for("mobile_frontend", "@member_profile?id="~birthMember.id) %}
           
-          {{ sa_config.sns_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
+          {{ sa_config.site_name }} が、あなたの今後に役立ちますように、是非、ご活用いただければと思います。
     variables:
       "member.name": "メンバーのニックネーム"
-      "sa_term.my_friend": "「マイフレンド」の SNS 名称"
-      "sa_term.nickname": "「ニックネーム」の SNS 名称"
+      "sa_term.my_friend": "「マイフレンド」の Site 名称"
+      "sa_term.nickname": "「ニックネーム」の Site 名称"
       "birthMember.profile.sa_preset_birthday": "誕生日を迎えたメンバーの誕生日"
       "birthMember.name": "誕生日を迎えたメンバーのニックネーム"
       "sf_config.sa_base_url": "ベースの URL"
@@ -586,7 +586,7 @@ mobile:
         - |
           --- {{ sf_config.sa_base_url }} -----------------------------
           
-          {{ sa_config.sns_name }}
+          {{ sa_config.site_name }}
           
           Today News  [{{ 'now'|date('Y. m. d/D') }}]
          
@@ -594,7 +594,7 @@ mobile:
           
           Hi, {{ member.name }}!
           
-          This is daily news in {{ sa_config.sns_name }}.
+          This is daily news in {{ sa_config.site_name }}.
           
           {% for item in gadgets %}
           {% include_component(item.component.module, item.component.action, ['gadget': item.gadget]) %}
@@ -605,7 +605,7 @@ mobile:
         - |
           ━━ {{ sf_config.sa_base_url }} ━━━━━━━━━━━━━━━━
           
-          {{ sa_config.sns_name }}
+          {{ sa_config.site_name }}
           
           本日の最新情報  [{{ 'now'|date('Y. m. d/D') }}]
           
@@ -613,7 +613,7 @@ mobile:
           
           {{ member.name }} さん
           
-          {{ sa_config.sns_name }} からの
+          {{ sa_config.site_name }} からの
           本日の最新情報のお知らせです。
           
           {% for item in gadgets %}
@@ -622,7 +622,7 @@ mobile:
           {% endfor %}
     variables:
       "sf_config.sa_base_url": "ベースの URL"
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "member.name": "メンバーのニックネーム"
       "gadgets": "デイリー・ニュースのガジェットの配列"
 
@@ -633,15 +633,15 @@ mobile:
     sample:
       en: |
         ---
-        {{ sa_config.sns_name }}
+        {{ sa_config.site_name }}
         URL         : {{ sf_config.sa_base_url }}
         Contact us  : {{ sa_config.admin_mail_address }}
       ja_JP: |
         ---
-        {{ sa_config.sns_name }}
+        {{ sa_config.site_name }}
         URL　　　　　： {{ sf_config.sa_base_url }}
         お問い合わせ ： {{ sa_config.admin_mail_address }}
     variables:
-      "sa_config.sns_name": "SNS 名"
+      "sa_config.site_name": "Site 名"
       "sf_config.sa_base_url": "ベースの URL"
       "sa_config.admin_mail_address": "管理者のメールアドレス"

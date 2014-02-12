@@ -33,7 +33,7 @@
 <?php if (!include_slot('sa_mobile_header')): ?>
 <table width="100%">
 <tr><td align="center" bgcolor="<?php echo $sa_color["core_color_2"] ?>">
-<font color="<?php echo $sa_color["core_color_18"] ?>"><a name="top"><?php echo $sa_config['sns_name'] ?></a></font><br>
+<font color="<?php echo $sa_color["core_color_18"] ?>"><a name="top"><?php echo $sa_config['site_name'] ?></a></font><br>
 </td></tr>
 </table>
 <?php endif; ?>
@@ -61,7 +61,7 @@
 <?php if (has_slot('sa_mobile_footer')): ?>
 <?php include_slot('sa_mobile_footer') ?>
 <?php else: ?>
-<?php if ($sf_user->hasCredential('SNSMember')): ?>
+<?php if ($sf_user->hasCredential('SiteMember')): ?>
 <table width="100%">
 <tbody><tr><td align="center" bgcolor="<?php echo $sa_color["core_color_2"] ?>">
 <font color="<?php echo $sa_color["core_color_18"] ?>"><a href="<?php echo url_for('@homepage') ?>" accesskey="0"><font color="<?php echo $sa_color["core_color_18"] ?>">0.<?php echo __('home') ?></font></a> / <a href="#top" accesskey="2"><font color="<?php echo $sa_color["core_color_18"] ?>">2. <?php echo __('top') ?></font></a> / <a href="#bottom" accesskey="8"><font color="<?php echo $sa_color["core_color_18"] ?>">8. <?php echo __('bottom') ?></font></a></font><br>

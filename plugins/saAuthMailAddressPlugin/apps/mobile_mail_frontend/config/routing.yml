@@ -1,4 +1,4 @@
-register_sns:
+register_site:
   url: get
   class: saMailRoute
   options: { non_auth: true } 

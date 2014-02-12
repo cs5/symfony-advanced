@@ -253,7 +253,7 @@ SnsConfig:
     type: INNODB
     collate: utf8_unicode_ci
     charset: utf8
-    comment: "Saves configurations of this SNS"
+    comment: "Saves configurations of this Site"
 
 MemberConfig:
   columns:
@@ -540,7 +540,7 @@ SnsTerm:
     type: INNODB
     collate: utf8_unicode_ci
     charset: utf8
-    comment: "Saves terms of this SNS"
+    comment: "Saves terms of this Site"
 
 NotificationMail:
   actAs:
@@ -597,7 +597,7 @@ SkinConfig:
     type: INNODB
     collate: utf8_unicode_ci
     charset: utf8
-    comment: "Saves configurations of this SNS"
+    comment: "Saves configurations of this Site"
 
 ActivityData:
   columns:

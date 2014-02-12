@@ -31,7 +31,7 @@
         <target>登録完了メール</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Notification of Completion of Leaving From the SNS</source>
+        <source>Notification of Completion of Leaving From the Site</source>
         <target>退会完了メール</target>
       </trans-unit>
       <trans-unit id="">

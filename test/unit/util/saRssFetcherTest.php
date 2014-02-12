@@ -51,8 +51,8 @@ $t->is($instance->getFeedTitle('http://example.com/undefined.rss'), false, '->ge
 
 $t->diag('->getFeedDescription()');
 
-$t->is($mock->getFeedDescription('www.sfadvanced.jp.feed.rss'), 'オープンソースのSNSエンジン SfAdvancedプロジェクト', '->getFeedTitle() returns RSS feed description');
-$t->is($mock->getFeedDescription('www.sfadvanced.jp.feed.atom'), 'オープンソースのSNSエンジン SfAdvancedプロジェクト', '->getFeedTitle() returns Atom feed description');
+$t->is($mock->getFeedDescription('www.sfadvanced.jp.feed.rss'), 'オープンソースのSiteエンジン SfAdvancedプロジェクト', '->getFeedTitle() returns RSS feed description');
+$t->is($mock->getFeedDescription('www.sfadvanced.jp.feed.atom'), 'オープンソースのSiteエンジン SfAdvancedプロジェクト', '->getFeedTitle() returns Atom feed description');
 $t->is($instance->getFeedDescription('http://example.com/undefined.rss'), false, '->getFeedTitle() returns false if the specified uri is 404');
 
 $t->diag('->fetch()');

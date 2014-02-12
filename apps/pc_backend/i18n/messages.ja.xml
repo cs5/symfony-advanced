@@ -557,8 +557,8 @@
         <target>沖縄県</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Term Configuration in this SNS</source>
-        <target>SNS内名称設定</target>
+        <source>Term Configuration in this Site</source>
+        <target>Site内名称設定</target>
       </trans-unit>
       <trans-unit id="">
         <source>Saved.</source>
@@ -1174,8 +1174,8 @@
         <target>ログアウト</target>
       </trans-unit>
       <trans-unit id="">
-        <source>%sns% Administration</source>
-        <target>%sns%管理画面</target>
+        <source>%site% Administration</source>
+        <target>%site%管理画面</target>
       </trans-unit>
       <trans-unit id="">
         <source>Members</source>

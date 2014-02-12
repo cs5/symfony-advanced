@@ -12,7 +12,7 @@ class Revision22_AddSnsTermTable extends Doctrine_Migration_Base
 {
   public function migrate($direction)
   {
-    $this->table($direction, 'sns_term', array(
+    $this->table($direction, 'site_term', array(
       'id' => array(
         'type' => 'integer',
         'primary' => '1',
@@ -42,7 +42,7 @@ class Revision22_AddSnsTermTable extends Doctrine_Migration_Base
         'collate' => 'utf8_unicode_ci',
         'charset' => 'utf8',
     ));
-    $this->table($direction, 'sns_term_translation', array(
+    $this->table($direction, 'site_term_translation', array(
       'id' => array(
         'type' => 'integer',
         'comment' => 'Serial number',

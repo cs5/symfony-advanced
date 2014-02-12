@@ -220,7 +220,7 @@ class MemberProfileTable extends saAccessControlDoctrineTable
     if (!$item->getIsEditPublicFlag())
     {
       if (
-        ProfileTable::PUBLIC_FLAG_SNS == $item->getDefaultPublicFlag()
+        ProfileTable::PUBLIC_FLAG_SITE == $item->getDefaultPublicFlag()
         || ProfileTable::PUBLIC_FLAG_WEB == $item->getDefaultPublicFlag()
       )
       {

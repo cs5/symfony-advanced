@@ -33,9 +33,9 @@ class saDefaultSecureAction extends sfAction
 
     if (is_array($preActionCredential))
     {
-      $isForwardToLoginPage = in_array('SNSMember', $preActionCredential);
+      $isForwardToLoginPage = in_array('SiteMember', $preActionCredential);
     }
-    elseif ('SNSMember' === $preActionCredential)
+    elseif ('SiteMember' === $preActionCredential)
     {
       $isForwardToLoginPage = true;
     }

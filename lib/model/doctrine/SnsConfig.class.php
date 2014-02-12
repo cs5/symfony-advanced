@@ -10,20 +10,20 @@
 
 class SnsConfig extends BaseSnsConfig
 {
-  protected $snsConfigSettings = array();
+  protected $siteConfigSettings = array();
 
   public function construct()
   {
-    $this->snsConfigSettings = sfConfig::get('sfadvanced_sns_config');
+    $this->siteConfigSettings = sfConfig::get('sfadvanced_site_config');
     return parent::construct();
   }
 
   public function getConfig()
   {
     $name = $this->getName();
-    if ($name && isset($this->snsConfigSettings[$name]))
+    if ($name && isset($this->siteConfigSettings[$name]))
     {
-      return $this->snsConfigSettings[$name];
+      return $this->siteConfigSettings[$name];
     }
 
     return false;

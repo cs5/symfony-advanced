@@ -726,7 +726,7 @@ function sa_mail_to($route, $params = array(), $name = '', $options = array(), $
 
   $user = sfContext::getInstance()->getUser();
 
-  if (sfConfig::get('sa_is_mail_address_contain_hash') && $user->hasCredential('SNSMember'))
+  if (sfConfig::get('sa_is_mail_address_contain_hash') && $user->hasCredential('SiteMember'))
   {
     $params['hash'] = $user->getMember()->getMailAddressHash();
   }
@@ -1001,9 +1001,9 @@ function sa_url_to_id($uri, $isTrimDelimiter = false)
   return $str;
 }
 
-function sa_replace_sns_term($string)
+function sa_replace_site_term($string)
 {
-  $config = (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/sns_term.yml'));
+  $config = (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/site_term.yml'));
   foreach ($config as $k => $v)
   {
     $string = str_replace('%'.$k.'%', $v['caption']['en'], $string);

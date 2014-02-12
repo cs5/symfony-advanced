@@ -36,26 +36,26 @@ class saPermitMemberConfigSnsConfigForm extends BaseForm
     }
 
     $this->setWidgets(array(
-      'ignored_sns_config' => new sfWidgetFormSelectMany(array('choices' => $choices)),
+      'ignored_site_config' => new sfWidgetFormSelectMany(array('choices' => $choices)),
     ));
 
     $this->setValidators(array(
-      'ignored_sns_config' => new sfValidatorChoice(array('multiple' => true, 'choices' => array_keys($choices), 'required' => false)),
+      'ignored_site_config' => new sfValidatorChoice(array('multiple' => true, 'choices' => array_keys($choices), 'required' => false)),
     ));
 
-    $default = Doctrine::getTable('SnsConfig')->get('ignored_sns_config', array());
+    $default = Doctrine::getTable('SnsConfig')->get('ignored_site_config', array());
     if ($default)
     {
       $default = unserialize($default);
     }
-    $this->setDefault('ignored_sns_config', $default);
+    $this->setDefault('ignored_site_config', $default);
 
-    $this->widgetSchema->setNameFormat('sns_config[%s]');
+    $this->widgetSchema->setNameFormat('site_config[%s]');
   }
 
   public function save()
   {
-    $ignored = (array)$this->getValue('ignored_sns_config');
-    Doctrine::getTable('SnsConfig')->set('ignored_sns_config', serialize($ignored));
+    $ignored = (array)$this->getValue('ignored_site_config');
+    Doctrine::getTable('SnsConfig')->set('ignored_site_config', serialize($ignored));
   }
 }

@@ -53,11 +53,11 @@ class saWidgetFormProfile extends sfWidgetForm
   {
     if (!is_array($value))
     {
-      $value = array('value' => $value, 'public_flag' => ProfileTable::PUBLIC_FLAG_SNS);
+      $value = array('value' => $value, 'public_flag' => ProfileTable::PUBLIC_FLAG_SITE);
     }
     else
     {
-      $value = array_merge(array('value' => null, 'public_flag' => ProfileTable::PUBLIC_FLAG_SNS), $value);
+      $value = array_merge(array('value' => null, 'public_flag' => ProfileTable::PUBLIC_FLAG_SITE), $value);
     }
 
     $input = $this->getOption('widget')->render($name.'[value]', $value['value'], $attributes, $errors);

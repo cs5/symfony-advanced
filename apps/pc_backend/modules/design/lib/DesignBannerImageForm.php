@@ -15,12 +15,12 @@ class DesignBannerImageForm extends sfForm
   {
     $type = $this->getOption('type');
     $this->key .= $type;
-    $snsConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
+    $siteConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
 
     $this->setWidgets(array(
       $type => new sfWidgetFormTextarea(),
     ));
-    $this->setDefault($type, $snsConfig->getValue());
+    $this->setDefault($type, $siteConfig->getValue());
     $this->widgetSchema->setNameFormat('design_footer[%s]');
 
     $this->setValidators(array(
@@ -34,13 +34,13 @@ class DesignBannerImageForm extends sfForm
     $type = $this->getOption('type');
     $values = $this->getValues();
 
-    $snsConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
-    if (!$snsConfig)
+    $siteConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
+    if (!$siteConfig)
     {
-      $snsConfig = new SnsConfig();
-      $snsConfig->setName($this->Key);
+      $siteConfig = new SnsConfig();
+      $siteConfig->setName($this->Key);
     }
-    $snsConfig->setValue($values[$type]);
-    $snsConfig->save();
+    $siteConfig->setValue($values[$type]);
+    $siteConfig->save();
   }
 }

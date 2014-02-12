@@ -33,7 +33,7 @@ class saAuthAction extends sfActions
 
     $this->getUser()->getAuthAdapter()->activate();
 
-    $this->getUser()->setIsSNSMember(true);
+    $this->getUser()->setIsSiteMember(true);
 
     if ($member->getEmailAddress())
     {

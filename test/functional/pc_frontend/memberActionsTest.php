@@ -6,7 +6,7 @@ $filePath = sfConfig::get('sf_web_dir').'/images/dummy.gif';
 
 $browser = new saTestFunctional(new saBrowser(), new lime_test(null, new lime_output_color()));
 $browser
-  ->login('sns@example.com', 'password')
+  ->login('site@example.com', 'password')
 
   ->info('member/configImage')
   ->info('1. When an user tries to post more than 4 photos, he gets an error message. (ref. #3544)')

@@ -3,7 +3,7 @@
 $browser = new saTestFunctional(new saBrowser(), new lime_test(null, new lime_output_color()));
 $browser
   ->info('Login')
-  ->login('sns@example.com', 'password')
+  ->login('site@example.com', 'password')
   ->isStatusCode(302)
 
 // XSS

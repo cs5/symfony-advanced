@@ -56,7 +56,7 @@ class saAuthMailAddressActions extends saAuthMailAddressPluginAction
     }
 
     $this->getUser()->setMemberId($memberConfig->getMemberId());
-    $this->getUser()->setIsSNSRegisterBegin(true);
+    $this->getUser()->setIsSiteRegisterBegin(true);
 
     $this->redirect('member/registerInput?token='.$token);
   }

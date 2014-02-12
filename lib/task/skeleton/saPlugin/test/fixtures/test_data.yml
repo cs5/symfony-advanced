@@ -7,11 +7,11 @@ Member:
 MemberConfig:
   member_address_1:
     name: "pc_address"
-    value: "sns@example.com"
+    value: "site@example.com"
     Member: member_1
   member_mobile_address_1:
     name: "mobile_address"
-    value: "sns@example.com"
+    value: "site@example.com"
     Member: member_1
   member_password_1:
     name: "password"

@@ -96,7 +96,7 @@ class saAuthMailAddressPasswordRecoveryForm extends BaseForm
     $params = array(
       'token' => $token,
       'id' => $this->member->id,
-      'subject' => '【'.saConfig::get('sns_name').'】パスワード再設定用URL発行のお知らせ',
+      'subject' => '【'.saConfig::get('site_name').'】パスワード再設定用URL発行のお知らせ',
     );
 
     sfSfAdvancedMailSend::sendTemplateMail('passwordRecovery', $this->member->getEMailAddress(), saConfig::get('admin_mail_address'), $params);

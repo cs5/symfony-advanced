@@ -7,7 +7,7 @@ $browser
   ->info('0. Login')
   ->get('/member/login')
   ->click('ログイン', array('authMailAddress' => array(
-    'mail_address' => 'sns@example.com',
+    'mail_address' => 'site@example.com',
     'password'     => 'password',
   )))
   ->isStatusCode(302)

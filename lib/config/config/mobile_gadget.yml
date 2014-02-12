@@ -36,7 +36,7 @@ activityBox:
   caption:
     ja_JP: "アクティビティ"
   description:
-    ja_JP: "利用者本人とそのフレンドのSNS上での活動記録を表示します"
+    ja_JP: "利用者本人とそのフレンドのSite上での活動記録を表示します"
   component: [friend, activityBox]
   config:
     row:
@@ -52,7 +52,7 @@ allMemberActivityBox:
   caption:
     ja_JP: "全員のアクティビティ"
   description:
-    ja_JP: "SNSメンバー全員のSNS上での活動記録を表示します"
+    ja_JP: "Siteメンバー全員のSite上での活動記録を表示します"
   component: [member, allMemberActivityBox]
   config:
     row:

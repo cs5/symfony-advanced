@@ -39,7 +39,7 @@ class registerMobileForm extends MemberConfigMobileAddressForm
       'id' => $this->member->getId(),
     );
     $mail = new saMailSend();
-    $mail->setSubject(saConfig::get('sns_name').'携帯登録');
+    $mail->setSubject(saConfig::get('site_name').'携帯登録');
     $mail->setTemplate('member/registerMobileMail', $param);
     $mail->send($this->getValue('mobile_address'), saConfig::get('admin_mail_address'));
   }

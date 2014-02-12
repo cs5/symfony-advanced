@@ -163,7 +163,7 @@ abstract class saMemberAction extends sfActions
   {
     $member = $this->getUser()->setRegisterToken($request['token']);
 
-    $this->forward404Unless($member && !$this->getUser()->isSNSMember() && $this->getUser()->isInvited());
+    $this->forward404Unless($member && !$this->getUser()->isSiteMember() && $this->getUser()->isInvited());
   }
 
   public function executeRegisterInput(saWebRequest $request)
@@ -456,7 +456,7 @@ abstract class saMemberAction extends sfActions
 
     // to admin
     $mail = new saMailSend();
-    $mail->setSubject(saConfig::get('sns_name') . '退会者情報');
+    $mail->setSubject(saConfig::get('site_name') . '退会者情報');
     $mail->setGlobalTemplate('deleteAccountMail', $param);
     $mail->send(saConfig::get('admin_mail_address'), saConfig::get('admin_mail_address'));
 
@@ -471,7 +471,7 @@ abstract class saMemberAction extends sfActions
     $categoryCaptions = array();
     $categoryAttributes = sfConfig::get('sfadvanced_member_category_attribute');
 
-    $ignoredSnsConfig = Doctrine::getTable('SnsConfig')->get('ignored_sns_config', array());
+    $ignoredSnsConfig = Doctrine::getTable('SnsConfig')->get('ignored_site_config', array());
     if ($ignoredSnsConfig)
     {
       $ignoredSnsConfig = unserialize($ignoredSnsConfig);
@@ -489,10 +489,10 @@ abstract class saMemberAction extends sfActions
     {
       $title = $key;
 
-      if (isset($categoryAttributes[$key]['depending_sns_config']))
+      if (isset($categoryAttributes[$key]['depending_site_config']))
       {
-        $snsConfig = $categoryAttributes[$key]['depending_sns_config'];
-        if (!saConfig::get($snsConfig))
+        $siteConfig = $categoryAttributes[$key]['depending_site_config'];
+        if (!saConfig::get($siteConfig))
         {
           unset($categories[$key]);
           continue;

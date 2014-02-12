@@ -56,7 +56,7 @@ class saActivityQueryBuilder
     $this->include = array(
       'self' => false,
       'friend' => false,
-      'sns' => false,
+      'site' => false,
       'mention' => false,
       'member' => false,
       'community' => false,
@@ -81,7 +81,7 @@ class saActivityQueryBuilder
 
   public function includeSns()
   {
-    $this->include['sns'] = true;
+    $this->include['site'] = true;
 
     return $this;
   }
@@ -117,7 +117,7 @@ class saActivityQueryBuilder
       $subQuery[] = $this->buildFriendQuery($query->createSubquery(), $this->include['friend']);
     }
 
-    if ($this->include['sns'])
+    if ($this->include['site'])
     {
       $subQuery[] = $this->buildAllMemberQuery($query->createSubquery());
     }
@@ -169,10 +169,10 @@ class saActivityQueryBuilder
 
   protected function buildAllMemberQuery($query)
   {
-    return $this->buildMemberQuery($query, null, ActivityDataTable::PUBLIC_FLAG_SNS);
+    return $this->buildMemberQuery($query, null, ActivityDataTable::PUBLIC_FLAG_SITE);
   }
 
-  protected function buildMemberQuery($query, $memberId = null, $publicFlag = ActivityDataTable::PUBLIC_FLAG_SNS)
+  protected function buildMemberQuery($query, $memberId = null, $publicFlag = ActivityDataTable::PUBLIC_FLAG_SITE)
   {
     if (is_array($memberId))
     {
@@ -216,7 +216,7 @@ class saActivityQueryBuilder
         }
         else
         {
-          $subQuery[] = $this->buildMemberQuery($query->createSubquery(), $id, ActivityDataTable::PUBLIC_FLAG_SNS);
+          $subQuery[] = $this->buildMemberQuery($query->createSubquery(), $id, ActivityDataTable::PUBLIC_FLAG_SITE);
         }
       }
     }
@@ -235,10 +235,10 @@ class saActivityQueryBuilder
     $friendQuery = $this->buildFriendQuery($query->createSubquery())
       ->andWhereLike('a.template_param', '|'.$this->viewerId.'|');
 
-    $snsQuery = $this->buildAllMemberQuery($query->createSubquery())
+    $siteQuery = $this->buildAllMemberQuery($query->createSubquery())
       ->andWhereLike('a.template_param', '|'.$this->viewerId.'|');
 
-    $subQuery = array_map(array($this, 'trimSubqueryWhere'), array($friendQuery, $snsQuery));
+    $subQuery = array_map(array($this, 'trimSubqueryWhere'), array($friendQuery, $siteQuery));
     $query->andWhere(implode(' OR ', $subQuery));
 
     return $query;

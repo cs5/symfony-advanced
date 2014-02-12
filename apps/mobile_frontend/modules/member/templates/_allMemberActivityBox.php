@@ -2,7 +2,7 @@
 <?php $params = array(
   'activities' => $activities,
   'gadget' => $gadget,
-  'title' => __("SNS Member's %activity%", array(
+  'title' => __("Site Member's %activity%", array(
     '%activity%' => $sa_term['activity']->titleize()->pluralize()
   )),
   'moreUrl' => 'member/showAllMemberActivity'

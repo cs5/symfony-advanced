@@ -26,7 +26,7 @@ class advancedActions extends sfActions
   public function executeConfig(sfWebRequest $request)
   {
     $this->category = $request->getParameter('category', 'advanced');
-    $this->categoryAttributes = sfConfig::get('sfadvanced_sns_category_attribute');
+    $this->categoryAttributes = sfConfig::get('sfadvanced_site_category_attribute');
 
     $this->forward404If(!empty($this->categoryAttributes[$this->category]['Hidden']));
 
@@ -42,7 +42,7 @@ class advancedActions extends sfActions
 
     if ($request->isMethod('post'))
     {
-      $this->form->bind($request->getParameter('sns_config'));
+      $this->form->bind($request->getParameter('site_config'));
       if ($this->form->isValid())
       {
         $this->form->save();

@@ -24,12 +24,12 @@ $result = $table->updateActivity(1, 'test2', array(
   'is_pc' => false,
   'is_mobile' => false,
   'source' => 'API',
-  'source_uri' => 'http://sns.example.com',
+  'source_uri' => 'http://site.example.com',
   'images' => array(array(
-    'uri' => 'http://sns.example.com/test.png',
+    'uri' => 'http://site.example.com/test.png',
     'mime_type' => 'image/png'
   )),
-  'uri' => 'http://sns.example.com'
+  'uri' => 'http://site.example.com'
 ));
 $t->isa_ok($result, 'ActivityData', '->updateActivity() returns instance of ActivityData');
 $t->is($result->getPublicFlag(), 2, 'public_flag of ActivityData that created by ->updateActivity() is 2');
@@ -37,7 +37,7 @@ $t->is($result->getInReplyToActivityId(), 1, 'in_reply_to_activity_id of Activit
 $t->cmp_ok($result->getIsPc(), '===', false, 'is_pc of ActivityData that creatd by ->updateActivity() is false');
 $t->cmp_ok($result->getIsMobile(), '===', false, 'is_mobile of ActivityData that creatd by ->updateActivity() is false');
 $t->is($result->getSource(), 'API', 'source of ActivityData that creatd by ->updateActivity() is "API"');
-$t->is($result->getSourceUri(), 'http://sns.example.com', 'source_uri of ActivityData that creatd by ->updateActivity() is "http://sns.example.com"');
+$t->is($result->getSourceUri(), 'http://site.example.com', 'source_uri of ActivityData that creatd by ->updateActivity() is "http://site.example.com"');
 $t->is(count($result->getImages()), 1, 'images of ActivityData that created by ->updateActivity() has 1 item');
 
 $msg = '->updateActivity() throw LogicException when public_flag option is bad';
@@ -54,7 +54,7 @@ catch (LogicException $e)
 $msg = '->updateActivity() throw LogicException when images option is bad';
 try
 {
-  $result = $table->updateActivity(1, 'test4', array('images' => array(array('uri' => 'http://sns.example.com/image.png'))));
+  $result = $table->updateActivity(1, 'test4', array('images' => array(array('uri' => 'http://site.example.com/image.png'))));
   $t->fail($msg);
 }
 catch (LogicException $e)
@@ -71,7 +71,7 @@ $t->is($result->getTemplateParam(), array('foo' => 'bar'), 'template_param of Ac
 $t->diag('ActivityDataTable::getPublicFlags()');
 $result = $table->getPublicFlags();
 $t->is($result, array(
-  ActivityDataTable::PUBLIC_FLAG_SNS => '全員に公開',
+  ActivityDataTable::PUBLIC_FLAG_SITE => '全員に公開',
   ActivityDataTable::PUBLIC_FLAG_FRIEND => 'マイフレンドまで公開',
   ActivityDataTable::PUBLIC_FLAG_PRIVATE => '公開しない',
 ), '->getPublicFlags() returns array of public flags');
@@ -80,20 +80,20 @@ $result = $table->getViewablePublicFlags(ActivityDataTable::PUBLIC_FLAG_PRIVATE)
 $t->is($result, array(
   ActivityDataTable::PUBLIC_FLAG_PRIVATE,
   ActivityDataTable::PUBLIC_FLAG_FRIEND,
-  ActivityDataTable::PUBLIC_FLAG_SNS,
+  ActivityDataTable::PUBLIC_FLAG_SITE,
   ActivityDataTable::PUBLIC_FLAG_OPEN
 ), '->getViewablePublicFlags() returns 4 public flags');
 
 $result = $table->getViewablePublicFlags(ActivityDataTable::PUBLIC_FLAG_FRIEND);
 $t->is($result, array(
   ActivityDataTable::PUBLIC_FLAG_FRIEND,
-  ActivityDataTable::PUBLIC_FLAG_SNS,
+  ActivityDataTable::PUBLIC_FLAG_SITE,
   ActivityDataTable::PUBLIC_FLAG_OPEN
 ), '->getViewablePublicFlags() returns 3 public flags');
 
-$result = $table->getViewablePublicFlags(ActivityDataTable::PUBLIC_FLAG_SNS);
+$result = $table->getViewablePublicFlags(ActivityDataTable::PUBLIC_FLAG_SITE);
 $t->is($result, array(
-  ActivityDataTable::PUBLIC_FLAG_SNS,
+  ActivityDataTable::PUBLIC_FLAG_SITE,
   ActivityDataTable::PUBLIC_FLAG_OPEN
 ), '->getViewablePublicFlags() returns 2 public flags');
 

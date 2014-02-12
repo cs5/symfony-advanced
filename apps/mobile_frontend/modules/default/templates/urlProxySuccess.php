@@ -1,6 +1,6 @@
 <?php sa_mobile_page_title(__('Link outside URL')) ?>
 
-<?php echo __('This url is the outside of %0%.', array('%0%' => $sa_config['sns_name'])) ?>
+<?php echo __('This url is the outside of %0%.', array('%0%' => $sa_config['site_name'])) ?>
 <hr>
 <form action="" method="">
 URL <input type="text" value="<?php echo $url ?>">

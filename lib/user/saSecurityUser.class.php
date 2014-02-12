@@ -351,28 +351,28 @@ class saSecurityUser extends saAdaptableUser
     if ($member instanceof saAnonymousMember || $member->getIsLoginRejected())
     {
       $this->logout();
-      $isSNSMember = false;
+      $isSiteMember = false;
     }
     else
     {
       // this value is true only if user is (U1)
-      $isSNSMember = (bool)$member->getIsActive();
+      $isSiteMember = (bool)$member->getIsActive();
     }
 
-    if ($isSNSMember)
+    if ($isSiteMember)
     {
       $member->updateLastLoginTime();
     }
 
-    $this->setIsSNSMember($isSNSMember);
+    $this->setIsSiteMember($isSiteMember);
   }
 
   public function isMember()
   {
-    return $this->isSNSMember();
+    return $this->isSiteMember();
   }
 
-  public function isSNSMember()
+  public function isSiteMember()
   {
     return (bool)$this->getMember()->getIsActive();
   }
@@ -402,22 +402,22 @@ class saSecurityUser extends saAdaptableUser
     return $this->getAuthAdapter()->isRegisterFinish($memberId);
   }
 
-  public function setIsSNSMember($isSNSMember)
+  public function setIsSiteMember($isSiteMember)
   {
-    $this->setAuthenticated($isSNSMember);
+    $this->setAuthenticated($isSiteMember);
 
     // for BC
-    if ($isSNSMember)
+    if ($isSiteMember)
     {
-      $this->addCredential('SNSMember');
+      $this->addCredential('SiteMember');
     }
   }
 
-  public function setIsSNSRegisterBegin($isSNSRegisterBegin)
+  public function setIsSiteRegisterBegin($isSiteRegisterBegin)
   {
   }
 
-  public function setIsSNSRegisterFinish($isSNSRegisterFinish)
+  public function setIsSiteRegisterFinish($isSiteRegisterFinish)
   {
   }
 

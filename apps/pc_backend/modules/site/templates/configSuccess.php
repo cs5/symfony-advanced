@@ -3,11 +3,11 @@
 <?php end_slot() ?>
 
 <?php
-$categoryAttributes = sfConfig::get('sfadvanced_sns_category_attribute'); 
+$categoryAttributes = sfConfig::get('sfadvanced_site_category_attribute'); 
 $caption = !empty($categoryAttributes[$category]['Caption']) ? $categoryAttributes[$category]['Caption'] : $category;
 ?>
 
-<h2><?php echo __('SNS設定') ?> (<?php echo __($caption) ?>)</h2>
+<h2><?php echo __('Site設定') ?> (<?php echo __($caption) ?>)</h2>
 
 <p><?php echo __('※「設定変更」ボタンを押すと設定が反映されます。') ?></p>
 
@@ -15,7 +15,7 @@ $caption = !empty($categoryAttributes[$category]['Caption']) ? $categoryAttribut
 <p><?php echo __('※認証に関する個別の設定は、「プラグイン設定」からおこなってください。') ?></p>
 <?php endif; ?>
 
-<form action="<?php echo url_for('sns/config?category='.$category) ?>" method="post">
+<form action="<?php echo url_for('site/config?category='.$category) ?>" method="post">
 <table>
 <?php echo $form ?>
 <tr>

@@ -12,7 +12,7 @@
 	<title>SfAdvanced</title>
 	<atom:link href="http://www.sfadvanced.jp/feed/" rel="self" type="application/rss+xml" />
 	<link>http://www.sfadvanced.jp</link>
-	<description>オープンソースのSNSエンジン SfAdvancedプロジェクト</description>
+	<description>オープンソースのSiteエンジン SfAdvancedプロジェクト</description>
 	<lastBuildDate>Sun, 29 Nov 2009 16:16:36 +0000</lastBuildDate>
 	<generator>http://wordpress.org/?v=2.8.6</generator>
 	<language>ja</language>
@@ -370,7 +370,7 @@ $ ./symfony cc
 				<h3>Web全体に公開</h3>
 				<p>今日はsfAdvanced1系特有の機能についてご紹介します。<br />
 				sfAdvanced1では日記の公開範囲の設定に｢Web全体に公開｣というのがあります。<br />
-				その名の通り、日記をSNS外にも公開できるという機能です。</p>
+				その名の通り、日記をSite外にも公開できるという機能です。</p>
 				<h3>どうやって設定するの？</h3>
 				<p>設定方法はいたって簡単で、日記作成の公開範囲設定に｢Web全体に公開｣というラジオボタンがあるのでそれにチェックを入れるだけです。</p>
 				<p>ではさっそく画像を見ながら実際に「Web全体に公開」する日記を作成してみましょう。<br />
@@ -383,26 +383,26 @@ $ ./symfony cc
 				ちなみに「Web全体に公開」以外の権限はSfAdvancedでもあったのでおなじみかと思います。<br />
 				公開権限について簡単に説明すると以下な感じです。</p>
 				<ul>
-				<li>・Web全体に公開　　　 SNS外でもSNS内でもネット上の誰でも閲覧可能</li>
-				<li>・全員に公開　 　 　　　  SNS内のメンバーなら閲覧可能</li>
+				<li>・Web全体に公開　　　 Site外でもSite内でもネット上の誰でも閲覧可能</li>
+				<li>・全員に公開　 　 　　　  Site内のメンバーなら閲覧可能</li>
 				<li>・マイフレンドまで公開　日記作者とフレンド状態なら閲覧可能</li>
 				<li>・公開しない　　 　　　　 日記作者のみが閲覧できる状態</li>
 				</ul>
-				<p>それではSNSにログインしないで「Web全体に公開」に設定した日記にアクセスしてみましょう。</p>
+				<p>それではSiteにログインしないで「Web全体に公開」に設定した日記にアクセスしてみましょう。</p>
 				<p><img src="http://www.sfadvanced.jp/wp-content/uploads/2009/11/e585a8e4bd93e585ace9968b.png" alt="web公開" title="web公開" width="505" height="321" class="aligncenter size-full wp-image-3905" /></p>
 				<p>グローバルナビ等が表示されない日記画面が表示されていると思います。<br />
 				「Web全体に公開」に設定した日記はこのような表示になります。<br />
 				皆さんもこんな感じで見られましたでしょうか？</p>
 				<h3>外部へアピール</h3>
-				<p>日記外部公開機能の利点は色々あると思いますが、例えば「このSNSではこんな活動してます！」や「このSNSに参加しませんか？」といった感じで外部にアピールすることができます。<br />
-				SNS内を紹介できるこの機能はSNSの発展に大いに力になると思っています。</p>
+				<p>日記外部公開機能の利点は色々あると思いますが、例えば「このSiteではこんな活動してます！」や「このSiteに参加しませんか？」といった感じで外部にアピールすることができます。<br />
+				Site内を紹介できるこの機能はSiteの発展に大いに力になると思っています。</p>
 				<p>■———————————————————■<br />
 				<a href="http://demo3.sfadvanced.jp/">http://demo3.sfadvanced.jp/</a><br />
 				“Master site”sfAdvanced1デモサイト</p>
 				<p><a href="http://redmine.sfadvanced.jp/">http://redmine.sfadvanced.jp/</a><br />
 				sfAdvanced1プロジェクトRedmine</p>
-				<p><a href="http://sns.sfadvanced.jp/">http://sns.sfadvanced.jp/</a><br />
-				バグ・要望報告は→SfAdvanced公式SNSでもOK</p>
+				<p><a href="http://site.sfadvanced.jp/">http://site.sfadvanced.jp/</a><br />
+				バグ・要望報告は→SfAdvanced公式SiteでもOK</p>
 				<p><a href="http://twitter.com/pnetan">http://twitter.com/pnetan/</a><br />
 				Pnetanつぶやきなう<br />
 				■———————————————————■</p>
@@ -463,7 +463,7 @@ $ ./symfony cc
 				<ul>
 				<li>・<a href="http://trac.sfadvanced.jp/ticket/4367">#4367</a>：携帯URLに含まれるセッションパラメータをサイト内に書き込んだ際に表示しないようにする</li>
 				</ul>
-				<p>このチケットでは携帯でセッションID付きURLを書き込んでもセッションIDを表示しないように修正し、より安全なSNSになるように対応します。</p>
+				<p>このチケットでは携帯でセッションID付きURLを書き込んでもセッションIDを表示しないように修正し、より安全なSiteになるように対応します。</p>
 				<h2>SfAdvancedプロジェクト参加者募集中！</h2>
 				<p>SfAdvancedプロジェクトでは参加者を募集しています！<br />
 				現在sfAdvanced1の開発が活発に行われていますが、3系、2系にかかわらず人材を募集しています。<br />

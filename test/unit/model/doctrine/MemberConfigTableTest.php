@@ -20,7 +20,7 @@ $t->isa_ok($result, 'MemberConfig');
 
 //------------------------------------------------------------
 $t->diag('MemberConfigTable::retrieveByNameAndValue()');
-$result = $table->retrieveByNameAndValue('pc_address', 'sns@example.com');
+$result = $table->retrieveByNameAndValue('pc_address', 'site@example.com');
 $t->isa_ok($result, 'MemberConfig');
 
 //------------------------------------------------------------
@@ -34,7 +34,7 @@ $memberConfig1 = $table->retrieveByNameAndMemberId('pc_address_pre', 2, true);
 $memberConfig2 = $table->retrieveByNameAndMemberId('pc_address_pre', 3, true);
 $t->isa_ok($memberConfig1, 'MemberConfig');
 $t->isa_ok($memberConfig2, 'MemberConfig');
-$table->deleteDuplicatedPre(2, 'pc_address', 'sns2@example.com');
+$table->deleteDuplicatedPre(2, 'pc_address', 'site2@example.com');
 $memberConfig1 = $table->retrieveByNameAndMemberId('pc_address_pre', 2, true);
 $memberConfig2 = $table->retrieveByNameAndMemberId('pc_address_pre', 3, true);
 $t->ok(!$memberConfig1);

@@ -25,7 +25,7 @@ class ActivityData extends BaseActivityData
     return $this->getTable()->publicFlagToCaption($this->getPublicFlag());
   }
 
-  public function getReplies($publicFlag = ActivityDataTable::PUBLIC_FLAG_SNS, $limit = 10)
+  public function getReplies($publicFlag = ActivityDataTable::PUBLIC_FLAG_SITE, $limit = 10)
   {
     $query = $this->getTable()->createQuery('a')
       ->leftJoin('a.Member')

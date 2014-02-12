@@ -3,9 +3,9 @@
 include_once dirname(__FILE__).'/../../bootstrap/unit.php';
 include_once dirname(__FILE__) . '/../../bootstrap/database.php';
 $_SERVER['REQUEST_URI']  = '/';
-$_SERVER['HTTP_HOST']    = 'sns.example.com';
+$_SERVER['HTTP_HOST']    = 'site.example.com';
 $_SERVER['SCRIPT_NAME']  = '/index.php';
-$_SERVER['HTTP_REFERER'] = 'http://sns.example.com/';
+$_SERVER['HTTP_REFERER'] = 'http://site.example.com/';
 
 sfContext::createInstance($configuration);
 saToolkit::clearCache();
@@ -42,7 +42,7 @@ $t->is(sa_activity_body_filter($activity5), '<a href="/index.php/">http://www.sf
 
 sfConfig::set('sf_app', 'mobile_frontend');
 
-$t->is(sa_activity_body_filter($activity4), '<a href="http://sns.example.com/proxy?url=http%3A%2F%2Fwww.sfadvanced.jp">http://www.sfadvanced.jp</a>', 'sa_activity_body_filter() returns autolinked text');
+$t->is(sa_activity_body_filter($activity4), '<a href="http://site.example.com/proxy?url=http%3A%2F%2Fwww.sfadvanced.jp">http://www.sfadvanced.jp</a>', 'sa_activity_body_filter() returns autolinked text');
 
 function test_filter(sfEvent $event, $value)
 {
@@ -61,7 +61,7 @@ $activityImage->File->fromArray(array(
 ));
 $t->is(sa_activity_image_uri($activityImage), '/cache/img/png/w_h/ac_hogehoge_png.png');
 $t->is(sa_activity_image_uri($activityImage, array('size' => '48x48')), '/cache/img/png/w48_h48/ac_hogehoge_png.png');
-$t->is(sa_activity_image_uri($activityImage, array(), true), 'http://sns.example.com/cache/img/png/w_h/ac_hogehoge_png.png');
+$t->is(sa_activity_image_uri($activityImage, array(), true), 'http://site.example.com/cache/img/png/w_h/ac_hogehoge_png.png');
 
 $t->diag('sa_activity_image_uri() [uri]');
 

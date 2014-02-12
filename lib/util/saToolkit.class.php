@@ -374,8 +374,8 @@ class saToolkit
       return false;
     }
 
-    if ((is_array($credential) && !in_array('SNSMember', $credential))
-      || (is_string($credential) && 'SNSMember' !== $credential))
+    if ((is_array($credential) && !in_array('SiteMember', $credential))
+      || (is_string($credential) && 'SiteMember' !== $credential))
     {
       return false;
     }

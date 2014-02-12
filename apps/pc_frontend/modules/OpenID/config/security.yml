@@ -3,4 +3,4 @@ all:
 
 list:
   is_secure: true
-  credentials: SNSMember
+  credentials: SiteMember

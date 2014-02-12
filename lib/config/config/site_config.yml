@@ -2,16 +2,16 @@ general:
   _attributes:
     Caption: "General Configuration"
 
-  sns_name:
-    Name:     "sns_name"
-    Caption:  "SNS名"
+  site_name:
+    Name:     "site_name"
+    Caption:  "Site名"
     FormType: "input"
     ValueType: "text"
-    Default:   "MySNS"
+    Default:   "MySite"
     IsRequired: true
 
-  sns_title:
-    Name:      "sns_title"
+  site_title:
+    Name:      "site_title"
     Caption:   "ページタイトル"
     Help:      "HTML の title 要素の内容になります"
     FormType:  "input"
@@ -24,7 +24,7 @@ general:
     Caption:   "管理者メールアドレス"
     FormType:  "input"
     ValueType:  "email"
-    Default:    "sns@example.com"
+    Default:    "site@example.com"
     IsRequired: true
     IsTrim:     true
 
@@ -87,8 +87,8 @@ general:
 
   nickname_of_member_who_does_not_have_credentials:
     Name:       "nickname_of_member_who_does_not_have_credentials"
-    Caption:    "非SNSユーザー表示名設定"
-    Help:       "非SNSユーザー（退会したユーザーなど）の表示名を設定します"
+    Caption:    "非Siteユーザー表示名設定"
+    Help:       "非Siteユーザー（退会したユーザーなど）の表示名を設定します"
     FormType:   "text"
     ValueType:  "string"
     IsRequired: false

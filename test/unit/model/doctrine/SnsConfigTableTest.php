@@ -10,13 +10,13 @@ $table = Doctrine::getTable('SnsConfig');
 //------------------------------------------------------------
 $t->diag('SnsConfigTable');
 $t->diag('SnsConfigTable::retrieveByName()');
-$snsConfig = $table->retrieveByName('sns_name');
-$t->isa_ok($snsConfig, 'SnsConfig');
+$siteConfig = $table->retrieveByName('site_name');
+$t->isa_ok($siteConfig, 'SnsConfig');
 
 //------------------------------------------------------------
 $t->diag('SnsConfigTable::get()');
-$t->is($table->get('sns_name'), 'test1');
-$t->is($table->get('sns_name', 'xxx'), 'test1');
+$t->is($table->get('site_name'), 'test1');
+$t->is($table->get('site_name', 'xxx'), 'test1');
 $t->is($table->get('xxx', 'xxx'), 'xxx');
 
 //------------------------------------------------------------

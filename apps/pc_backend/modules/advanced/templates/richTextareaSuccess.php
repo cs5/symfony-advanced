@@ -3,7 +3,7 @@
 <?php end_slot() ?>
 
 <h2><?php echo __('RichTextarea Configuration') ?></h2>
-<form action="<?php url_for('sns/richTextarea') ?>" method="post">
+<form action="<?php url_for('site/richTextarea') ?>" method="post">
 <table>
 <?php echo $configForm ?>
 </table>
@@ -42,7 +42,7 @@ $("#button tbody").sortable({
     postData += "&'.urlencode($sortForm->getCSRFFieldName()).'='.urlencode($sortForm->getCSRFToken()).'";
 
     $.ajax({
-      url: "'.url_for('sns/changeRichTextareaButtonOrder').'",
+      url: "'.url_for('site/changeRichTextareaButtonOrder').'",
       type: "POST",
       data: postData
     });

@@ -6,7 +6,7 @@ $browser = new saTestFunctional(new sfBrowser(), new lime_test(null, new lime_ou
 
 include dirname(__FILE__).'/../../bootstrap/database.php';
 
-$browser->login('sns@example.com', 'password');
+$browser->login('site@example.com', 'password');
 $browser->setCulture('en');
 
 $browser->get('/')

@@ -32,7 +32,7 @@ class ReissuePasswordForm extends MemberConfigPasswordForm
 
   public function sendConfirmMail($to, $params = array())
   {
-    $params['subject'] = saConfig::get('sns_name').' '.sfContext::getInstance()->getI18N()->__('New password has been issued');
+    $params['subject'] = saConfig::get('site_name').' '.sfContext::getInstance()->getI18N()->__('New password has been issued');
     saMailSend::sendTemplateMail('reissuedPassword', $to, saConfig::get('admin_mail_address'), $params);
   }
 }

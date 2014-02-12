@@ -68,7 +68,7 @@ class Member extends BaseMember implements saAccessControlRecordInterface
 
     $age = saToolkit::calculateAge($birthday);
     $publicFlag = $this->getConfig('age_public_flag', ProfileTable::PUBLIC_FLAG_PRIVATE);
-    if (!$viewableCheck || (ProfileTable::PUBLIC_FLAG_SNS == $publicFlag && $myMemberId))
+    if (!$viewableCheck || (ProfileTable::PUBLIC_FLAG_SITE == $publicFlag && $myMemberId))
     {
       return $age;
     }
