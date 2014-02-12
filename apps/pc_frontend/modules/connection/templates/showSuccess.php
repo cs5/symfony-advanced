@@ -1,5 +1,5 @@
 <?php
-op_include_parts('memberImageBox', 'consumerImageBox', array(
+sa_include_parts('memberImageBox', 'consumerImageBox', array(
   'object' => $consumer,
   'name_method' => 'getName',
 ));
@@ -15,7 +15,7 @@ op_include_parts('memberImageBox', 'consumerImageBox', array(
 
 <?php
 $list = array();
-if (op_have_privilege('edit'))
+if (sa_have_privilege('edit'))
 {
   $list = array(
     __('Consumer key') => $consumer->getKeyString(),
@@ -27,7 +27,7 @@ if (op_have_privilege('edit'))
   );
 }
 
-op_include_parts('listBox', 'consumerInformation', array(
+sa_include_parts('listBox', 'consumerInformation', array(
   'list' => array_merge(array(
     __('説明')         => nl2br($consumer->getDescription()),
     __('登録者')       => $consumer->getMember(),
@@ -36,7 +36,7 @@ op_include_parts('listBox', 'consumerInformation', array(
 ?>
 
 <ul>
-<?php if (op_have_privilege('edit')): ?>
+<?php if (sa_have_privilege('edit')): ?>
   <li><?php echo link_to('このアプリケーションを編集', 'connection_edit', $consumer) ?></li>
 <?php endif; ?>
   <li><?php echo link_to('連携済みアプリケーション一覧', 'connection_list') ?></li>

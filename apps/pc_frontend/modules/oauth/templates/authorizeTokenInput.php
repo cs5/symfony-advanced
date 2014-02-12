@@ -22,12 +22,12 @@
 <?php end_slot(); ?>
 
 <?php
-op_include_parts('consentForm', 'oauthAuthorizeTokenForm', array(
+sa_include_parts('consentForm', 'oauthAuthorizeTokenForm', array(
   'title'                => __('アプリケーション許可設定'),
   'body'                 => get_slot('_body'),
   'yes_form'             => get_slot('_yes_form'),
   'no_form'              => get_slot('_no_form'),
-  'consent_from'         => $op_config['sns_name'],
+  'consent_from'         => $sa_config['sns_name'],
   'consent_to'           => $information->getConsumer()->getName(),
   'allow_image_filename' => 'consent_allow2.gif',
 ))

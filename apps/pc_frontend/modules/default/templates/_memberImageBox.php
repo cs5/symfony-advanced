@@ -14,4 +14,4 @@ $options = array(
   'object'   => $member,
   'moreInfo' => $moreInfo,
 );
-op_include_parts('memberImageBox', 'memberImageBox_'.$gadget->getId(), $options);
+sa_include_parts('memberImageBox', 'memberImageBox_'.$gadget->getId(), $options);

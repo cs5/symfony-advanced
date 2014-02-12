@@ -4,5 +4,5 @@ $options = array(
   'url'   => url_for('member/registerInput?token='.$token),
   'button' => __('Register'),
 );
-op_include_form('RegisterForm', $form, $options);
+sa_include_form('RegisterForm', $form, $options);
 ?>

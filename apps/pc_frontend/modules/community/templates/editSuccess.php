@@ -14,11 +14,11 @@ else
   $options['url'] = url_for('@community_edit?id='.$community->getId());
 }
 
-op_include_form('formCommunity', array($communityForm, $communityConfigForm, $communityFileForm), $options);
+sa_include_form('formCommunity', array($communityForm, $communityConfigForm, $communityFileForm), $options);
 
 if (!$communityForm->isNew() && $isDeleteCommunity)
 {
-  op_include_parts('buttonBox', 'deleteForm', array(
+  sa_include_parts('buttonBox', 'deleteForm', array(
     'title' => __('Delete this %community%'),
     'body' => __('delete this %community%.if you delete this %community% please to report in advance for all this %community% members.'),
     'button' => __('Delete'),

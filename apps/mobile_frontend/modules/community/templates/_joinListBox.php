@@ -16,4 +16,4 @@ $option = array(
     link_to(__('More'), '@community_joinlist?id='.$member->getId())
   ),
 );
-op_include_list('communityList', $list, $option);
+sa_include_list('communityList', $list, $option);

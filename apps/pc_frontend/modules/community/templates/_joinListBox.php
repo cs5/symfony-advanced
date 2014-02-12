@@ -1,6 +1,6 @@
 <?php
 $options = array(
-  'title' => __('%community% List', array('%community%' => $op_term['community']->titleize())),
+  'title' => __('%community% List', array('%community%' => $sa_term['community']->titleize())),
   'list' => $communities,
   'crownIds' => $sf_data->getRaw('crownIds'),
   'link_to' => '@community_home?id=',
@@ -9,4 +9,4 @@ $options = array(
   'row' => $row,
   'col' => $col,
 );
-op_include_parts('nineTable', 'communityList_'.$gadget->getId(), $options);
+sa_include_parts('nineTable', 'communityList_'.$gadget->getId(), $options);

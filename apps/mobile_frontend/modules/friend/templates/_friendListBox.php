@@ -3,7 +3,7 @@
 $list = array();
 foreach ($friends as $friendMember)
 {
-  $list[] = op_link_to_member($friendMember, array('link_target' => sprintf('%s(%d)', $friendMember->getName(), $friendMember->countFriends())));
+  $list[] = sa_link_to_member($friendMember, array('link_target' => sprintf('%s(%d)', $friendMember->getName(), $friendMember->countFriends())));
 }
 $option = array(
   'title' => __('%Friend% list'),
@@ -12,4 +12,4 @@ $option = array(
     link_to(__('More'), '@friend_list?id='.$member->getId())
   ),
 );
-op_include_list('friendList', $list, $option);
+sa_include_list('friendList', $list, $option);
