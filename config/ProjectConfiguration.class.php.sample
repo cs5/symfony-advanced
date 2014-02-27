@@ -3,13 +3,13 @@
 require_once dirname(__FILE__).'/../lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
-require_once dirname(__FILE__).'/../lib/config/opProjectConfiguration.class.php';
+require_once dirname(__FILE__).'/../lib/config/saProjectConfiguration.class.php';
 
-define('OPENPNE3_CONFIG_DIR', dirname(__FILE__));
+define('SFADVANCED1_CONFIG_DIR', dirname(__FILE__));
 
-class ProjectConfiguration extends opProjectConfiguration
+class ProjectConfiguration extends saProjectConfiguration
 {
-  public function setupProjectOpenPNE()
+  public function setupProjectSfAdvanced()
   {
     // You can write your own configurations
 
@@ -18,7 +18,7 @@ class ProjectConfiguration extends opProjectConfiguration
     // session_save_path('/tmp');
   }
 
-  public function setupProjectOpenPNEDoctrine($manager)
+  public function setupProjectSfAdvancedDoctrine($manager)
   {
     // You can write your own configurations.
 

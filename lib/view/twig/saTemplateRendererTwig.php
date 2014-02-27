@@ -96,7 +96,7 @@ class saTemplateRendererTwig extends sfTemplateRendererTwig
 
   protected function filterIgoredParametersCallback($current)
   {
-    $allowedClasses = array('saConfig', 'saColorConfig', 'SnsTermTable', 'Gadget');
+    $allowedClasses = array('saConfig', 'saColorConfig', 'SiteTermTable', 'Gadget');
 
     if (is_scalar($current) || is_array($current) || in_array(get_class($current), $allowedClasses) || empty($current))
     {

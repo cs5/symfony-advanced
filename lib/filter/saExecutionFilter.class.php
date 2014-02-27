@@ -150,7 +150,7 @@ class saExecutionFilter extends sfExecutionFilter
 
     self::notifyPreExecuteActionEvent($this, $dispatcher, $actionInstance);
 
-    Doctrine::getTable('SnsTerm')->configure(sfContext::getInstance()->getUser()->getCulture(), sfConfig::get('sf_app'));
+    Doctrine::getTable('SiteTerm')->configure(sfContext::getInstance()->getUser()->getCulture(), sfConfig::get('sf_app'));
 
     if (sfConfig::has('sa_is_use_captcha'))
     {

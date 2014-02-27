@@ -32,7 +32,7 @@ class memberActions extends saMemberAction
     $this->gadgetConfig = sfConfig::get('sa_gadget_list');
 
     $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName('gadget');
-    $layout = Doctrine::getTable('SnsConfig')->get('home_layout', 'layoutA');
+    $layout = Doctrine::getTable('SiteConfig')->get('home_layout', 'layoutA');
     $this->setLayout($layout);
 
     switch ($layout)
@@ -81,14 +81,14 @@ class memberActions extends saMemberAction
       $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName('smartphoneLogin');
       $this->contentsGadgets = $gadgets['smartphoneLoginContents'];
 
-      $this->setLayout('smtLayoutSns');
+      $this->setLayout('smtLayoutSite');
       $this->setTemplate('smtLogin');    
     }
     else
     {
       $this->gadgetConfig = sfConfig::get('sa_login_gadget_list');
       $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName('login');
-      $layout = Doctrine::getTable('SnsConfig')->get('login_layout', 'layoutA');
+      $layout = Doctrine::getTable('SiteConfig')->get('login_layout', 'layoutA');
       $this->setLayout($layout);
 
       switch($layout)
@@ -125,7 +125,7 @@ class memberActions extends saMemberAction
     $this->gadgetConfig = sfConfig::get('sa_profile_gadget_list');
 
     $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName('profile');
-    $layout = Doctrine::getTable('SnsConfig')->get('profile_layout', 'layoutA');
+    $layout = Doctrine::getTable('SiteConfig')->get('profile_layout', 'layoutA');
     $this->setLayout($layout);
 
     switch ($layout)

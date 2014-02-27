@@ -714,7 +714,7 @@ GadgetConfig:
     name: "row"
     value: 1
 
-SnsConfig:
+SiteConfig:
   site_config1:
     name: "site_name"
     value: "test1"
@@ -805,7 +805,7 @@ OpenIDTrustLog:
     uri_key: <?php echo md5("example.com")."\n"; ?>
     is_permanent: false
 
-SnsTerm:
+SiteTerm:
   term_friend_pc_frontend:
     name: "friend"
     application: "pc_frontend"
@@ -949,7 +949,7 @@ ActivityData:
     body: "dummy8"
     template: "xxxx_template"
 
-SnsTerm:
+SiteTerm:
   term_friend_pc_frontend:
     name: "friend"
     application: "pc_frontend"

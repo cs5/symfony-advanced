@@ -26,7 +26,7 @@ class userAgreementAction extends sfAction
   {
     if ($request->isSmartphone())
     {
-      $this->setLayout('smtLayoutSns');
+      $this->setLayout('smtLayoutSite');
       $this->setTemplate('smtUserAgreement');
     }
   }

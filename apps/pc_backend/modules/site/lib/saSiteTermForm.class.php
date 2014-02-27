@@ -9,13 +9,13 @@
  */
 
 /**
- * saSnsTermForm
+ * saSiteTermForm
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class saSnsTermForm extends sfForm
+class saSiteTermForm extends sfForm
 {
   protected static $availableApplications = array(
     'pc_frontend' => 'pc',
@@ -33,7 +33,7 @@ class saSnsTermForm extends sfForm
         $field = $name.'['.$app.']';
         $this->setWidget($field, new sfWidgetFormInput());
         $this->widgetSchema->setLabel($field, $config['caption'][$culture].'('.$appCaption.')');
-        $this->setDefault($field, Doctrine::getTable('SnsTerm')->findOneByApplicationAndName($app, $name));
+        $this->setDefault($field, Doctrine::getTable('SiteTerm')->findOneByApplicationAndName($app, $name));
       }
 
       $this->setValidator($name, new sfValidatorPass());
@@ -56,7 +56,7 @@ class saSnsTermForm extends sfForm
 
       foreach ($values as $application => $value)
       {
-        Doctrine::getTable('SnsTerm')->set($name, $value, $culture, $application);
+        Doctrine::getTable('SiteTerm')->set($name, $value, $culture, $application);
       }
     }
   }

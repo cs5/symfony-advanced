@@ -83,10 +83,10 @@ $query->free();
 
 
 //==============================================================================
-$t->diag('saActivityQueryBuilder::includeSns()');
+$t->diag('saActivityQueryBuilder::includeSite()');
 
 $builder = saActivityQueryBuilder::create()
-  ->includeSns();
+  ->includeSite();
 
 $query = $builder->buildQuery();
 $result = $query->execute();
@@ -174,12 +174,12 @@ $builder = saActivityQueryBuilder::create()
   ->setViewerId(1)
   ->includeSelf()
   ->includeFriends()
-  ->includeSns();
+  ->includeSite();
 
 $query = $builder->buildQuery();
 $result = $query->execute();
 
-$t->is($result->getPrimaryKeys(), array(1056, 1055, 8, 7, 6, 5, 4, 3, 2, 1), '->includeSelf()->includeFriends()->includeSns() viewerId = 1');
+$t->is($result->getPrimaryKeys(), array(1056, 1055, 8, 7, 6, 5, 4, 3, 2, 1), '->includeSelf()->includeFriends()->includeSite() viewerId = 1');
 
 $result->free(true);
 $query->free();
@@ -189,12 +189,12 @@ $builder = saActivityQueryBuilder::create()
   ->setViewerId(2)
   ->includeSelf()
   ->includeFriends()
-  ->includeSns();
+  ->includeSite();
 
 $query = $builder->buildQuery();
 $result = $query->execute();
 
-$t->is($result->getPrimaryKeys(), array(1056, 1055, 8, 7, 6, 5, 3, 2, 1), '->includeSelf()->includeFriends()->includeSns() viewerId = 2');
+$t->is($result->getPrimaryKeys(), array(1056, 1055, 8, 7, 6, 5, 3, 2, 1), '->includeSelf()->includeFriends()->includeSite() viewerId = 2');
 
 $result->free(true);
 $query->free();
