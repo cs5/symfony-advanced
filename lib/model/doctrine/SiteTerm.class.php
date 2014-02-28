@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class SnsTerm extends BaseSnsTerm
+class SiteTerm extends BaseSiteTerm
 {
   protected $process = array(
     'withArticle' => false,

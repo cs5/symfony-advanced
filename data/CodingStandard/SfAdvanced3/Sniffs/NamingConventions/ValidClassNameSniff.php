@@ -32,7 +32,7 @@ class sfAdvanced1_Sniffs_NamingConventions_ValidClassNameSniff extends Squiz_Sni
     $name = trim($tokens[$className]['content']);
 
     // "op" prefix
-    if (0 !== strpos($name, 'op'))
+    if (0 !== strpos($name, 'sa'))
     {
       $error = ucfirst($tokens[$stackPtr]['content']).' name must begin with "op" prefix';
       $phpcsFile->addError($error, $stackPtr);
@@ -46,7 +46,7 @@ class sfAdvanced1_Sniffs_NamingConventions_ValidClassNameSniff extends Squiz_Sni
     }
 
     // stripped prefix
-    if (0 === strpos($name, 'op'))
+    if (0 === strpos($name, 'sa'))
     {
       $name = substr($name, 2);
     }

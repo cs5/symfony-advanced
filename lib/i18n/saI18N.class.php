@@ -25,7 +25,7 @@ class saI18N extends sfI18N
     {
         $application = 'pc_frontend';
     }
-    $this->terms = Doctrine::getTable('SnsTerm');
+    $this->terms = Doctrine::getTable('SiteTerm');
     $this->terms->configure($this->culture, $application);
     if (!$this->terms['member'])
     {
@@ -139,7 +139,7 @@ class saI18N extends sfI18N
     {
       foreach ($args as $k => $v)
       {
-        if ($v instanceof SnsTerm)
+        if ($v instanceof SiteTerm)
         {
           $args[$k] = (string)$v;
         }

@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class SnsTermTable extends Doctrine_Table implements ArrayAccess
+class SiteTermTable extends Doctrine_Table implements ArrayAccess
 {
   protected
     $culture = '',
@@ -74,12 +74,12 @@ class SnsTermTable extends Doctrine_Table implements ArrayAccess
     $term = $this->createQuery()
       ->andWhere('name = ?', $name)
       ->andWhere('application = ?', $application)
-      ->andWhere('id IN (SELECT id FROM SnsTermTranslation WHERE lang = ?)', $culture)
+      ->andWhere('id IN (SELECT id FROM SiteTermTranslation WHERE lang = ?)', $culture)
       ->fetchOne();
 
     if (!$term)
     {
-      $term = new SnsTerm();
+      $term = new SiteTerm();
       $term->setName($name);
       $term->setLang($culture);
       $term->setApplication($application);
@@ -104,7 +104,7 @@ class SnsTermTable extends Doctrine_Table implements ArrayAccess
 
       if ($this->culture)
       {
-        $q->andWhere('id IN (SELECT id FROM SnsTermTranslation WHERE lang = ?)', $this->culture);
+        $q->andWhere('id IN (SELECT id FROM SiteTermTranslation WHERE lang = ?)', $this->culture);
       }
 
       foreach ($q->execute() as $term)
@@ -128,11 +128,11 @@ class SnsTermTable extends Doctrine_Table implements ArrayAccess
 
   public function offsetSet($offset, $value)
   {
-    throw new LogicException('The SnsTermTable class is not writable.');
+    throw new LogicException('The SiteTermTable class is not writable.');
   }
 
   public function offsetUnset($offset)
   {
-    throw new LogicException('The SnsTermTable class is not writable.');
+    throw new LogicException('The SiteTermTable class is not writable.');
   }
 }

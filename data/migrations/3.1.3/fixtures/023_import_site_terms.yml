@@ -1,4 +1,4 @@
-SnsTerm:
+SiteTerm:
   term_friend_pc_frontend:
     name: "friend"
     application: "pc_frontend"

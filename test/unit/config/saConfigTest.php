@@ -15,7 +15,7 @@ sfConfig::set('sfadvanced_site_config', array(
 $t->is(saConfig::get('foo', null), null);
 $t->is(saConfig::get('foo', 'default'), 'default');
 
-Doctrine_Core::getTable('SnsConfig')->set('foo', 'tetete');
+Doctrine_Core::getTable('SiteConfig')->set('foo', 'tetete');
 $t->is(saConfig::get('foo', null), 'tetete');
 
 // 'Default' is defined
@@ -26,5 +26,5 @@ sfConfig::set('sfadvanced_site_config', array(
 $t->is(saConfig::get('bar', null), 'hogehoge');
 $t->is(saConfig::get('bar', 'default'), 'hogehoge');
 
-Doctrine_Core::getTable('SnsConfig')->set('bar', 'tetete');
+Doctrine_Core::getTable('SiteConfig')->set('bar', 'tetete');
 $t->is(saConfig::get('bar', null), 'tetete');

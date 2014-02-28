@@ -27,7 +27,7 @@ class errorAction extends sfAction
   {
     if ($request->isSmartphone())
     {
-      $this->setLayout('smtLayoutSns');
+      $this->setLayout('smtLayoutSite');
       $this->setTemplate('smtError');
     }
   }

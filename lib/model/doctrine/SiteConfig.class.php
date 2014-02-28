@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class SnsConfig extends BaseSnsConfig
+class SiteConfig extends BaseSiteConfig
 {
   protected $siteConfigSettings = array();
 

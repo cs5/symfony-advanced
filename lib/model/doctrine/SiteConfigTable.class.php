@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class SnsConfigTable extends Doctrine_Table
+class SiteConfigTable extends Doctrine_Table
 {
   protected $configs;
 
@@ -28,7 +28,7 @@ class SnsConfigTable extends Doctrine_Table
     $config = $this->retrieveByName($name);
     if (!$config)
     {
-      $config = new SnsConfig();
+      $config = new SiteConfig();
       $config->setName($name);
     }
     $config->setValue($value);

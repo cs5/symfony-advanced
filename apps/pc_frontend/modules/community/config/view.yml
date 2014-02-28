@@ -17,13 +17,13 @@ smtJoinInput:
   layout: smtLayoutGroup
 
 smtJoinError:
-  layout: smtLayoutSns
+  layout: smtLayoutSite
 
 smtQuitSuccess:
   layout: smtLayoutGroup
 
 smtQuitError:
-  layout: smtLayoutSns
+  layout: smtLayoutSite
 
 smtSearchSuccess:
-  layout: smtLayoutSns
+  layout: smtLayoutSite

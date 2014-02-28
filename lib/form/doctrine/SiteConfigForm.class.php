@@ -9,13 +9,13 @@
  */
 
 /**
- * SnsConfig form.
+ * SiteConfig form.
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class SnsConfigForm extends BaseForm
+class SiteConfigForm extends BaseForm
 {
   public function configure()
   {
@@ -58,10 +58,10 @@ class SnsConfigForm extends BaseForm
     $config = sfConfig::get('sfadvanced_site_config');
     foreach ($this->getValues() as $key => $value)
     {
-      $siteConfig = Doctrine::getTable('SnsConfig')->retrieveByName($key);
+      $siteConfig = Doctrine::getTable('SiteConfig')->retrieveByName($key);
       if (!$siteConfig)
       {
-        $siteConfig = new SnsConfig();
+        $siteConfig = new SiteConfig();
         $siteConfig->setName($key);
       }
       $siteConfig->setValue($value);

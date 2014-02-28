@@ -8,7 +8,7 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class Revision22_AddSnsTermTable extends Doctrine_Migration_Base
+class Revision22_AddSiteTermTable extends Doctrine_Migration_Base
 {
   public function migrate($direction)
   {
