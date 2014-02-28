@@ -15,7 +15,7 @@ class DesignBannerImageForm extends sfForm
   {
     $type = $this->getOption('type');
     $this->key .= $type;
-    $siteConfig = Doctrine::getTable('SiteConfig')->findByName($this->key);
+    $siteConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
 
     $this->setWidgets(array(
       $type => new sfWidgetFormTextarea(),
@@ -34,10 +34,10 @@ class DesignBannerImageForm extends sfForm
     $type = $this->getOption('type');
     $values = $this->getValues();
 
-    $siteConfig = Doctrine::getTable('SiteConfig')->findByName($this->key);
+    $siteConfig = Doctrine::getTable('SnsConfig')->findByName($this->key);
     if (!$siteConfig)
     {
-      $siteConfig = new SiteConfig();
+      $siteConfig = new SnsConfig();
       $siteConfig->setName($this->Key);
     }
     $siteConfig->setValue($values[$type]);

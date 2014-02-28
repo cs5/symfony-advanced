@@ -163,7 +163,7 @@ class ActivityDataTable extends Doctrine_Table
     if ($isI18n)
     {
       $i18n = sfContext::getInstance()->getI18N();
-      $termMyFriend = Doctrine::getTable('SiteTerm')->get('my_friend');
+      $termMyFriend = Doctrine::getTable('SnsTerm')->get('my_friend');
 
       foreach (self::$publicFlags as $key => $publicFlag)
       {

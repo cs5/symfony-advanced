@@ -12,10 +12,10 @@ class Revision44_AddActivityTerm extends Doctrine_Migration_Base
 {
   protected function setTerm($name, $application, $values)
   {
-    $object = Doctrine::getTable('SiteTerm')->findOneByNameAndApplication($name, $application);
+    $object = Doctrine::getTable('SnsTerm')->findOneByNameAndApplication($name, $application);
     if (!$object)
     {
-      $object = new SiteTerm();
+      $object = new SnsTerm();
       $object->name = $name;
       $object->application = $application;
     }

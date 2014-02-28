@@ -79,7 +79,7 @@ class saActivityQueryBuilder
     return $this;
   }
 
-  public function includeSite()
+  public function includeSns()
   {
     $this->include['site'] = true;
 

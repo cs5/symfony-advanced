@@ -9,7 +9,7 @@
  */
 
 /**
- * saConfig is a wrapper class to handle SiteConfig
+ * saConfig is a wrapper class to handle SnsConfig
  *
  * @package    SfAdvanced
  * @subpackage config
@@ -47,7 +47,7 @@ class saConfig extends sfConfig implements ArrayAccess
     $setting = self::getConfigurationSetting();
     $result = null;
 
-    $result = Doctrine::getTable('SiteConfig')->get($name, null);
+    $result = Doctrine::getTable('SnsConfig')->get($name, null);
     if (isset($setting[$name]))
     {
       if (is_null($result))

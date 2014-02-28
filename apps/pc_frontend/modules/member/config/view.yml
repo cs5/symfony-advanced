@@ -45,16 +45,16 @@ smtConfigSuccess:
   layout: smtLayoutHome
 
 smtSearchSuccess:
-  layout: smtLayoutSite
+  layout: smtLayoutSns
 
 smtConfigImageSuccess:
   layout: smtLayoutHome
 
 smtInviteInput:
-  layout: smtLayoutSite
+  layout: smtLayoutSns
 
 smtInviteSuccess:
-  layout: smtLayoutSite
+  layout: smtLayoutSns
 
 smtInviteError:
-  layout: smtLayoutSite
+  layout: smtLayoutSns

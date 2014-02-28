@@ -66,7 +66,7 @@ class saColorConfig extends saConfig
     {
       $app = sfConfig::get('sf_app');
     }
-    Doctrine::getTable('SiteConfig')->set($app.'_'.$name, $value);
+    Doctrine::getTable('SnsConfig')->set($app.'_'.$name, $value);
   }
 
   public function offsetExists($offset)

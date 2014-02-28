@@ -70,7 +70,7 @@ abstract class saFriendAction extends sfActions
     if ($this->relation->isFriend())
     {
       $this->getUser()->setFlash('error', 'This member already belongs to %my_friend%.');
-      $this->getUser()->setFlash('error_params', array('%my_friend%' => Doctrine::getTable('SiteTerm')->get('my_friend')->pluralize()));
+      $this->getUser()->setFlash('error_params', array('%my_friend%' => Doctrine::getTable('SnsTerm')->get('my_friend')->pluralize()));
       $this->redirect('@member_profile?id='.$this->id);
     }
     if ($this->relation->isFriendPreFrom())

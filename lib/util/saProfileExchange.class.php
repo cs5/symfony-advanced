@@ -18,7 +18,7 @@
 class saProfileExchange
 {
   protected
-    $classNamePrefix = 'sa',
+    $classNamePrefix = 'op',
 
     $import = null,
     $export = null,

@@ -30,14 +30,14 @@ class advancedActions extends sfActions
 
     $this->forward404If(!empty($this->categoryAttributes[$this->category]['Hidden']));
 
-    $formName = 'sa'.sfInflector::camelize($this->category).'SiteConfigForm';
+    $formName = 'op'.sfInflector::camelize($this->category).'SnsConfigForm';
     if (class_exists($formName, true))
     {
       $this->form = new $formName();
     }
     else
     {
-      $this->form = new SiteConfigForm(array(), array('category' => $this->category));
+      $this->form = new SnsConfigForm(array(), array('category' => $this->category));
     }
 
     if ($request->isMethod('post'))
@@ -79,7 +79,7 @@ class advancedActions extends sfActions
       $request->checkCSRFProtection();
 
       $buttons = $request->getParameter('button');
-      Doctrine::getTable('SiteConfig')->set('richtextarea_buttons_sort_order', serialize($buttons));
+      Doctrine::getTable('SnsConfig')->set('richtextarea_buttons_sort_order', serialize($buttons));
     }
     return sfView::NONE;
   }

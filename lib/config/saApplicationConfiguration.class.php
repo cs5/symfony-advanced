@@ -120,7 +120,7 @@ abstract class saApplicationConfiguration extends sfApplicationConfiguration
 
     foreach ($list as $value)
     {
-      if (!strncmp($value, 'sa', 2))
+      if (!strncmp($value, 'op', 2))
       {
         $result[] = $value;
       }
@@ -213,7 +213,7 @@ abstract class saApplicationConfiguration extends sfApplicationConfiguration
 
     $parameters['sa_color']  = new saColorConfig();
 
-    $table = Doctrine::getTable('SiteTerm');
+    $table = Doctrine::getTable('SnsTerm');
     $application = sfConfig::get('sf_app');
     if ($application == 'pc_backend')
     {
@@ -225,7 +225,7 @@ abstract class saApplicationConfiguration extends sfApplicationConfiguration
       $table->configure('en', $application);
     }
     $parameters['sa_term'] = $table;
-    sfOutputEscaper::markClassAsSafe('SiteTermTable');
+    sfOutputEscaper::markClassAsSafe('SnsTermTable');
 
     return $parameters;
   }

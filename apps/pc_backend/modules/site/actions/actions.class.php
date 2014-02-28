@@ -29,14 +29,14 @@ class siteActions extends sfActions
 
     $this->forward404If(!empty($this->categoryAttributes[$this->category]['Hidden']));
 
-    $formName = 'sa'.sfInflector::camelize($this->category).'SiteConfigForm';
+    $formName = 'op'.sfInflector::camelize($this->category).'SnsConfigForm';
     if (class_exists($formName, true))
     {
       $this->form = new $formName();
     }
     else
     {
-      $this->form = new SiteConfigForm(array(), array('category' => $this->category));
+      $this->form = new SnsConfigForm(array(), array('category' => $this->category));
     }
 
     if ($request->isMethod('post'))
@@ -60,7 +60,7 @@ class siteActions extends sfActions
   */
   public function executeTerm(sfWebRequest $request)
   {
-    $this->form = new saSiteTermForm();
+    $this->form = new saSnsTermForm();
 
     if ($request->isMethod(sfWebRequest::POST))
     {

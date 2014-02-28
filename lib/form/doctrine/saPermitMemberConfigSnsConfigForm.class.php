@@ -9,13 +9,13 @@
  */
 
 /**
- * saPermitMemberConfigSiteConfig form.
+ * saPermitMemberConfigSnsConfig form.
  *
  * @package    SfAdvanced
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  */
-class saPermitMemberConfigSiteConfigForm extends BaseForm
+class saPermitMemberConfigSnsConfigForm extends BaseForm
 {
   public function configure()
   {
@@ -43,7 +43,7 @@ class saPermitMemberConfigSiteConfigForm extends BaseForm
       'ignored_site_config' => new sfValidatorChoice(array('multiple' => true, 'choices' => array_keys($choices), 'required' => false)),
     ));
 
-    $default = Doctrine::getTable('SiteConfig')->get('ignored_site_config', array());
+    $default = Doctrine::getTable('SnsConfig')->get('ignored_site_config', array());
     if ($default)
     {
       $default = unserialize($default);
@@ -56,6 +56,6 @@ class saPermitMemberConfigSiteConfigForm extends BaseForm
   public function save()
   {
     $ignored = (array)$this->getValue('ignored_site_config');
-    Doctrine::getTable('SiteConfig')->set('ignored_site_config', serialize($ignored));
+    Doctrine::getTable('SnsConfig')->set('ignored_site_config', serialize($ignored));
   }
 }

@@ -21,7 +21,7 @@ class csrfErrorAction extends sfAction
   {
     if ($request->isSmartphone())
     {
-      $this->setLayout('smtLayoutSite');
+      $this->setLayout('smtLayoutSns');
       $this->setTemplate('smtCsrf');
     }
   }

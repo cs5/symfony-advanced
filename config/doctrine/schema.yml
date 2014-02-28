@@ -239,7 +239,7 @@ AdminUser:
     charset: utf8
     comment: "Saves informations to login administration page"
 
-SiteConfig:
+SnsConfig:
   actAs: []
   columns:
     id: { type: integer(4), primary: true, autoincrement: true, comment: "Serial number" }
@@ -523,7 +523,7 @@ OpenIDTrustLog:
     charset: utf8
     comment: "Saves logs of trusted OpenID RP"
 
-SiteTerm:
+SnsTerm:
   actAs:
     I18n:
       fields: [value]

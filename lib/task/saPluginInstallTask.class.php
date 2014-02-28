@@ -56,15 +56,15 @@ EOF;
     return $configuration;
   }
 
-  protected function isSiteConfigTableExists()
+  protected function isSnsConfigTableExists()
   {
     try
     {
-      if (class_exists('SiteConfigTable'))
+      if (class_exists('SnsConfigTable'))
       {
         return Doctrine_Manager::connection()
           ->import
-          ->tableExists(Doctrine::getTable('SiteConfig')->getTableName());
+          ->tableExists(Doctrine::getTable('SnsConfig')->getTableName());
       }
     }
     catch (Doctrine_Connection_Exception $e) { }
@@ -105,9 +105,9 @@ EOF;
       if (count(sfFinder::type('file')->name('databases.yml')->in(sfConfig::get('sf_config_dir'))) && !$isExists)
       {
         $databaseManager = new sfDatabaseManager($this->configuration);
-        if ($this->isSiteConfigTableExists())
+        if ($this->isSnsConfigTableExists())
         {
-          Doctrine::getTable('SiteConfig')->set($arguments['name'].'_needs_data_load', '1');
+          Doctrine::getTable('SnsConfig')->set($arguments['name'].'_needs_data_load', '1');
         }
       }
     }

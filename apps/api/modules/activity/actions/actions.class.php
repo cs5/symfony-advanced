@@ -34,7 +34,7 @@ class activityActions extends saJsonApiActions
         $builder
           ->includeSelf()
           ->includeFriends()
-          ->includeSite()
+          ->includeSns()
           ->setCommunityId($request['target_id']);
       }
       else
@@ -51,7 +51,7 @@ class activityActions extends saJsonApiActions
       else
       {
         $builder
-          ->includeSite()
+          ->includeSns()
           ->includeFriends()
           ->includeSelf();
       }

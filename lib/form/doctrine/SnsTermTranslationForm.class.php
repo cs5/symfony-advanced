@@ -1,13 +1,13 @@
 <?php
 
 /**
- * SiteTermTranslation form.
+ * SnsTermTranslation form.
  *
  * @package    form
- * @subpackage SiteTermTranslation
+ * @subpackage SnsTermTranslation
  * @version    SVN: $Id: sfDoctrineFormTemplate.php 6174 2007-11-27 06:22:40Z fabien $
  */
-class SiteTermTranslationForm extends BaseSiteTermTranslationForm
+class SnsTermTranslationForm extends BaseSnsTermTranslationForm
 {
   public function configure()
   {
